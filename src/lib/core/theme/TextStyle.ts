@@ -1,0 +1,25 @@
+import type { Typography } from "./typography";
+
+export type TextStyleToken = keyof Typography;
+
+export const TextStyle = {
+    DisplayLarge: "displayLarge",
+    DisplayMedium: "displayMedium",
+    DisplaySmall: "displaySmall",
+
+    HeadlineLarge: "headlineLarge",
+    HeadlineMedium: "headlineMedium",
+    HeadlineSmall: "headlineSmall",
+
+    TitleLarge: "titleLarge",
+    TitleMedium: "titleMedium",
+    TitleSmall: "titleSmall",
+
+    BodyLarge: "bodyLarge",
+    BodyMedium: "bodyMedium",
+    BodySmall: "bodySmall",
+
+    LabelLarge: "labelLarge",
+    LabelMedium: "labelMedium",
+    LabelSmall: "labelSmall",
+} as const;
