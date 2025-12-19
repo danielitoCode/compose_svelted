@@ -1,71 +1,35 @@
-export type ModifierStyle = {
-    className?: string;
-    style?: string;
-};
+import { ModifierImpl } from "./ModifierImpl";
 
-export class Modifier {
-    private readonly styles: ModifierStyle[];
+// 🔑 Modifier = factory singleton (como Compose)
+export const Modifier = {
+    empty(): ModifierImpl {
+        return new ModifierImpl();
+    },
 
-    private constructor(styles: ModifierStyle[] = []) {
-        this.styles = styles;
-    }
+    padding(value: number): ModifierImpl {
+        return new ModifierImpl().padding(value);
+    },
 
-    static empty(): Modifier {
-        return new Modifier();
-    }
+    paddingHorizontal(value: number): ModifierImpl {
+        return new ModifierImpl().paddingHorizontal(value);
+    },
 
-    then(other: Modifier): Modifier {
-        return new Modifier([...this.styles, ...other.styles]);
-    }
+    paddingVertical(value: number): ModifierImpl {
+        return new ModifierImpl().paddingVertical(value);
+    },
 
-    // ---------- layout-independent modifiers ----------
+    fillMaxWidth(): ModifierImpl {
+        return new ModifierImpl().fillMaxWidth();
+    },
 
-    padding(value: number): Modifier {
-        return this.then(
-            new Modifier([{ style: `padding:${value}px;` }])
-        );
-    }
+    fillMaxHeight(): ModifierImpl {
+        return new ModifierImpl().fillMaxHeight();
+    },
 
-    paddingHorizontal(value: number): Modifier {
-        return this.then(
-            new Modifier([{ style: `padding-left:${value}px;padding-right:${value}px;` }])
-        );
-    }
+    background(cssColor: string): ModifierImpl {
+        return new ModifierImpl().background(cssColor);
+    },
+} as const;
 
-    paddingVertical(value: number): Modifier {
-        return this.then(
-            new Modifier([{ style: `padding-top:${value}px;padding-bottom:${value}px;` }])
-        );
-    }
-
-    fillMaxWidth(): Modifier {
-        return this.then(
-            new Modifier([{ style: `width:100%;` }])
-        );
-    }
-
-    fillMaxHeight(): Modifier {
-        return this.then(
-            new Modifier([{ style: `height:100%;` }])
-        );
-    }
-
-    background(colorCss: string): Modifier {
-        return this.then(
-            new Modifier([{ style: `background:${colorCss};` }])
-        );
-    }
-
-    // ---------- internal ----------
-
-    toStyle(): string {
-        return this.styles.map(s => s.style ?? "").join("");
-    }
-
-    toClass(): string {
-        return this.styles.map(s => s.className ?? "").join(" ");
-    }
-}
-
-// Conveniencia Compose-like
-export const ModifierNone = Modifier.empty();
+// Tipo público
+export type Modifier = ModifierImpl;

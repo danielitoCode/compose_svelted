@@ -1,8 +1,7 @@
 <script lang="ts">
-    import type { Modifier } from "../../core/modifier/Modifier";
-    import { ModifierNone } from "../../core/modifier/Modifier";
+    import { Modifier } from "../../core/modifier/Modifier";
 
-    export let modifier: Modifier = ModifierNone;
+    export let modifier: Modifier = Modifier.empty();
 </script>
 
 <div
