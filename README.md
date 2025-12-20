@@ -1,6 +1,8 @@
 # ComposeSvelted
 
-[![](https://nyc.cloud.appwrite.io/v1/storage/buckets/69473607000c7e7ce466/files/69473624001c509591d2/view?project=68f990d4002b6960ecf9&mode=admin)](https://nyc.cloud.appwrite.io/v1/storage/buckets/69473607000c7e7ce466/files/69473624001c509591d2/view?project=68f990d4002b6960ecf9&mode=admin)
+<div align="center">
+<img src="/./screenshots/intro.gif" align="center" width="32%"/>
+</div>
 
 ¡Bienvenido a **ComposeSvelted**! Una librería de UI declarativa para Svelte inspirada directamente en **Jetpack Compose** de Android.
 
