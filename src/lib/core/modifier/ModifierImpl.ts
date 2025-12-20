@@ -1,3 +1,5 @@
+import type {BoxAlignment} from "../../components/layouts/Alignment";
+
 export type ModifierEntry = {
     className?: string;
     style?: string;
@@ -14,17 +16,31 @@ export class ModifierImpl {
         return new ModifierImpl([...this.entries, ...other.entries]);
     }
 
-    padding(value: number): ModifierImpl {
-        return this.then(
-            new ModifierImpl([{ style: `padding:${value}px;` }])
-        );
-    }
-
     paddingHorizontal(value: number): ModifierImpl {
         return this.then(
             new ModifierImpl([
                 { style: `padding-left:${value}px;padding-right:${value}px;` },
             ])
+        );
+    }
+
+    verticalScroll(enabled: boolean = true): ModifierImpl {
+        return this.then(
+            new ModifierImpl([{
+                style: enabled
+                    ? `overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;`
+                    : ''
+            }])
+        );
+    }
+
+    horizontalScroll(enabled: boolean = true): ModifierImpl {
+        return this.then(
+            new ModifierImpl([{
+                style: enabled
+                    ? `overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch;white-space:nowrap;`
+                    : ''
+            }])
         );
     }
 
@@ -51,18 +67,100 @@ export class ModifierImpl {
     fillMaxSize(): ModifierImpl {
         return new ModifierImpl([{ style: `width:100%;height:100%;` }])
     }
+
     background(cssColor: string): ModifierImpl {
         return this.then(
             new ModifierImpl([{ style: `background:${cssColor};` }])
         );
     }
 
-    weight(value: number): ModifierImpl {
-        return this.then(
-            new ModifierImpl([{ style: `flex-grow:${value};` }])
-        );
+    /**
+     * weight: ocupa espacio proporcional en Row o Column (como flex-grow)
+     * @param weight valor > 0 (ej: 1, 2, 3)
+     * @param fill si true, también aplica flex-shrink: 1 y min-width/height: 0
+     */
+    weight(weight: number, fill: boolean = true): ModifierImpl {
+        if (weight <= 0) {
+            console.warn("Modifier.weight() debe ser > 0");
+            return this;
+        }
+
+        const styleParts = [
+            `flex-grow: ${weight};`,
+            `flex-shrink: ${fill ? 1 : 0};`,
+            `flex-basis: 0%;`  // importante para que el peso funcione bien
+        ];
+
+        return this.then(new ModifierImpl([{ style: styleParts.join(" ") }]));
     }
 
+    align(alignment: BoxAlignment): ModifierImpl {
+        const parts = alignment.split(' ');
+        const horizontal = parts[0]; // flex-start, center, flex-end
+        const vertical = parts[1] || parts[0]; // para casos simples como "center"
+
+        let style = 'position: absolute;';
+
+        // Vertical
+        if (vertical === 'flex-start') {
+            style += 'top: 0;';
+        } else if (vertical === 'flex-end') {
+            style += 'bottom: 0;';
+        } else if (vertical === 'center') {
+            style += 'top: 50%; transform: translateY(-50%);';
+        }
+
+        // Horizontal
+        if (horizontal === 'flex-start') {
+            style += 'left: 0;';
+        } else if (horizontal === 'flex-end') {
+            style += 'right: 0;';
+        } else if (horizontal === 'center') {
+            style += 'left: 50%;';
+            // Combinar transform si ya hay translateY
+            if (style.includes('translateY')) {
+                style = style.replace('translateY(-50%)', 'translate(-50%, -50%)');
+            } else {
+                style += 'transform: translateX(-50%);';
+            }
+        }
+
+        return this.then(new ModifierImpl([{ style }]));
+    }
+
+    padding(valueOrParams: number | { top?: number; bottom?: number; start?: number; end?: number } = 0, unit: string = 'px'): ModifierImpl {
+        let style = '';
+
+        if (typeof valueOrParams === 'number') {
+            // Padding uniforme
+            style = `padding:${valueOrParams}${unit};`;
+        } else {
+            // Padding direccional
+            const { top = 0, bottom = 0, start = 0, end = 0 } = valueOrParams;
+            style = `
+                padding-top:${top}${unit};
+                padding-bottom:${bottom}${unit};
+                padding-start:${start}${unit};
+                padding-end:${end}${unit};
+    `.trim();
+        }
+
+        return this.then(new ModifierImpl([{ style }]));
+    }
+
+    width(value: number | string, unit = 'px'): ModifierImpl {
+        const size = typeof value === 'number' ? `${value}${unit}` : value;
+        return this.then(new ModifierImpl([{ style: `width:${size};` }]));
+    }
+
+    height(value: number | string, unit = 'px'): ModifierImpl {
+        const size = typeof value === 'number' ? `${value}${unit}` : value;
+        return this.then(new ModifierImpl([{ style: `height:${size};` }]));
+    }
+
+    marginTop(value: number, unit = 'px'): ModifierImpl {
+        return this.then(new ModifierImpl([{ style: `margin-top:${value}${unit};` }]));
+    }
     // ---- consumo interno ----
 
     toStyle(): string {

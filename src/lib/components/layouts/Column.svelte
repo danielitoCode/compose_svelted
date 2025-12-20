@@ -6,12 +6,8 @@
     import type { HorizontalAlignment } from "./Alignment";
 
     export let modifier: Modifier = Modifier.empty();
-
-    export let horizontalAlignment: HorizontalAlignment =
-        Alignment.Start;
-
-    export let verticalArrangement: ArrangementValue =
-        Arrangement.Start;
+    export let horizontalAlignment: HorizontalAlignment = Alignment.Start;
+    export let verticalArrangement: ArrangementValue = Arrangement.Start;
 </script>
 
 <div

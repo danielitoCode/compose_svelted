@@ -1,4 +1,5 @@
 import { ModifierImpl } from "./ModifierImpl";
+import type {BoxAlignment} from "../../components/layouts/Alignment";
 
 // 🔑 Modifier = factory singleton (como Compose)
 export const Modifier = {
@@ -6,16 +7,31 @@ export const Modifier = {
         return new ModifierImpl();
     },
 
-    padding(value: number): ModifierImpl {
-        return new ModifierImpl().padding(value);
+    padding(
+        valueOrParams: number | { top?: number; bottom?: number; start?: number; end?: number } = 0,
+        unit: string = 'px'
+    ): ModifierImpl {
+        return new ModifierImpl().padding(valueOrParams,unit);
     },
 
     paddingHorizontal(value: number): ModifierImpl {
         return new ModifierImpl().paddingHorizontal(value);
     },
 
+    verticalScroll(enabled: boolean = true): ModifierImpl {
+        return new ModifierImpl().verticalScroll(enabled);
+    },
+
+    horizontalScroll(enabled: boolean = true): ModifierImpl {
+        return new ModifierImpl().horizontalScroll(enabled);
+    },
+
     paddingVertical(value: number): ModifierImpl {
         return new ModifierImpl().paddingVertical(value);
+    },
+
+    align(alignment: BoxAlignment): ModifierImpl {
+        return new ModifierImpl().align(alignment);
     },
 
     fillMaxWidth(): ModifierImpl {
@@ -30,11 +46,24 @@ export const Modifier = {
         return new ModifierImpl().fillMaxSize();
     },
 
+    height(value: number | string, unit = 'px'): ModifierImpl {
+        return new ModifierImpl().height(value, unit);
+    },
+
+    width(value: number | string, unit = 'px'): ModifierImpl {
+        return new ModifierImpl().width(value, unit);
+    },
+
     background(cssColor: string): ModifierImpl {
         return new ModifierImpl().background(cssColor);
     },
-    weight(value: number): ModifierImpl {
-        return new ModifierImpl().weight(value);
+
+    weight(weight: number, fill: boolean = true): ModifierImpl {
+        return new ModifierImpl().weight(weight, fill);
+    },
+
+    marginTop(value: number, unit = 'px'): ModifierImpl {
+        return new ModifierImpl().marginTop(value, unit);
     }
 } as const;
 

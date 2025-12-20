@@ -31,6 +31,16 @@ export const Arrangement = {
         justifyContent: "flex-end",
     } as ArrangementValue,
 
+    Bottom: {
+        type: "static",
+        justifyContent: "flex-end"
+    } as ArrangementValue,
+
+    Top: {
+        type: "static",
+        justifyContent: "flex-start"
+    } as ArrangementValue,
+
     SpaceBetween: {
         type: "static",
         justifyContent: "space-between",
@@ -46,7 +56,6 @@ export const Arrangement = {
         justifyContent: "space-evenly",
     } as ArrangementValue,
 
-    // --- Compose REAL ---
     spacedBy(value: number): ArrangementValue {
         return {
             type: "spaced",

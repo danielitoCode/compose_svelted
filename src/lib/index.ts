@@ -1,5 +1,5 @@
 // =========================
-// COMPONENTES (Svelte)
+// COMPONENTS (Svelte)
 // =========================
 export { default as ComposeTheme } from "./core/theme/ComposeTheme.svelte";
 export { default as AppRoot } from "./components/AppRoot.svelte"
