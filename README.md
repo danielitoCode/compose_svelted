@@ -1,7 +1,7 @@
 # ComposeSvelted
 
 <div align="center">
-<img src="/./screenshots/intro.gif" align="center" width="32%"/>
+<img src="/./svelted.png" align="center" width="32%"/>
 </div>
 
 ¡Bienvenido a **ComposeSvelted**! Una librería de UI declarativa para Svelte inspirada directamente en **Jetpack Compose** de Android.
