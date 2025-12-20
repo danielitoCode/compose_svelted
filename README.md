@@ -1,47 +1,99 @@
-# Svelte + TS + Vite
+# ComposeSvelted
 
-This template should help get you started developing with Svelte and TypeScript in Vite.
+[https://raw.githubusercontent.com/danielitoCode/compose_svelted/refs/heads/master/Captura%20de%20pantalla%202025-12-20%20022710.png?token=GHSAT0AAAAAADRCA4XIZLPRMNCUE6DA4FG42KGIOXQ](https://)
 
-## Recommended IDE Setup
+¡Bienvenido a **ComposeSvelted**! Una librería de UI declarativa para Svelte inspirada directamente en **Jetpack Compose** de Android.
 
-[VS Code](https://code.visualstudio.com/) + [Svelte](https://marketplace.visualstudio.com/items?itemName=svelte.svelte-vscode).
+### ¿Cuál es la intención de esta librería?
 
-## Need an official Svelte framework?
+ComposeSvelted nace con un objetivo claro: **ofrecer una transición suave y natural para desarrolladores Android que quieran adentrarse en el desarrollo web nativo**.
 
-Check out [SvelteKit](https://github.com/sveltejs/kit#readme), which is also powered by Vite. Deploy anywhere with its serverless-first approach and adapt to various platforms, with out of the box support for TypeScript, SCSS, and Less, and easily-added support for mdsvex, GraphQL, PostCSS, Tailwind CSS, and more.
+Si vienes de Jetpack Compose, sabes lo increíble que es su ergonomía:
 
-## Technical considerations
+- Layouts declarativos y predecibles
+- Modifiers encadenables
+- Alineaciones y arreglos intuitivos
+- Tema completo con Material Design 3
+- Composición fluida sin sorpresas
 
-**Why use this over SvelteKit?**
+¡Ahora puedes tener **exactamente esa misma experiencia** en la web, pero con **Svelte**!
 
-- It brings its own routing solution which might not be preferable for some users.
-- It is first and foremost a framework that just happens to use Vite under the hood, not a Vite app.
+Svelte es el framework perfecto para esto porque:
 
-This template contains as little as possible to get started with Vite + TypeScript + Svelte, while taking into account the developer experience with regards to HMR and intellisense. It demonstrates capabilities on par with the other `create-vite` templates and is a good starting point for beginners dipping their toes into a Vite + Svelte project.
+- Compila a JavaScript vainilla ultra eficiente
+- **No usa Virtual DOM** → reactividad real y rendimiento superior
+- Bundle mínimo y carga rápida
+- Sintaxis limpia y potente
 
-Should you later need the extended capabilities and extensibility provided by SvelteKit, the template has been structured similarly to SvelteKit so that it is easy to migrate.
+Con ComposeSvelted, un Android dev puede escribir UI web sintiéndose como en casa, sin tener que pelear con CSS crudo ni aprender paradigmas completamente nuevos.
 
-**Why `global.d.ts` instead of `compilerOptions.types` inside `jsconfig.json` or `tsconfig.json`?**
+#### Uso basico:
 
-Setting `compilerOptions.types` shuts out all other types not explicitly listed in the configuration. Using triple-slash references keeps the default TypeScript setting of accepting type information from the entire workspace, while also adding `svelte` and `vite/client` type information.
-
-**Why include `.vscode/extensions.json`?**
-
-Other templates indirectly recommend extensions via the README, but this file allows VS Code to prompt the user to install the recommended extension upon opening the project.
-
-**Why enable `allowJs` in the TS template?**
-
-While `allowJs: false` would indeed prevent the use of `.js` files in the project, it does not prevent the use of JavaScript syntax in `.svelte` files. In addition, it would force `checkJs: false`, bringing the worst of both worlds: not being able to guarantee the entire codebase is TypeScript, and also having worse typechecking for the existing JavaScript. In addition, there are valid use cases in which a mixed codebase may be relevant.
-
-**Why is HMR not preserving my local component state?**
-
-HMR state preservation comes with a number of gotchas! It has been disabled by default in both `svelte-hmr` and `@sveltejs/vite-plugin-svelte` due to its often surprising behavior. You can read the details [here](https://github.com/rixo/svelte-hmr#svelte-hmr).
-
-If you have state that's important to retain within a component, consider creating an external store which would not be replaced by HMR.
-
-```ts
-// store.ts
-// An extremely simple external store
-import { writable } from 'svelte/store'
-export default writable(0)
+```xml
+<ComposeTheme mode="light">
+    <AppRoot>
+        <Surface color = "primary" modifier={Modifier.fillMaxSize()}>
+             <Row modifier={Modifier.fillMaxHeight()}>
+                  <Column
+                      modifier={Modifier.fillMaxHeight()}
+                      horizontalAlignment={Alignment.CenterHorizontally}
+                      verticalArrangement={Arrangement.SpaceBetween}
+                  >
+                      <Text modifier={Modifier.padding(8)}>Hola Compose</Text>
+                      <Row modifier={Modifier.padding(4)}>
+                           <Text>A</Text>
+                           <Text>B</Text>
+                      </Row>
+                 </Column>
+                 <Column
+                      modifier={Modifier.fillMaxHeight()}
+                      horizontalAlignment={Alignment.Start}
+                      verticalArrangement={Arrangement.SpaceAround}
+                 >
+                      <Text modifier={Modifier.padding(8)}>Hola Compose</Text>
+                      <Row modifier={Modifier.padding(4)}>
+                           <Text>A</Text>
+                           <Text>B</Text>
+                      </Row>
+                 </Column>
+             </Row>
+        </Surface>
+    </AppRoot>
+</ComposeTheme>
 ```
+
+**Primero que nada**: no pretendo sustituir a nadie, ni hacerme el grande. Solo quiero ayudar, compartir algo útil y, ojalá, recibir un poco de apoyo de la comunidad. 😊
+
+
+¡Y... ahí está! ComposeSvelted ya es una realidad.
+Si vienes de Android, amigo, lo vas a entender perfectamente a la primera. Y si no vienes de Android... ¡pues también lo vas a entender perfectamente! Porque esta librería está inspirada exactamente en la ergonomía y el léxico natural de Jetpack Compose.
+
+Por debajo, usa Svelte con TypeScript y un toque de Tailwind CSS, todo pensado para ofrecer componentes estables, predecibles y potentes sin que tengas que tocar ni una sola clase o estilo CSS directamente.
+Pero... ¿es esto una capa adicional innecesaria? Pues no, es necesaria, claro que lo es... ¡con un propósito! Está diseñada especialmente para:
+
+- Los desarrolladores Android que quieren aventurarse en el mundo web y buscan una transición suave, productiva y eficiente.
+- Los principiantes (y no tan principiantes) a los que les agobia estar peleando con CSS, memorizando clases y estilos todo el día.
+
+**Un punto importante:** *ComposeSvelted no bloquea ni niega el uso de CSS. Al contrario, te da lo mejor de ambos mundos. Organiza la vista de forma limpia y predecible, evitando que te pierdas entre miles de clases y estilos en cada etiqueta... pero si necesitas ajustar algo más fino, ¡puedes hacerlo sin problema!*
+
+
+¿Qué crees tú? ¿Es buena idea? 🚀
+
+### ¿Por qué elegir ComposeSvelted?
+
+- Curva de aprendizaje mínima para devs Android/Kotlin
+- Rendimiento superior gracias a Svelte (sin Virtual DOM)
+- Layouts consistentes y predecibles
+- Tema Material 3 listo para producción
+- Perfecto para PWAs, dashboards, admin panels o cualquier app web moderna
+
+#### ¡Empieza a construir interfaces web con la misma comodidad que en Android!
+
+¡Bienvenidas! Si eres Android dev y quieres ayudar a hacer la transición al web aún más suave, abre issues o pull requests.
+
+Licencia
+MIT
+
+**ComposeSvelted** – Jetpack Compose se encuentra con Svelte.
+
+*Desarrollo web nativo, sin fricciones.*
