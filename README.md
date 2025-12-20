@@ -1,6 +1,6 @@
 # ComposeSvelted
 
-[![]([https://i.pinimg.com/1200x/f5/96/af/f596af5499533af1d44aaef5725a401c.jpg](https://nyc.cloud.appwrite.io/v1/storage/buckets/69473607000c7e7ce466/files/69473624001c509591d2/view?project=68f990d4002b6960ecf9&mode=admin))]([http://https://i.pinimg.com/1200x/f5/96/af/f596af5499533af1d44aaef5725a401c.jpg](https://nyc.cloud.appwrite.io/v1/storage/buckets/69473607000c7e7ce466/files/69473624001c509591d2/view?project=68f990d4002b6960ecf9&mode=admin))
+[![](https://nyc.cloud.appwrite.io/v1/storage/buckets/69473607000c7e7ce466/files/69473624001c509591d2/view?project=68f990d4002b6960ecf9&mode=admin)](https://nyc.cloud.appwrite.io/v1/storage/buckets/69473607000c7e7ce466/files/69473624001c509591d2/view?project=68f990d4002b6960ecf9&mode=admin)
 
 ¡Bienvenido a **ComposeSvelted**! Una librería de UI declarativa para Svelte inspirada directamente en **Jetpack Compose** de Android.
 
