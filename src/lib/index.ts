@@ -2,6 +2,7 @@
 // COMPONENTES (Svelte)
 // =========================
 export { default as ComposeTheme } from "./core/theme/ComposeTheme.svelte";
+export { default as AppRoot } from "./components/AppRoot.svelte"
 
 export { default as Surface } from "./components/Surface.svelte";
 export { default as Text } from "./components/Text.svelte";

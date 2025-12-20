@@ -48,6 +48,16 @@ export class ModifierImpl {
         );
     }
 
+    fillMaxSize(): ModifierImpl {
+        return this.then(
+            new ModifierImpl(
+                [
+                    { style: `height:100%;` },
+                    { style: `width:100%;` }
+                ]
+            )
+        )
+    }
     background(cssColor: string): ModifierImpl {
         return this.then(
             new ModifierImpl([{ style: `background:${cssColor};` }])

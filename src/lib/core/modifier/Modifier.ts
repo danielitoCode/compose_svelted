@@ -26,6 +26,10 @@ export const Modifier = {
         return new ModifierImpl().fillMaxHeight();
     },
 
+    fillMaxSize(): ModifierImpl {
+        return new ModifierImpl().fillMaxSize();
+    },
+
     background(cssColor: string): ModifierImpl {
         return new ModifierImpl().background(cssColor);
     },

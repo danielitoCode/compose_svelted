@@ -1,5 +1,6 @@
 import { writable, derived } from "svelte/store";
 import type { ComposeTheme, ThemeMode } from "./theme";
+import { systemTheme } from "./systemTheme";
 
 export const themeState = writable<{
     light: ComposeTheme;
@@ -7,16 +8,19 @@ export const themeState = writable<{
     mode: ThemeMode;
 } | null>(null);
 
-const prefersDark = () =>
-    window.matchMedia?.("(prefers-color-scheme: dark)").matches ?? false;
+// 🔑 ESTE es el tema efectivo (como MaterialTheme)
+export const resolvedTheme = derived(
+    [themeState, systemTheme],
+    ([$theme, $system]) => {
+        if (!$theme) return null;
 
-export const resolvedTheme = derived(themeState, ($t) => {
-    if (!$t) return null;
+        const mode =
+            $theme.mode === "system"
+                ? $system
+                : $theme.mode;
 
-    const mode =
-        $t.mode === "system"
-            ? prefersDark() ? "dark" : "light"
-            : $t.mode;
-
-    return $t[mode];
-});
+        return mode === "dark"
+            ? $theme.dark
+            : $theme.light;
+    }
+);
