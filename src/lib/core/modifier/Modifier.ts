@@ -62,6 +62,10 @@ export const Modifier = {
         return new ModifierImpl().weight(weight, fill);
     },
 
+    weightNoFill(weight: number): ModifierImpl {
+        return this.weight(weight, false);
+    },
+
     marginTop(value: number, unit = 'px'): ModifierImpl {
         return new ModifierImpl().marginTop(value, unit);
     }

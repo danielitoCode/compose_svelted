@@ -9,6 +9,8 @@ export { default as Text } from "./components/Text.svelte";
 export { default as Column } from "./components/layouts/Column.svelte";
 export { default as Row } from "./components/layouts/Row.svelte";
 export { default as Box } from "./components/layouts/Box.svelte";
+export { default as Spacer } from "./components/Spacer.svelte"
+export { default as Button } from "./components/Button.svelte"
 
 // =========================
 // TOKENS / API (TS only)
