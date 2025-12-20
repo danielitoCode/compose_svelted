@@ -33,6 +33,9 @@ export const Modifier = {
     background(cssColor: string): ModifierImpl {
         return new ModifierImpl().background(cssColor);
     },
+    weight(value: number): ModifierImpl {
+        return new ModifierImpl().weight(value);
+    }
 } as const;
 
 // Tipo público

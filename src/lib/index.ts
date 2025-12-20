@@ -16,3 +16,5 @@ export { default as Box } from "./components/layouts/Box.svelte";
 export * from "./core/theme/ColorScheme";
 export * from "./core/theme/TextStyle";
 export * from "./core/modifier/Modifier"
+export * from "./components/layouts/Arrangement";
+export * from "./components/layouts/Alignment";

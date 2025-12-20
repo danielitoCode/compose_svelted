@@ -49,18 +49,17 @@ export class ModifierImpl {
     }
 
     fillMaxSize(): ModifierImpl {
-        return this.then(
-            new ModifierImpl(
-                [
-                    { style: `height:100%;` },
-                    { style: `width:100%;` }
-                ]
-            )
-        )
+        return new ModifierImpl([{ style: `width:100%;height:100%;` }])
     }
     background(cssColor: string): ModifierImpl {
         return this.then(
             new ModifierImpl([{ style: `background:${cssColor};` }])
+        );
+    }
+
+    weight(value: number): ModifierImpl {
+        return this.then(
+            new ModifierImpl([{ style: `flex-grow:${value};` }])
         );
     }
 

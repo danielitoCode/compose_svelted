@@ -10,7 +10,7 @@
 </script>
 
 <p
-        class="block"
+        class="block m-0"
         style={`
     ${resolveTextStyle(style)};
     color:${resolveColor(color)};
