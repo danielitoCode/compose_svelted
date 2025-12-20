@@ -1,4 +1,4 @@
-# ComposeSvelted
+# ComposeSvelted (EN DESARROLLO)
 
 <div align="center">
 <img src="/./svelted.png" align="center" width="32%"/>
