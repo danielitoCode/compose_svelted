@@ -7,7 +7,7 @@
         ColorScheme,
         Column,
         ComposeTheme,
-        ContentScale, Icon,
+        ContentScale, Icon, painterResource, Res,
         Row,
         Spacer,
         Surface,
@@ -16,21 +16,27 @@
     } from "./lib";
     import { Modifier } from "./lib";
     import {Arrangement} from "./lib";
-    import {TonalButton} from "./lib";
+
+    import boatSrc from "./assets/raw/boat.svg";
+    import cashSrc from "./assets/raw/cash.svg";
+    import hav3mSrc from "./assets/img/hav3m.png";
+
 </script>
 
 <ComposeTheme mode="system">
     <AppRoot>
         <Surface color={ColorScheme.Surface} modifier={Modifier.fillMaxSize().verticalScroll(true)}>
-            <Column verticalArrangement={Arrangement.spacedBy(24)} modifier={Modifier.padding(32)}>
+            <Column verticalArrangement={Arrangement.spacedBy(24)} modifier={Modifier.padding(32).verticalScroll(true)}>
                 <Text textStyle={TextStyle.TitleLarge}>Iconos con tint</Text>
 
-                <Row horizontalArrangement={Arrangement.spacedBy(32)}>
-                    <Icon src="https://api.iconify.design/mdi/account.svg" tint={ColorScheme.OnPrimary} modifier={Modifier.width(64).height(64)} />
-                    <Icon src="https://api.iconify.design/mdi/heart.svg" tint={ColorScheme.Error} modifier={Modifier.width(64).height(64)} />
-                    <Icon src="https://api.iconify.design/mdi/star.svg" tint="#FFD700" modifier={Modifier.width(64).height(64)} />
-                    <Icon src="https://api.iconify.design/mdi/thumb-up.svg" modifier={Modifier.width(64).height(64)} /> <!-- sin tint → hereda del tema -->
-                </Row>
+                <Icon src="https://api.iconify.design/mdi/account.svg" tint={ColorScheme.OnPrimary} modifier={Modifier.width(64).height(64)} />
+                <Icon src="https://api.iconify.design/mdi/heart.svg" tint={ColorScheme.Error} modifier={Modifier.width(64).height(64)} />
+                <Icon src="https://api.iconify.design/mdi/star.svg" tint="#FFD700" modifier={Modifier.width(64).height(64)} />
+                <Icon src="https://api.iconify.design/mdi/thumb-up.svg" modifier={Modifier.width(64).height(64)} />
+                <Icon src={painterResource(Res.raw("boat.svg"))} tint={ColorScheme.OnPrimary} modifier={Modifier.width(64).height(64)} />
+                <Icon src={cashSrc} tint={ColorScheme.Error} modifier={Modifier.width(64).height(64)} />
+                <!-- Para imágenes bitmap, usa <img> normal o crea Image.svelte más adelante -->
+                <img src={hav3mSrc} alt="hav3m" style="width:64px;height:64px;" />
 
                 <Text textStyle={TextStyle.TitleLarge}>Icon en Button</Text>
                 <Button onClick={() => console.log("Guardar")}>

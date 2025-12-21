@@ -23,4 +23,4 @@ export * from "./core/modifier/Modifier"
 export * from "./components/layouts/Arrangement";
 export * from "./components/layouts/Alignment";
 export * from "./components/ContentScale"
-//export * from "./core/theme/getCurrentColor"
+export * from "./core/helpers/painterResource"

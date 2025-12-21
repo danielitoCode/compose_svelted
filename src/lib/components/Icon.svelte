@@ -45,3 +45,4 @@
     ${modifier.toStyle()}
   `}
 ></div>
+<span>{src}</span>
