@@ -11,6 +11,8 @@ export { default as Row } from "./components/layouts/Row.svelte";
 export { default as Box } from "./components/layouts/Box.svelte";
 export { default as Spacer } from "./components/Spacer.svelte"
 export { default as Button } from "./components/Button.svelte"
+export { default as TonalButton } from "./components/TonalButton.svelte"
+export { default as Icon } from "./components/Icon.svelte"
 
 // =========================
 // TOKENS / API (TS only)
@@ -20,3 +22,5 @@ export * from "./core/theme/TextStyle";
 export * from "./core/modifier/Modifier"
 export * from "./components/layouts/Arrangement";
 export * from "./components/layouts/Alignment";
+export * from "./components/ContentScale"
+//export * from "./core/theme/getCurrentColor"
