@@ -1,6 +1,8 @@
-# ComposeSvelted
+# ComposeSvelted (EN DESARROLLO)
 
-[https://raw.githubusercontent.com/danielitoCode/compose_svelted/refs/heads/master/Captura%20de%20pantalla%202025-12-20%20022710.png?token=GHSAT0AAAAAADRCA4XIZLPRMNCUE6DA4FG42KGIOXQ](https://)
+<div align="center">
+<img src="/./svelted.png" align="center" width="32%"/>
+</div>
 
 ¡Bienvenido a **ComposeSvelted**! Una librería de UI declarativa para Svelte inspirada directamente en **Jetpack Compose** de Android.
 
