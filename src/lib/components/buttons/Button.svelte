@@ -1,7 +1,7 @@
 <script lang="ts">
-    import { Modifier } from "../core/modifier/Modifier";
-    import { resolveColor } from "../core/theme/resolve";
-    import { ColorScheme, type ColorToken } from "../core/theme/ColorScheme";
+    import { Modifier } from "../../core/modifier/Modifier";
+    import { resolveColor } from "../../core/theme/resolve";
+    import { ColorScheme, type ColorToken } from "../../core/theme/ColorScheme";
 
     export let onClick: () => void = () => {};
     export let modifier: Modifier = Modifier.empty();

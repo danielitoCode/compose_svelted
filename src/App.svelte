@@ -7,7 +7,7 @@
         ColorScheme,
         Column,
         ComposeTheme,
-        ContentScale, Icon, painterResource, Res,
+        ContentScale, Icon, Image, painterResource, Res,
         Row,
         Spacer,
         Surface,
@@ -26,23 +26,18 @@
 <ComposeTheme mode="system">
     <AppRoot>
         <Surface color={ColorScheme.Surface} modifier={Modifier.fillMaxSize().verticalScroll(true)}>
-            <Column verticalArrangement={Arrangement.spacedBy(24)} modifier={Modifier.padding(32).verticalScroll(true)}>
-                <Text textStyle={TextStyle.TitleLarge}>Iconos con tint</Text>
-
-                <Icon src="https://api.iconify.design/mdi/account.svg" tint={ColorScheme.OnPrimary} modifier={Modifier.width(64).height(64)} />
-                <Icon src="https://api.iconify.design/mdi/heart.svg" tint={ColorScheme.Error} modifier={Modifier.width(64).height(64)} />
-                <Icon src="https://api.iconify.design/mdi/star.svg" tint="#FFD700" modifier={Modifier.width(64).height(64)} />
-                <Icon src="https://api.iconify.design/mdi/thumb-up.svg" modifier={Modifier.width(64).height(64)} />
-                <Icon src={painterResource(Res.raw("boat.svg"))} tint={ColorScheme.OnPrimary} modifier={Modifier.width(64).height(64)} />
-                <Icon src={cashSrc} tint={ColorScheme.Error} modifier={Modifier.width(64).height(64)} />
-                <!-- Para imágenes bitmap, usa <img> normal o crea Image.svelte más adelante -->
-                <img src={hav3mSrc} alt="hav3m" style="width:64px;height:64px;" />
-
-                <Text textStyle={TextStyle.TitleLarge}>Icon en Button</Text>
-                <Button onClick={() => console.log("Guardar")}>
-                    <Icon src="https://api.iconify.design/mdi/content-save.svg" modifier={Modifier.width(24).height(24)} />
-                    <Text>Guardar</Text>
-                </Button>
+            <Column modifier={Modifier.padding(32)} verticalArrangement={Arrangement.spacedBy(40)}>
+                {#each Object.entries(ContentScale) as [name, scale]}
+                    <Column>
+                        <Text textStyle={TextStyle.TitleMedium}>{name}</Text>
+                        <Image
+                                painter={painterResource(Res.image("hav3m.png"))}
+                        contentScale={scale}
+                        contentDescription="Ejemplo {name}"
+                        modifier={Modifier.width(300).height(150).background("#333")}
+                        />
+                    </Column>
+                {/each}
             </Column>
         </Surface>
     </AppRoot>

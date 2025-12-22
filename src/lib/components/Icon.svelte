@@ -3,7 +3,7 @@
     import { resolveColor } from "../core/theme/resolve";
     import {ColorScheme, type ColorToken} from "../core/theme/ColorScheme";
 
-    export let src: string = "";
+    export let painter: string = "";
 
     export let tint: ColorToken | string | undefined = undefined;
 
@@ -33,8 +33,8 @@
 <div
         class="block"
         style={`
-    -webkit-mask-image: url(${src});
-    mask-image: url(${src});
+    -webkit-mask-image: url(${painter});
+    mask-image: url(${painter});
     -webkit-mask-repeat: no-repeat;
     mask-repeat: no-repeat;
     -webkit-mask-size: contain;
@@ -45,4 +45,4 @@
     ${modifier.toStyle()}
   `}
 ></div>
-<span>{src}</span>
+<span>{painter}</span>
