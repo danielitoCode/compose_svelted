@@ -1,5 +1,6 @@
 import { ModifierImpl } from "./ModifierImpl";
 import type {BoxAlignment} from "../../components/layouts/Alignment";
+import type {Shape} from "../shapes/Shape";
 
 // 🔑 Modifier = factory singleton (como Compose)
 export const Modifier = {
@@ -68,6 +69,14 @@ export const Modifier = {
 
     marginTop(value: number, unit = 'px'): ModifierImpl {
         return new ModifierImpl().marginTop(value, unit);
+    },
+
+    clip(shape: Shape): ModifierImpl {
+        return new ModifierImpl().clip(shape);
+    },
+
+    size(value: number | string, unit: string = "px"): ModifierImpl {
+        return new ModifierImpl().size(value, unit);
     }
 } as const;
 

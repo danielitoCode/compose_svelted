@@ -31,6 +31,7 @@ export { default as Image } from "./components/Image.svelte"
 // =========================
 // TOKENS / API (TS only)
 // =========================
+export * from "./core/shapes/RoundedCornerShape"
 export * from "./core/theme/ColorScheme";
 export * from "./core/theme/TextStyle";
 export * from "./core/modifier/Modifier"

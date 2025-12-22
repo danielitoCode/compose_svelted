@@ -1,4 +1,5 @@
 import type {BoxAlignment} from "../../components/layouts/Alignment";
+import type {Shape} from "../shapes/Shape";
 
 export type ModifierEntry = {
     className?: string;
@@ -74,11 +75,6 @@ export class ModifierImpl {
         );
     }
 
-    /**
-     * weight: ocupa espacio proporcional en Row o Column (como flex-grow)
-     * @param weight valor > 0 (ej: 1, 2, 3)
-     * @param fill si true, también aplica flex-shrink: 1 y min-width/height: 0
-     */
     weight(weight: number, fill: boolean = true): ModifierImpl {
         if (weight <= 0) {
             console.warn("Modifier.weight() debe ser > 0");
@@ -161,6 +157,44 @@ export class ModifierImpl {
     marginTop(value: number, unit = 'px'): ModifierImpl {
         return this.then(new ModifierImpl([{ style: `margin-top:${value}${unit};` }]));
     }
+
+    clip(shape: Shape): ModifierImpl {
+        return this.then(
+            new ModifierImpl([
+                {
+                    style: `
+                    border-radius:${shape.toCssBorderRadius()};
+                    overflow:hidden;
+                `
+                }
+            ])
+        );
+    }
+
+    size(value: number | string, unit: string = "px"): ModifierImpl {
+        if (value === null || value === undefined) {
+            return this;
+        }
+
+        let resolved: string;
+
+        if (typeof value === "number") {
+            if (isNaN(value)) return this;
+            resolved = `${value}${unit}`;
+        } else {
+            if (value.trim() === "") return this;
+            resolved = value;
+        }
+
+        return this.then(
+            new ModifierImpl([
+                {
+                    style: `width:${resolved};height:${resolved};`
+                }
+            ])
+        );
+    }
+
     // ---- consumo interno ----
 
     toStyle(): string {

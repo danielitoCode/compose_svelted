@@ -45,4 +45,3 @@
     ${modifier.toStyle()}
   `}
 ></div>
-<span>{painter}</span>

@@ -7,37 +7,65 @@
         ColorScheme,
         Column,
         ComposeTheme,
-        ContentScale, Icon, Image, painterResource, Res,
+        ContentScale, Icon, Image, painterResource, Res, RoundedCornerShape,
         Row,
         Spacer,
         Surface,
-        Text,
+        Text, TextField,
         TextStyle
     } from "./lib";
     import { Modifier } from "./lib";
     import {Arrangement} from "./lib";
 
-    import boatSrc from "./assets/raw/boat.svg";
-    import cashSrc from "./assets/raw/cash.svg";
-    import hav3mSrc from "./assets/img/hav3m.png";
+    let name = "";
+    let email = "";
+    let bio="";
 
 </script>
 
 <ComposeTheme mode="system">
     <AppRoot>
         <Surface color={ColorScheme.Surface} modifier={Modifier.fillMaxSize().verticalScroll(true)}>
-            <Column modifier={Modifier.padding(32)} verticalArrangement={Arrangement.spacedBy(40)}>
-                {#each Object.entries(ContentScale) as [name, scale]}
-                    <Column>
-                        <Text textStyle={TextStyle.TitleMedium}>{name}</Text>
-                        <Image
-                                painter={painterResource(Res.image("hav3m.png"))}
-                        contentScale={scale}
-                        contentDescription="Ejemplo {name}"
-                        modifier={Modifier.width(300).height(150).background("#333")}
-                        />
-                    </Column>
-                {/each}
+            <Column verticalArrangement={Arrangement.spacedBy(24)} modifier={Modifier.padding(32)}>
+                <TextField
+                        shape={RoundedCornerShape({
+                            topStart: 12,
+                            topEnd: 12
+                        })}
+                        value={name}
+                        onValueChange={(v) => name = v}
+                        label="Nombre completo"
+                        placeholder="Tu nombre aquí"
+                >
+                    <Icon slot="leadingIcon" painter="https://api.iconify.design/mdi/account.svg" tint="onSurfaceVariant" modifier={Modifier.width(24).height(24)} />
+                    <Icon slot="trailingIcon" painter="https://api.iconify.design/mdi/close.svg" tint="onSurfaceVariant" modifier={Modifier.width(24).height(24)} />
+                </TextField>
+
+                <TextField
+                        shape={RoundedCornerShape({
+                            topStart: 16,
+                            topEnd: 16,
+                            bottomStart: 0,
+                            bottomEnd: 0
+                        })}
+                        value={email}
+                        onValueChange={(v) => email = v}
+                        label="Email"
+                        placeholder="tu@email.com"
+                        singleLine={true}
+                >
+                    <Icon slot="leadingIcon" painter="https://api.iconify.design/mdi/email.svg" tint="onSurfaceVariant" modifier={Modifier.width(24).height(24)} />
+                </TextField>
+
+                <TextField
+                        value={bio}
+                        onValueChange={(v) => bio = v}
+                        label="Biografía"
+                        singleLine={false}
+                        modifier={Modifier.height(120)}
+                />
+
+                <Surface color={ColorScheme.OnSurface} modifier={Modifier.size(156).clip(RoundedCornerShape(15))}></Surface>
             </Column>
         </Surface>
     </AppRoot>
