@@ -46,6 +46,15 @@ standard web technologies.
 
 ---
 
+## Why Compose-like for Svelte?
+
+Jetpack Compose introduced a clear, explicit and composable mental model for UI.
+This project explores how that same philosophy translates to the web,
+using Svelte as a native, compiler-driven foundation.
+
+The goal is not to replicate Android UI,
+but to bring Compose’s clarity and composability to modern web applications.
+
 ## 🚀 Installation
 
 ```bash
