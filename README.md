@@ -1,25 +1,34 @@
 # Compose-like UI for Svelte
 <p align="start">
   <a href="https://www.npmjs.com/package/compose-svelte">
-    <img src="https://img.shields.io/npm/v/compose-svelte.svg" alt="npm version" />
+    <img src="https://img.shields.io/npm/v/svelted.svg" alt="npm version" />
   </a>
   <a href="https://www.npmjs.com/package/compose-svelte">
-    <img src="https://img.shields.io/npm/dm/compose-svelte.svg" alt="npm downloads" />
+    <img src="https://img.shields.io/npm/dm/svelted.svg" alt="npm downloads" />
   </a>
   <a href="https://github.com/danielitoCode/compose-svelte/blob/main/LICENSE">
     <img src="https://img.shields.io/github/license/danielitoCode/compose-svelte" alt="license" />
   </a>
+   <img src="https://img.shields.io/badge/status-alpha-orange" />
+   <img src="https://img.shields.io/badge/version-0.0.1-blue" />
 </p>
 
 <p align="center">
   <img src="./svelted.png" width="310" alt="ios" />
 </p>
 
+
 A Compose-inspired UI toolkit for **Svelte**, focused on explicit composition,
 immutable modifiers, and theme-driven design.
 
 Inspired by **Jetpack Compose**, built natively for the web using Svelte and
 standard web technologies.
+
+<p align="center">
+  <img src="https://img.shields.io/badge/Svelte-FF3E00?logo=svelte&logoColor=white" />
+  <img src="https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=white" />
+  <img src="https://img.shields.io/badge/Jetpack%20Compose-inspired-4285F4" />
+</p>
 
 ---
 
@@ -36,6 +45,15 @@ standard web technologies.
 > It is a Compose-like system that can be styled beyond Material Design.
 
 ---
+
+## Why Compose-like for Svelte?
+
+Jetpack Compose introduced a clear, explicit and composable mental model for UI.
+This project explores how that same philosophy translates to the web,
+using Svelte as a native, compiler-driven foundation.
+
+The goal is not to replicate Android UI,
+but to bring Compose’s clarity and composability to modern web applications.
 
 ## 🚀 Installation
 
