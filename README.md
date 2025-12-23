@@ -21,6 +21,12 @@ immutable modifiers, and theme-driven design.
 Inspired by **Jetpack Compose**, built natively for the web using Svelte and
 standard web technologies.
 
+<p align="center">
+  <img src="https://img.shields.io/badge/Svelte-FF3E00?logo=svelte&logoColor=white" />
+  <img src="https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=white" />
+  <img src="https://img.shields.io/badge/Jetpack%20Compose-inspired-4285F4" />
+</p>
+
 ---
 
 ## ✨ Goals
