@@ -1,8 +1,28 @@
 {
   "name": "compose_svelted",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.0.1",
   "type": "module",
+  "license": "MIT",
+  "description": "Compose-like UI toolkit for Svelte",
+  "keywords": [
+    "svelte",
+    "ui",
+    "compose",
+    "design-system",
+    "material"
+  ],
+  "author": "Daniel Imbert Tabares",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/danielitoCode/compose_svelted"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
   "scripts": {
     "dev": "vite",
     "build": "vite build",
