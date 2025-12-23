@@ -6,8 +6,8 @@
   <a href="https://www.npmjs.com/package/compose-svelte">
     <img src="https://img.shields.io/npm/dm/compose-svelte.svg" alt="npm downloads" />
   </a>
-  <a href="https://github.com/TU_USUARIO/compose-svelte/blob/main/LICENSE">
-    <img src="https://img.shields.io/github/license/TU_USUARIO/compose-svelte" alt="license" />
+  <a href="https://github.com/danielitoCode/compose-svelte/blob/main/LICENSE">
+    <img src="https://img.shields.io/github/license/danielitoCode/compose-svelte" alt="license" />
   </a>
 </p>
 
