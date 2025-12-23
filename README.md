@@ -15,6 +15,11 @@
   <img src="./svelted.png" width="310" alt="ios" />
 </p>
 
+<p align="center">
+  <img src="https://img.shields.io/badge/status-alpha-orange" />
+  <img src="https://img.shields.io/badge/version-0.0.1-blue" />
+</p>
+
 A Compose-inspired UI toolkit for **Svelte**, focused on explicit composition,
 immutable modifiers, and theme-driven design.
 
