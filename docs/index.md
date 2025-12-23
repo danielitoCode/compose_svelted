@@ -97,7 +97,7 @@ Design tokens come from the theme, not from hardcoded styles.
 
 ## Get Started
 
-👉 **[Getting Started](./getting-started.md)**
+👉 **[Getting Started](./getting-started.html)**
 
 ---
 
