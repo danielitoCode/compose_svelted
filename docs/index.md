@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="../svelted.png" alt="Svelted" width="480" />
+  <img src="assets/svelted.png" alt="Svelted" width="480" />
 </p>
 
 <h1 align="center">Svelted</h1>
@@ -56,7 +56,7 @@ Design tokens come from the theme, not from hardcoded styles.
 ## Components (v0.0.1)
 
 <p align="center">
-  <img src="../svelted.svg" width="96" />
+  <img src="assets/svelted.svg" width="96" />
 </p>
 
 ### Layout

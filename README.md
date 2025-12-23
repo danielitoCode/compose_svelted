@@ -14,7 +14,7 @@
 </p>
 
 <p align="center">
-  <img src="./svelted.png" width="310" alt="ios" />
+  <img src="docs/assets/svelted.png" width="310" alt="ios" />
 </p>
 
 
