@@ -8,7 +8,7 @@
         ComposeTheme,
         Icon,
         ColorScheme,
-        RoundedCornerShape
+        RoundedCornerShape, Row, TextField, Box, Alignment
     } from "./lib";
 
     import { Modifier } from "./lib";
@@ -24,7 +24,7 @@
 <ComposeTheme mode="system">
     <AppRoot>
         <Surface
-                color={ColorScheme.Surface}
+                color={ColorScheme.Background}
                 modifier={Modifier.fillMaxSize().verticalScroll(true)}
         >
             <Column
@@ -32,97 +32,54 @@
                     verticalArrangement={Arrangement.spacedBy(32)}
             >
 
-                <!-- Section title -->
                 <Text textStyle="titleLarge">
-                    OutlinedTextField – UI Test
+                    Modifier – UI Test
                 </Text>
 
-                <!-- 1. Simple outlined -->
-                <Column verticalArrangement={Arrangement.spacedBy(12)}>
-                    <Text textStyle="labelLarge">Outlined / Single line</Text>
-                    <OutlinedTextField
-                            value={name}
-                            onValueChange={(v) => name = v}
-                            label="Nombre completo"
-                            placeholder="Tu nombre aquí"
-                    />
-                </Column>
+                <!-- Border -->
+                <Box
+                        modifier={Modifier
+                        .size(120)
+                        .border(2, "red", RoundedCornerShape(16))
+                    }
+                >
+                    <Text>Border</Text>
+                </Box>
 
-                <!-- 2. With icons -->
-                <Column verticalArrangement={Arrangement.spacedBy(12)}>
-                    <Text textStyle="labelLarge">Outlined / Icons</Text>
-                    <OutlinedTextField
-                            value={email}
-                            onValueChange={(v) => email = v}
-                            label="Email"
-                            placeholder="tu@email.com"
-                    >
-                        <Icon
-                                slot="leadingIcon"
-                                painter="https://api.iconify.design/mdi/email.svg"
-                                tint="onSurfaceVariant"
-                                modifier={Modifier.size(24)}
-                        />
-                        <Icon
-                                slot="trailingIcon"
-                                painter="https://api.iconify.design/mdi/close.svg"
-                                tint="onSurfaceVariant"
-                                modifier={Modifier.size(24)}
-                        />
-                    </OutlinedTextField>
-                </Column>
+                <!-- Clip + border -->
+                <Box
+                        modifier={Modifier
+                        .size(120)
+                        .clip(RoundedCornerShape(24))
+                        .background(ColorScheme.Error)
+                    }
+                >
+                    <Text>Clip</Text>
+                </Box>
 
-                <!-- 3. Pre-filled -->
-                <Column verticalArrangement={Arrangement.spacedBy(12)}>
-                    <Text textStyle="labelLarge">Outlined / Pre-filled value</Text>
-                    <OutlinedTextField
-                            value={filled}
-                            onValueChange={(v) => filled = v}
-                            label="Campo con valor"
-                    />
-                </Column>
+                <!-- Offset -->
+                <Box
+                        modifier={Modifier
+                        .size(120)
+                        .background("#E0E0E0")
+                        .offset(24, 12)
+                    }
+                >
+                    <Text>Offset</Text>
+                </Box>
 
-                <!-- 4. Custom shape -->
-                <Column verticalArrangement={Arrangement.spacedBy(12)}>
-                    <Text textStyle="labelLarge">Outlined / Custom shape</Text>
-                    <OutlinedTextField
-                            value={notes}
-                            onValueChange={(v) => notes = v}
-                            label="Notas"
-                            placeholder="Escribe algo…"
-                            shape={RoundedCornerShape({
-                            topStart: 16,
-                            topEnd: 16,
-                            bottomStart: 0,
-                            bottomEnd: 0
-                        })}
-                    />
-                </Column>
-
-                <!-- 5. Multiline -->
-                <Column verticalArrangement={Arrangement.spacedBy(12)}>
-                    <Text textStyle="labelLarge">Outlined / Multiline</Text>
-                    <OutlinedTextField
-                            value={bio}
-                            onValueChange={(v) => bio = v}
-                            label="Biografía"
-                            singleLine={false}
-                            modifier={Modifier.height(120)}
-                    />
-                </Column>
-
-                <!-- 6. Multiline + shape -->
-                <Column verticalArrangement={Arrangement.spacedBy(12)}>
-                    <Text textStyle="labelLarge">Outlined / Multiline + Shape</Text>
-                    <OutlinedTextField
-                            value={bio}
-                            onValueChange={(v) => bio = v}
-                            label="Descripción larga"
-                            singleLine={false}
-                            shape={RoundedCornerShape(24)}
-                            modifier={Modifier.height(160)}
-                    />
-                </Column>
+                <!-- Clickable -->
+                <Box
+                        on:click={() => alert("Clicked!")}
+                        modifier={Modifier
+                        .size(120)
+                        .background("#BBDEFB")
+                        .clip(RoundedCornerShape(12))
+                        .clickable(() => {})
+                    }
+                >
+                    <Text modifier={Modifier.align(Alignment.Center)}>Clickable</Text>
+                </Box>
 
             </Column>
         </Surface>

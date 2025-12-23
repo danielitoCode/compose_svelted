@@ -1,5 +1,7 @@
 import type {BoxAlignment} from "../../components/layouts/Alignment";
 import type {Shape} from "../shapes/Shape";
+import type {ColorToken} from "../theme/ColorScheme";
+import {resolveColor} from "../theme/resolve";
 
 export type ModifierEntry = {
     className?: string;
@@ -66,12 +68,35 @@ export class ModifierImpl {
     }
 
     fillMaxSize(): ModifierImpl {
-        return new ModifierImpl([{ style: `width:100%;height:100%;` }])
+        return this.then(
+            new ModifierImpl([{ style: `width:100%;height:100%;` }])
+        );
     }
 
-    background(cssColor: string): ModifierImpl {
+    background(color: ColorToken | string): ModifierImpl {
+        let resolved: string;
+
+        if (
+            typeof color === "string" &&
+            (
+                color.startsWith("#") ||
+                color.startsWith("rgb") ||
+                color.startsWith("hsl") ||
+                color === "transparent" ||
+                color === "currentColor"
+            )
+        ) {
+            // Color CSS directo
+            resolved = color;
+        } else {
+            // Token de ComposeTheme
+            resolved = resolveColor(color as ColorToken);
+        }
+
         return this.then(
-            new ModifierImpl([{ style: `background:${cssColor};` }])
+            new ModifierImpl([
+                { style: `background:${resolved};` }
+            ])
         );
     }
 
@@ -136,8 +161,8 @@ export class ModifierImpl {
             style = `
                 padding-top:${top}${unit};
                 padding-bottom:${bottom}${unit};
-                padding-start:${start}${unit};
-                padding-end:${end}${unit};
+                padding-left:${start}${unit};
+                //padding-right:${end}${unit};
     `.trim();
         }
 
@@ -190,6 +215,49 @@ export class ModifierImpl {
             new ModifierImpl([
                 {
                     style: `width:${resolved};height:${resolved};`
+                }
+            ])
+        );
+    }
+
+    offset(x: number, y: number): ModifierImpl {
+        if (isNaN(x) || isNaN(y)) return this;
+
+        return this.then(
+            new ModifierImpl([
+                {
+                    style: `transform: translate(${x}px, ${y}px);`
+                }
+            ])
+        );
+    }
+
+    clickable(onClick: () => void): ModifierImpl {
+        return this.then(
+            new ModifierImpl([
+                {
+                    className: "compose-clickable",
+                    style: `
+                    cursor: pointer;
+                    user-select: none;
+                `
+                }
+            ])
+        );
+    }
+
+    border(width: number, color: string, shape?: Shape): ModifierImpl {
+        if (width <= 0) return this;
+
+        const radius = shape ? shape.toCssBorderRadius() : undefined;
+
+        return this.then(
+            new ModifierImpl([
+                {
+                    style: `
+                    border:${width}px solid ${color};
+                    ${radius ? `border-radius:${radius};` : ""}
+                `
                 }
             ])
         );
