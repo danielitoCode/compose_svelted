@@ -1,5 +1,5 @@
 # Compose-like UI for Svelte
-<p align="center">
+<p align="start">
   <a href="https://www.npmjs.com/package/compose-svelte">
     <img src="https://img.shields.io/npm/v/compose-svelte.svg" alt="npm version" />
   </a>
