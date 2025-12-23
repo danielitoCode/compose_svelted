@@ -1,68 +1,106 @@
-# Compose-like UI for Svelte
+<p align="center">
+  <img src="../svelted.png" alt="Svelted" width="480" />
+</p>
 
-A **Compose-inspired UI toolkit for Svelte**, focused on explicit composition,
-immutable modifiers, and theme-driven design.
+<h1 align="center">Svelted</h1>
 
-Inspired by Jetpack Compose, built natively for the web using Svelte.
+<p align="center">
+  Compose-like UI for <strong>Svelte</strong><br/>
+  Explicit composition · Immutable modifiers · Theme-driven
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/status-alpha-orange" />
+  <img src="https://img.shields.io/badge/version-0.0.1-blue" />
+  <img src="https://img.shields.io/badge/Svelte-FF3E00?logo=svelte&logoColor=white" />
+  <img src="https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=white" />
+</p>
 
 ---
 
-## 🚀 Getting Started
+## What is Svelted?
 
-If this is your first time using the library, start here:
+**Svelted** is a UI toolkit for the web inspired by **Jetpack Compose**  
+and built natively on top of **Svelte**.
+
+It brings the Compose mental model to the web:
+
+- Explicit UI composition
+- Immutable and chainable `Modifier`s
+- Theme-first design
+- No virtual DOM abstractions
+- No hidden styling magic
+
+---
+
+## Core Principles
+
+### 🧩 Composition over configuration
+UI is built by composing small, predictable components.
+
+### 🧱 Modifiers
+Layout, drawing, interaction and behavior are controlled through immutable modifiers.
+
+```ts
+Modifier
+  .padding(16)
+  .fillMaxWidth()
+  .background(ColorScheme.Surface)
+```
+
+### 🎨 Theme-driven
+Design tokens come from the theme, not from hardcoded styles.
+
+---
+
+## Components (v0.0.1)
+
+<p align="center">
+  <img src="../svelted.svg" width="96" />
+</p>
+
+### Layout
+- Column, Row, Box, Spacer
+- LazyColumn *(experimental)*
+- LazyRow *(experimental)*
+
+### Foundation
+- Surface, Text, Image, Icon
+
+### Inputs
+- TextField
+- OutlinedTextField
+
+### Buttons
+- Button, TextButton
+- OutlinedButton, TonalButton
+- IconButton
+
+---
+
+## Quick Example
+
+```svelte
+<ComposeTheme mode="system">
+  <AppRoot>
+    <Surface modifier={Modifier.fillMaxSize().padding(32)}>
+      <Column>
+        <Text textStyle="titleLarge">Hello Compose</Text>
+        <Text>This is Svelted.</Text>
+      </Column>
+    </Surface>
+  </AppRoot>
+</ComposeTheme>
+```
+
+---
+
+## Get Started
 
 👉 **[Getting Started](./getting-started.md)**
 
-This guide will walk you through:
-- Installation
-- Theme setup
-- Layout basics
-- Core components
-- Modifiers
-
 ---
 
-## ✨ Core Concepts
-
-### Explicit Composition
-UI is built by composing small, predictable components.
-
-### Modifiers
-Modifiers are immutable, chainable, and explicit.
-They control layout, drawing, interaction, and behavior.
-
-### Theme-driven
-Colors, typography, shapes, and elevation come from the theme,
-not from hardcoded styles.
-
----
-
-## 🧱 Available Components (v0.0.1)
-
-- Layout: Column, Row, Box, Spacer
-- Foundation: Surface, Text, Image, Icon
-- Inputs: TextField, OutlinedTextField
-- Buttons: Button, TextButton, OutlinedButton, TonalButton
-- Lists: LazyColumn, LazyRow (experimental)
-
----
-
-## 📦 Project Status
-
-This project is in **early alpha**.
-
-The core API is stable, but new components and refinements
-will be added incrementally.
-
----
-
-## 🧭 Roadmap
-
-- Improve component styling and polish
-- Expand Modifier API
-- Add animations and interaction feedback
-- Build interactive documentation site
-
----
-
-Built with ❤️ for developers who value clarity and composable UI.
+<p align="center">
+  Built with ❤️ for developers who value clarity and composable UI.
+</p>

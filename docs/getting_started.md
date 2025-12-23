@@ -1,37 +1,29 @@
-Getting Started
-===============
+# Getting Started
 
-This guide will help you go from **zero** to a **running screen**
-using Compose-like UI for Svelte.
+This guide helps you go from **installation** to your **first screen**
+using Svelted.
 
-------------------------------------------------------------
-Prerequisites
-------------------------------------------------------------
+---
 
-- Node.js 18+
-- npm / pnpm
-- A Svelte or SvelteKit project
+## Installation
 
-------------------------------------------------------------
-Installation
-------------------------------------------------------------
-
-Install the package:
-
+```bash
 npm install compose-svelte
+```
 
 or
 
+```bash
 pnpm add compose-svelte
+```
 
-------------------------------------------------------------
-Basic Setup
-------------------------------------------------------------
+---
 
-Wrap your application with `ComposeTheme` and `AppRoot`.
+## Basic Setup
 
-Example (App.svelte):
+Wrap your app with `ComposeTheme` and `AppRoot`.
 
+```svelte
 <script>
   import {
     ComposeTheme,
@@ -45,94 +37,80 @@ Example (App.svelte):
 <ComposeTheme mode="system">
   <AppRoot>
     <Surface modifier={Modifier.fillMaxSize()}>
-      <Text>Hello Compose</Text>
+      <Text>Hello Svelted</Text>
     </Surface>
   </AppRoot>
 </ComposeTheme>
+```
 
-------------------------------------------------------------
-Layouts
-------------------------------------------------------------
+---
 
-Column, Row and Box are the foundation layouts.
+## Layout Basics
 
-Column example:
+### Column
 
+```svelte
 <Column modifier={Modifier.padding(16)}>
   <Text textStyle="titleLarge">Title</Text>
   <Text>Body text</Text>
 </Column>
+```
 
-Row example:
+### Row
 
+```svelte
 <Row horizontalArrangement={Arrangement.spacedBy(8)}>
   <Text>Left</Text>
   <Text>Right</Text>
 </Row>
+```
 
-Box example:
+### Box
 
+```svelte
 <Box modifier={Modifier.size(120)}>
   <Text modifier={Modifier.align(Alignment.Center)}>
     Centered
   </Text>
 </Box>
+```
 
-------------------------------------------------------------
-TextField
-------------------------------------------------------------
+---
 
-Filled TextField:
+## TextField
 
+```svelte
 <TextField
   label="Email"
   placeholder="you@email.com"
   value={email}
   onValueChange={(v) => email = v}
 />
+```
 
-Outlined TextField:
-
+```svelte
 <OutlinedTextField
   label="Email"
   value={email}
   onValueChange={(v) => email = v}
 />
+```
 
-------------------------------------------------------------
-Buttons
-------------------------------------------------------------
+---
 
-<Button onClick={submit}>
-  Submit
-</Button>
+## Modifiers
 
-<TextButton onClick={cancel}>
-  Cancel
-</TextButton>
-
-------------------------------------------------------------
-Modifiers
-------------------------------------------------------------
-
-Modifiers are immutable and chainable.
-
+```ts
 Modifier
   .padding(16)
   .fillMaxWidth()
-  .background(ColorScheme.Surface)
+  .clip(RoundedCornerShape(12))
+```
 
-------------------------------------------------------------
-Next Steps
-------------------------------------------------------------
+---
+
+## Next Steps
 
 - Explore LazyColumn and LazyRow
 - Customize themes
-- Combine layouts and modifiers
 - Build real screens
-
-------------------------------------------------------------
-Project Status
-------------------------------------------------------------
-
-This guide targets version 0.0.1 of the library.
