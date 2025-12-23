@@ -1,17 +1,17 @@
 import type { ColorScheme } from "../colors";
 
 export const lightColors: ColorScheme = {
-    primary: "#6200EE",        // Violeta más intenso
-    onPrimary: "#FFFFFF",
-    secondary: "#03DAC6",      // Teal vibrante
-    onSecondary: "#000000",
-    background: "#FFFFFF",
-    onBackground: "#000000",
-    surface: "#CF6679",
-    onSurface: "#000000",
+    primary: "#D4AF37",        // Violeta más intenso
+    onPrimary: "#080808",
+    secondary: "#3A3E49",      // Teal vibrante
+    onSecondary: "#FFFFFF",
+    background: "#FFFBF2",
+    onBackground: "#1C1B1F",
+    surface: "#FFFFFF",
+    onSurface: "#1C1B1F",
     surfaceVariant: "#F8F9FA",
-    onSurfaceVariant: "#424242",
-    outline: "#79747E",
-    error: "#B00020",
+    onSurfaceVariant: "#DEE1E6",
+    outline: "#B0B0B0",
+    error: "#BA1A1A",
     onError: "#FFFFFF",
 };

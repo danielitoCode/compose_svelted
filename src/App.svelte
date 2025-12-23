@@ -73,7 +73,7 @@
                         on:click={() => alert("Clicked!")}
                         modifier={Modifier
                         .size(120)
-                        .background("#BBDEFB")
+                        .background(ColorScheme.Primary)
                         .clip(RoundedCornerShape(12))
                         .clickable(() => {})
                     }
