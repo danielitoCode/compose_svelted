@@ -1,7 +1,7 @@
 # Compose-like UI for Svelte
 
 <p align="center">
-  <img src="./svelted.png" width="210" alt="ios" />
+  <img src="./svelted.png" width="310" alt="ios" />
 </p>
 
 A Compose-inspired UI toolkit for **Svelte**, focused on explicit composition,
