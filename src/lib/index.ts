@@ -40,3 +40,4 @@ export * from "./components/layouts/Alignment";
 export * from "./components/ContentScale"
 export * from "./core/helpers/painterResource"
 export * from "./components/ContentScale"
+export * from "./core/theme/Density"

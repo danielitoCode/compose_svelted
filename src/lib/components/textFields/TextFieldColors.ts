@@ -8,4 +8,5 @@ export interface TextFieldColors {
     indicatorUnfocused: string;
     borderFocused?: string;
     borderUnfocused?: string;
+    error?: string;
 }

@@ -6,12 +6,16 @@
     import { RoundedCornerShape } from "../../core/shapes/RoundedCornerShape";
     import type { Shape } from "../../core/shapes/Shape";
     import type { TextStyleToken } from "../../core/theme/TextStyle";
+    import {Density, type DensityToken} from "../../core/theme/Density";
 
     export let value = "";
     export let onValueChange = (v: string) => {};
     export let label = "";
     export let enabled: boolean = true;
     export let isError: boolean = false;
+    export let readOnly: boolean = false;
+    export let density: DensityToken = Density.Default;
+    export let supportingText: string | undefined;
     export let floatingLabelScale: number = 0.78;
     export let placeholder = "";
     export let singleLine = true;
@@ -38,6 +42,9 @@
 >
     <BaseTextField
             value={value}
+            supportingText={supportingText}
+            density={density}
+            readOnly={readOnly}
             floatingLabelScale={floatingLabelScale}
             enabled={enabled}
             isError={isError}

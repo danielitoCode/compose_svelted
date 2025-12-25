@@ -8,7 +8,7 @@
         ComposeTheme,
         Icon,
         ColorScheme,
-        RoundedCornerShape, Row, TextField, Box, Alignment, TextStyle, Button
+        RoundedCornerShape, Row, TextField, Box, Alignment, TextStyle, Button, Density, LazyColumn, Card, Spacer
     } from "./lib";
 
     import { Modifier } from "./lib";
@@ -16,9 +16,16 @@
 
     let name = "";
     let email = "";
+    let userId = "Dan";
     let bio = "";
     let filled = "Texto inicial";
     let notes = "";
+    // Lista larga simulada
+    const items = Array.from({ length: 200 }, (_, i) => ({
+        id: i,
+        title: `Item #${i + 1}`,
+        subtitle: `Descripción del item ${i + 1}`
+    }));
 </script>
 
 <ComposeTheme mode="system">
@@ -27,106 +34,18 @@
                 color={ColorScheme.Background}
                 modifier={Modifier.fillMaxSize().verticalScroll(true)}
         >
-            <Row
-                    modifier={Modifier.fillMaxWidth()}
-                    horizontalArrangement={Arrangement.SpaceAround}
+            <LazyColumn
+                    items={items}
+                    modifier={Modifier.fillMaxSize()}
+                    horizontalAlignment={Alignment.CenterHorizontally}
+                    verticalArrangement={Arrangement.spacedBy(12)}
             >
-
-                <!-- FILLED -->
-                <Column
-                        verticalArrangement={Arrangement.spacedBy(20)}
-                >
-                    <Text textStyle="titleMedium">Filled TextField</Text>
-
-                    <TextField label="Simple" />
-
-                    <TextField label="Leading icon">
-                        <Icon
-                                slot="leadingIcon"
-                                painter="https://api.iconify.design/mdi/account.svg"
-                                tint={ColorScheme.Primary}
-                                modifier={Modifier.size(24)}
-                        />
-                    </TextField>
-
-                    <TextField label="Trailing icon">
-                        <Icon
-                                slot="trailingIcon"
-                                painter="https://api.iconify.design/mdi/close.svg"
-                                tint={ColorScheme.Primary}
-                                modifier={Modifier.size(24)}
-                        />
-                    </TextField>
-
-                    <TextField label="Both icons">
-                        <Icon
-                                slot="leadingIcon"
-                                painter="https://api.iconify.design/mdi/email.svg"
-                                tint={ColorScheme.Primary}
-                                modifier={Modifier.size(24)}
-                        />
-                        <Icon
-                                slot="trailingIcon"
-                                painter="https://api.iconify.design/mdi/check.svg"
-                                tint={ColorScheme.Primary}
-                                modifier={Modifier.size(24)}
-                        />
-                    </TextField>
-
-                    <TextField
-                            label="Multiline"
-                            singleLine={false}
-                    />
-                </Column>
-
-                <!-- OUTLINED -->
-                <Column
-                        verticalArrangement={Arrangement.spacedBy(20)}
-                >
-                    <Text textStyle="titleMedium">Outlined TextField</Text>
-
-                    <OutlinedTextField label="Simple" />
-
-                    <OutlinedTextField label="Leading icon">
-                        <Icon
-                                slot="leadingIcon"
-                                painter="https://api.iconify.design/mdi/account-outline.svg"
-                                tint={ColorScheme.Primary}
-                                modifier={Modifier.size(24)}
-                        />
-                    </OutlinedTextField>
-
-                    <OutlinedTextField label="Trailing icon">
-                        <Icon
-                                slot="trailingIcon"
-                                painter="https://api.iconify.design/mdi/close-circle-outline.svg"
-                                tint={ColorScheme.Primary}
-                                modifier={Modifier.size(24)}
-                        />
-                    </OutlinedTextField>
-
-                    <OutlinedTextField label="Both icons">
-                        <Icon
-                                slot="leadingIcon"
-                                painter="https://api.iconify.design/mdi/email-outline.svg"
-                                tint={ColorScheme.Primary}
-                                modifier={Modifier.size(24)}
-                        />
-                        <Icon
-                                slot="trailingIcon"
-                                painter="https://api.iconify.design/mdi/check-circle-outline.svg"
-                                tint={ColorScheme.Primary}
-                                modifier={Modifier.size(24)}
-                        />
-                    </OutlinedTextField>
-
-                    <OutlinedTextField
-                            label="Multiline"
-                            singleLine={false}
-                    />
-                </Column>
-
-            </Row>
+                <svelte:fragment let:item>
+                    <Surface modifier={Modifier.fillMaxWidth().padding(12)}>
+                        <Text>{item.title}</Text>
+                    </Surface>
+                </svelte:fragment>
+            </LazyColumn>
         </Surface>
     </AppRoot>
 </ComposeTheme>

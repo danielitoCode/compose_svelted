@@ -19,6 +19,8 @@ export const TextFieldDefaults = {
             // Indicator (bottom line)
             indicatorFocused: resolveColor("primary"),
             indicatorUnfocused: resolveColor("onSurfaceVariant"),
+
+            error: resolveColor("error"),
         };
     },
 
@@ -43,6 +45,8 @@ export const TextFieldDefaults = {
             // Border (outlined specific)
             borderFocused: resolveColor("primary"),
             borderUnfocused: resolveColor("outline"),
+
+            error: resolveColor("error"),
         };
     }
 };

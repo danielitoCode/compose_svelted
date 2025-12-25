@@ -6,6 +6,7 @@
     import { RoundedCornerShape } from "../../core/shapes/RoundedCornerShape";
     import type { Shape } from "../../core/shapes/Shape";
     import type { TextStyleToken } from "../../core/theme/TextStyle";
+    import {Density, type DensityToken} from "../../core/theme/Density";
 
     export let value = "";
     export let onValueChange = (v: string) => {};
@@ -18,6 +19,9 @@
     export let textStyle: TextStyleToken = "bodyLarge";
     export let modifier: Modifier = Modifier.empty();
     export let shape: Shape = RoundedCornerShape(12);
+    export let supportingText: string | undefined = undefined;
+    export let readOnly: boolean = false;
+    export let density: DensityToken = Density.Default;
 
     // 🔒 FilledTextField SIEMPRE usa filledColors por defecto
     export let colors: TextFieldColors = TextFieldDefaults.filledColors();
@@ -26,10 +30,13 @@
 <BaseTextField
         value={value}
         onValueChange={onValueChange}
+        supportingText={supportingText}
         enabled={enabled}
         isError={isError}
         floatingLabelScale={floatingLabelScale}
         label={label}
+        density={density}
+        readOnly={readOnly}
         placeholder={placeholder}
         singleLine={singleLine}
         textStyle={textStyle}
