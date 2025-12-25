@@ -8,7 +8,7 @@
         ComposeTheme,
         Icon,
         ColorScheme,
-        RoundedCornerShape, Row, TextField, Box, Alignment
+        RoundedCornerShape, Row, TextField, Box, Alignment, TextStyle, Button
     } from "./lib";
 
     import { Modifier } from "./lib";
@@ -27,61 +27,106 @@
                 color={ColorScheme.Background}
                 modifier={Modifier.fillMaxSize().verticalScroll(true)}
         >
-            <Column
-                    modifier={Modifier.padding(32)}
-                    verticalArrangement={Arrangement.spacedBy(32)}
+            <Row
+                    modifier={Modifier.fillMaxWidth()}
+                    horizontalArrangement={Arrangement.SpaceAround}
             >
 
-                <Text textStyle="titleLarge">
-                    Modifier – UI Test
-                </Text>
-
-                <!-- Border -->
-                <Box
-                        modifier={Modifier
-                        .size(120)
-                        .border(2, "red", RoundedCornerShape(16))
-                    }
+                <!-- FILLED -->
+                <Column
+                        verticalArrangement={Arrangement.spacedBy(20)}
                 >
-                    <Text>Border</Text>
-                </Box>
+                    <Text textStyle="titleMedium">Filled TextField</Text>
 
-                <!-- Clip + border -->
-                <Box
-                        modifier={Modifier
-                        .size(120)
-                        .clip(RoundedCornerShape(24))
-                        .background(ColorScheme.Error)
-                    }
+                    <TextField label="Simple" />
+
+                    <TextField label="Leading icon">
+                        <Icon
+                                slot="leadingIcon"
+                                painter="https://api.iconify.design/mdi/account.svg"
+                                tint={ColorScheme.Primary}
+                                modifier={Modifier.size(24)}
+                        />
+                    </TextField>
+
+                    <TextField label="Trailing icon">
+                        <Icon
+                                slot="trailingIcon"
+                                painter="https://api.iconify.design/mdi/close.svg"
+                                tint={ColorScheme.Primary}
+                                modifier={Modifier.size(24)}
+                        />
+                    </TextField>
+
+                    <TextField label="Both icons">
+                        <Icon
+                                slot="leadingIcon"
+                                painter="https://api.iconify.design/mdi/email.svg"
+                                tint={ColorScheme.Primary}
+                                modifier={Modifier.size(24)}
+                        />
+                        <Icon
+                                slot="trailingIcon"
+                                painter="https://api.iconify.design/mdi/check.svg"
+                                tint={ColorScheme.Primary}
+                                modifier={Modifier.size(24)}
+                        />
+                    </TextField>
+
+                    <TextField
+                            label="Multiline"
+                            singleLine={false}
+                    />
+                </Column>
+
+                <!-- OUTLINED -->
+                <Column
+                        verticalArrangement={Arrangement.spacedBy(20)}
                 >
-                    <Text>Clip</Text>
-                </Box>
+                    <Text textStyle="titleMedium">Outlined TextField</Text>
 
-                <!-- Offset -->
-                <Box
-                        modifier={Modifier
-                        .size(120)
-                        .background("#E0E0E0")
-                        .offset(24, 12)
-                    }
-                >
-                    <Text>Offset</Text>
-                </Box>
+                    <OutlinedTextField label="Simple" />
 
-                <!-- Clickable -->
-                <Box
-                        on:click={() => alert("Clicked!")}
-                        modifier={Modifier
-                        .size(120)
-                        .background(ColorScheme.Primary)
-                        .clip(RoundedCornerShape(12))
-                        .clickable(() => {})
-                    }
-                >
-                    <Text modifier={Modifier.align(Alignment.Center)}>Clickable</Text>
-                </Box>
+                    <OutlinedTextField label="Leading icon">
+                        <Icon
+                                slot="leadingIcon"
+                                painter="https://api.iconify.design/mdi/account-outline.svg"
+                                tint={ColorScheme.Primary}
+                                modifier={Modifier.size(24)}
+                        />
+                    </OutlinedTextField>
 
-            </Column>
+                    <OutlinedTextField label="Trailing icon">
+                        <Icon
+                                slot="trailingIcon"
+                                painter="https://api.iconify.design/mdi/close-circle-outline.svg"
+                                tint={ColorScheme.Primary}
+                                modifier={Modifier.size(24)}
+                        />
+                    </OutlinedTextField>
+
+                    <OutlinedTextField label="Both icons">
+                        <Icon
+                                slot="leadingIcon"
+                                painter="https://api.iconify.design/mdi/email-outline.svg"
+                                tint={ColorScheme.Primary}
+                                modifier={Modifier.size(24)}
+                        />
+                        <Icon
+                                slot="trailingIcon"
+                                painter="https://api.iconify.design/mdi/check-circle-outline.svg"
+                                tint={ColorScheme.Primary}
+                                modifier={Modifier.size(24)}
+                        />
+                    </OutlinedTextField>
+
+                    <OutlinedTextField
+                            label="Multiline"
+                            singleLine={false}
+                    />
+                </Column>
+
+            </Row>
         </Surface>
     </AppRoot>
 </ComposeTheme>

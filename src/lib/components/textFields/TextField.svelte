@@ -10,6 +10,9 @@
     export let value = "";
     export let onValueChange = (v: string) => {};
     export let label = "";
+    export let enabled: boolean = true;
+    export let isError: boolean = false;
+    export let floatingLabelScale: number = 0.78;
     export let placeholder = "";
     export let singleLine = true;
     export let textStyle: TextStyleToken = "bodyLarge";
@@ -23,6 +26,9 @@
 <BaseTextField
         value={value}
         onValueChange={onValueChange}
+        enabled={enabled}
+        isError={isError}
+        floatingLabelScale={floatingLabelScale}
         label={label}
         placeholder={placeholder}
         singleLine={singleLine}

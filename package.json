@@ -1,6 +1,5 @@
 {
-  "name": "compose_svelted",
-  "private": true,
+  "name": "@danielito1996/compose-svelted",
   "version": "0.0.1",
   "type": "module",
   "license": "MIT",
