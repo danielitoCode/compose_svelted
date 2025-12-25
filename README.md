@@ -1,9 +1,9 @@
 # Compose-like UI for Svelte
 <p align="start">
-  <a href="https://www.npmjs.com/package/compose-svelte">
+  <a href="https://www.npmjs.com/package/@danielito1996/compose-svelted">
     <img src="https://img.shields.io/npm/v/svelted.svg" alt="npm version" />
   </a>
-  <a href="https://www.npmjs.com/package/compose-svelte">
+  <a href="https://www.npmjs.com/package/@danielito1996/compose-svelted">
     <img src="https://img.shields.io/npm/dm/svelted.svg" alt="npm downloads" />
   </a>
   <a href="https://github.com/danielitoCode/compose-svelte/blob/main/LICENSE">
