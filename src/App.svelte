@@ -8,7 +8,8 @@
         ComposeTheme,
         Icon,
         ColorScheme,
-        RoundedCornerShape, Row, TextField, Box, Alignment, TextStyle, Button, Density, LazyColumn, Card, Spacer
+        RoundedCornerShape, Row, TextField, Box, Alignment, TextStyle, Button, Density, LazyColumn, Card, Spacer,
+        LazyRow
     } from "./lib";
 
     import { Modifier } from "./lib";
@@ -21,11 +22,11 @@
     let filled = "Texto inicial";
     let notes = "";
     // Lista larga simulada
-    const items = Array.from({ length: 200 }, (_, i) => ({
+    const items = Array.from({ length: 1000 }, (_, i) => ({
         id: i,
-        title: `Item #${i + 1}`,
-        subtitle: `Descripción del item ${i + 1}`
+        title: `Item #${i}`
     }));
+
 </script>
 
 <ComposeTheme mode="system">
@@ -34,18 +35,11 @@
                 color={ColorScheme.Background}
                 modifier={Modifier.fillMaxSize().verticalScroll(true)}
         >
-            <LazyColumn
-                    items={items}
-                    modifier={Modifier.fillMaxSize()}
-                    horizontalAlignment={Alignment.CenterHorizontally}
-                    verticalArrangement={Arrangement.spacedBy(12)}
-            >
-                <svelte:fragment let:item>
-                    <Surface modifier={Modifier.fillMaxWidth().padding(12)}>
-                        <Text>{item.title}</Text>
-                    </Surface>
-                </svelte:fragment>
-            </LazyColumn>
+            <LazyRow items={items} let:item>
+                <Surface color={ColorScheme.Error}>
+                    <Text>{item.title}</Text>
+                </Surface>
+            </LazyRow>
         </Surface>
     </AppRoot>
 </ComposeTheme>
