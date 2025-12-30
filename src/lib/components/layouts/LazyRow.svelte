@@ -11,21 +11,51 @@
     export let verticalAlignment: VerticalAlignment = Alignment.Top;
     export let horizontalArrangement: ArrangementValue = Arrangement.Start;
 
-    function resolveGap(arrangement: ArrangementValue): string {
-        return arrangement.type === "spaced"
-            ? `${arrangement.gap}px`
+    export let scrollEnabled: boolean = true;
+    export let hideScrollbar: boolean = false;
+    export let horizontalSpacing: number | null = null;
+
+    function resolveGap(): string {
+        if (horizontalSpacing !== null) {
+            return `${horizontalSpacing}px`;
+        }
+
+        return horizontalArrangement.type === "spaced"
+            ? `${horizontalArrangement.gap}px`
             : "0px";
+    }
+
+    function resolveOverflowX(): string {
+        return scrollEnabled ? "auto" : "hidden";
+    }
+
+    function resolveScrollbarStyle(): string {
+        if (!hideScrollbar) return "";
+
+        return `
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    `;
     }
 </script>
 
 <div
+        class={hideScrollbar ? "lazy-row--hide-scrollbar" : ""}
         style={`
     display: flex;
     flex-direction: row;
+
     align-items: ${verticalAlignment};
     justify-content: ${horizontalArrangement.justifyContent};
-    gap: ${resolveGap(horizontalArrangement)};
-    overflow-x: auto;
+    gap: ${resolveGap()};
+
+    overflow-x: ${resolveOverflowX()};
+    overflow-y: visible;
+
+    height: fit-content;
+    min-height: fit-content;
+
+    ${resolveScrollbarStyle()}
     ${modifier.toStyle()}
   `}
 >
@@ -33,3 +63,9 @@
         <slot {item} />
     {/each}
 </div>
+
+<style>
+    .lazy-row--hide-scrollbar::-webkit-scrollbar {
+        display: none;
+    }
+</style>
