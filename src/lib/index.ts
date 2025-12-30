@@ -27,6 +27,7 @@ export { default as LazyColumn } from "./components/layouts/LazyColumn.svelte"
 export { default as LazyRow } from "./components/layouts/LazyRow.svelte"
 export { default as Icon } from "./components/Icon.svelte"
 export { default as Image } from "./components/Image.svelte"
+export { default as Scaffold } from "./components/layouts/Scafold.svelte"
 
 // =========================
 // TOKENS / API (TS only)
