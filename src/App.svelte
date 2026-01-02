@@ -15,6 +15,7 @@
     import { Modifier } from "./lib";
     import { Arrangement } from "./lib";
     import CustomLogin from "./samples/CustomLogin.svelte";
+    import ProfesionalLogin from "./samples/ProfesionalLogin.svelte";
 
     let name = "";
     let pass = "";
@@ -38,7 +39,7 @@
                 modifier={Modifier.fillMaxSize().verticalScroll(true)}
         >
             <Scaffold modifier={Modifier.fillMaxSize()}>
-                <CustomLogin/>
+                <ProfesionalLogin/>
             </Scaffold>
         </Surface>
     </AppRoot>
