@@ -23,7 +23,7 @@ pnpm add compose-svelte
 
 Wrap your app with `ComposeTheme` and `AppRoot`.
 
-```svelte
+```xml
 <script>
   import {
     ComposeTheme,
@@ -49,7 +49,7 @@ Wrap your app with `ComposeTheme` and `AppRoot`.
 
 ### Column
 
-```svelte
+```xml
 <Column modifier={Modifier.padding(16)}>
   <Text textStyle="titleLarge">Title</Text>
   <Text>Body text</Text>
@@ -58,7 +58,7 @@ Wrap your app with `ComposeTheme` and `AppRoot`.
 
 ### Row
 
-```svelte
+```xml
 <Row horizontalArrangement={Arrangement.spacedBy(8)}>
   <Text>Left</Text>
   <Text>Right</Text>
@@ -67,7 +67,7 @@ Wrap your app with `ComposeTheme` and `AppRoot`.
 
 ### Box
 
-```svelte
+```xml
 <Box modifier={Modifier.size(120)}>
   <Text modifier={Modifier.align(Alignment.Center)}>
     Centered
@@ -79,7 +79,7 @@ Wrap your app with `ComposeTheme` and `AppRoot`.
 
 ## TextField
 
-```svelte
+```xml
 <TextField
   label="Email"
   placeholder="you@email.com"
@@ -88,7 +88,7 @@ Wrap your app with `ComposeTheme` and `AppRoot`.
 />
 ```
 
-```svelte
+```xml
 <OutlinedTextField
   label="Email"
   value={email}

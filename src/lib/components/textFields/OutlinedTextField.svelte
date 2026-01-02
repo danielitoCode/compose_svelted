@@ -45,7 +45,6 @@
             supportingText={supportingText}
             density={density}
             readOnly={readOnly}
-            floatingLabelScale={floatingLabelScale}
             enabled={enabled}
             isError={isError}
             onValueChange={onValueChange}

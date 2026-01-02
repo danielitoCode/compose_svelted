@@ -56,7 +56,7 @@ Design tokens come from the theme, not from hardcoded styles.
 ## Components (v0.0.1)
 
 <p align="center">
-  <img src="assets/svelted.svg" width="96" />
+  <img src="assets/icon.svg" width="96" />
 </p>
 
 ### Layout
@@ -98,6 +98,12 @@ Design tokens come from the theme, not from hardcoded styles.
 ## Get Started
 
 👉 **[Getting Started](./getting_started.html)**
+
+---
+
+## Examples
+
+👉 **[example](./getting_started.html)**
 
 ---
 

@@ -9,13 +9,15 @@
         Icon,
         ColorScheme,
         RoundedCornerShape, Row, TextField, Box, Alignment, TextStyle, Button, Density, LazyColumn, Card, Spacer,
-        LazyRow
+        LazyRow, Scaffold, ButtonWithIcon
     } from "./lib";
 
     import { Modifier } from "./lib";
     import { Arrangement } from "./lib";
+    import CustomLogin from "./samples/CustomLogin.svelte";
 
     let name = "";
+    let pass = "";
     let email = "";
     let userId = "Dan";
     let bio = "";
@@ -35,11 +37,9 @@
                 color={ColorScheme.Background}
                 modifier={Modifier.fillMaxSize().verticalScroll(true)}
         >
-            <LazyRow items={items} let:item>
-                <Surface color={ColorScheme.Error}>
-                    <Text>{item.title}</Text>
-                </Surface>
-            </LazyRow>
+            <Scaffold modifier={Modifier.fillMaxSize()}>
+                <CustomLogin/>
+            </Scaffold>
         </Surface>
     </AppRoot>
 </ComposeTheme>
