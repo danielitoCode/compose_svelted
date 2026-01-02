@@ -103,7 +103,7 @@ Design tokens come from the theme, not from hardcoded styles.
 
 ## Examples
 
-👉 **[example](./getting_started.html)**
+👉 **[Example](./example.html)**
 
 ---
 
