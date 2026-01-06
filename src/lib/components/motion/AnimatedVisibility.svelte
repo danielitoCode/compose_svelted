@@ -1,51 +1,55 @@
 <script lang="ts">
-    import { onMount } from "svelte";
+    import type { AnimationSpec } from "../../core/motion/AnimationSpec";
+    import { fadeIn, fadeOut } from "../../core/motion/transitions";
 
     export let visible: boolean;
 
-    export let enter = {
-        from: "opacity: 0; transform: scale(0.95)",
-        to: "opacity: 1; transform: scale(1)",
-        duration: 180,
-        easing: "ease-out"
-    };
-
-    export let exit = {
-        from: "opacity: 1; transform: scale(1)",
-        to: "opacity: 0; transform: scale(0.95)",
-        duration: 140,
-        easing: "ease-in"
-    };
+    // Defaults elegantes (Compose-like)
+    export let enter: AnimationSpec = fadeIn();
+    export let exit: AnimationSpec = fadeOut();
 
     let shouldRender = visible;
     let style = "";
 
-    $: if (visible) {
-        shouldRender = true;
+    function applyEnter() {
         style = `
             ${enter.from};
             transition: all ${enter.duration}ms ${enter.easing};
         `;
+
         requestAnimationFrame(() => {
             style = `
                 ${enter.to};
                 transition: all ${enter.duration}ms ${enter.easing};
             `;
         });
-    } else if (shouldRender) {
+    }
+
+    function applyExit() {
         style = `
             ${exit.from};
             transition: all ${exit.duration}ms ${exit.easing};
         `;
+
         requestAnimationFrame(() => {
             style = `
                 ${exit.to};
                 transition: all ${exit.duration}ms ${exit.easing};
             `;
         });
+
         setTimeout(() => {
             shouldRender = false;
         }, exit.duration);
+    }
+
+    $: {
+        if (visible) {
+            shouldRender = true;
+            applyEnter();
+        } else if (shouldRender) {
+            applyExit();
+        }
     }
 </script>
 

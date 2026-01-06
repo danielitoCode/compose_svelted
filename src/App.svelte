@@ -9,7 +9,7 @@
         Icon,
         ColorScheme,
         RoundedCornerShape, Row, TextField, Box, Alignment, TextStyle, Button, Density, LazyColumn, Card, Spacer,
-        LazyRow, Scaffold, ButtonWithIcon, OutlinedButton, AnimatedVisibility
+        LazyRow, Scaffold, ButtonWithIcon, OutlinedButton, AnimatedVisibility, scaleIn, fadeOut, CheckButton, fadeIn
     } from "./lib";
 
     import { Modifier } from "./lib";
@@ -17,18 +17,7 @@
     import CustomLogin from "./samples/CustomLogin.svelte";
     import ProfesionalLogin from "./samples/ProfesionalLogin.svelte";
 
-    let name = "";
-    let pass = "";
-    let email = "";
-    let userId = "Dan";
-    let bio = "";
-    let filled = "Texto inicial";
-    let notes = "";
-    // Lista larga simulada
-    const items = Array.from({ length: 1000 }, (_, i) => ({
-        id: i,
-        title: `Item #${i}`
-    }));
+    let enabled = false;
 
 </script>
 
@@ -38,11 +27,53 @@
                 color={ColorScheme.Background}
                 modifier={Modifier.fillMaxSize().verticalScroll(true)}
         >
-            <AnimatedVisibility visible={true}>
-                <Card elevation={6}>
-                    <CustomLogin/>
-                </Card>
-            </AnimatedVisibility>
+            <Column
+                    verticalArrangement={Arrangement.spacedBy(16)}
+                    modifier={Modifier.padding(24)}
+            >
+                <Text textStyle={TextStyle.HeadlineMedium}>
+                    CheckButton · AnimatedVisibility
+                </Text>
+
+                <!-- CheckButton test -->
+                <CheckButton
+                        checked={enabled}
+                        onCheckedChange={v => enabled = v}
+                        modifier={Modifier.fillMaxWidth()}
+                >
+                    <Text>
+                        Mostrar opciones avanzadas
+                    </Text>
+                </CheckButton>
+
+                <!-- Animated content -->
+                <AnimatedVisibility
+                        visible={enabled}
+                        enter={fadeIn()}
+                        exit={fadeOut()}
+                >
+                    <Card elevation={4} modifier={Modifier.fillMaxWidth()}>
+                        <Column
+                                verticalArrangement={Arrangement.spacedBy(8)}
+                                modifier={Modifier.padding(16)}
+                        >
+                            <Text textStyle={TextStyle.TitleMedium}>
+                                Opciones avanzadas
+                            </Text>
+
+                            <Text textStyle={TextStyle.BodyMedium}>
+                                Este contenido aparece y desaparece
+                                usando AnimatedVisibility, controlado
+                                por el estado del CheckButton.
+                            </Text>
+
+                            <Text textStyle={TextStyle.BodySmall}>
+                                ✔ Estado: {enabled ? "ACTIVO" : "INACTIVO"}
+                            </Text>
+                        </Column>
+                    </Card>
+                </AnimatedVisibility>
+            </Column>
         </Surface>
     </AppRoot>
 </ComposeTheme>
