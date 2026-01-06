@@ -1,6 +1,6 @@
 export type AnimationSpec = {
-    from?: string;
-    to?: string;
-    duration?: number;
-    easing?: string;
+    base: string;   // transition, duration, easing
+    from: string;   // initial state
+    to: string;     // final state
+    duration: number;
 };

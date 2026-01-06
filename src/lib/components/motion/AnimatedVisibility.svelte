@@ -4,37 +4,36 @@
 
     export let visible: boolean;
 
-    // Defaults elegantes (Compose-like)
     export let enter: AnimationSpec = fadeIn();
     export let exit: AnimationSpec = fadeOut();
 
     let shouldRender = visible;
-    let style = "";
+    let classes = "";
 
     function applyEnter() {
-        style = `
-            ${enter.from};
-            transition: all ${enter.duration}ms ${enter.easing};
+        classes = `
+            ${enter.base}
+            ${enter.from}
         `;
 
         requestAnimationFrame(() => {
-            style = `
-                ${enter.to};
-                transition: all ${enter.duration}ms ${enter.easing};
+            classes = `
+                ${enter.base}
+                ${enter.to}
             `;
         });
     }
 
     function applyExit() {
-        style = `
-            ${exit.from};
-            transition: all ${exit.duration}ms ${exit.easing};
+        classes = `
+            ${exit.base}
+            ${exit.from}
         `;
 
         requestAnimationFrame(() => {
-            style = `
-                ${exit.to};
-                transition: all ${exit.duration}ms ${exit.easing};
+            classes = `
+                ${exit.base}
+                ${exit.to}
             `;
         });
 
@@ -54,7 +53,7 @@
 </script>
 
 {#if shouldRender}
-    <div style={style}>
+    <div class={classes}>
         <slot />
     </div>
 {/if}
