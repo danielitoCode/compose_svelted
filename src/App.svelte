@@ -9,7 +9,7 @@
         Icon,
         ColorScheme,
         RoundedCornerShape, Row, TextField, Box, Alignment, TextStyle, Button, Density, LazyColumn, Card, Spacer,
-        LazyRow, Scaffold, ButtonWithIcon, OutlinedButton
+        LazyRow, Scaffold, ButtonWithIcon, OutlinedButton, AnimatedVisibility
     } from "./lib";
 
     import { Modifier } from "./lib";
@@ -38,11 +38,11 @@
                 color={ColorScheme.Background}
                 modifier={Modifier.fillMaxSize().verticalScroll(true)}
         >
-            <Card elevation={6}>
-                <Column modifier={Modifier.padding(32)}>
-                    <Text>Login</Text>
-                </Column>
-            </Card>
+            <AnimatedVisibility visible={true}>
+                <Card elevation={6}>
+                    <CustomLogin/>
+                </Card>
+            </AnimatedVisibility>
         </Surface>
     </AppRoot>
 </ComposeTheme>
