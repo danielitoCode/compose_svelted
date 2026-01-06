@@ -24,13 +24,10 @@
 
     <!-- Background image -->
     <Image
-            painter="https://images.unsplash.com/photo-1519389950473-47ba0277781c"
-            contentDescription="Background"
+            painter="https://media.giphy.com/media/qgQUggAC3Pfv687qPC/giphy.gif"
+            contentDescription="Animated background"
             contentScale={ContentScale.Crop}
-            modifier={
-                Modifier.fillMaxSize()
-                    .align(Alignment.Center)
-            }
+            modifier={Modifier.fillMaxSize()}
     />
 
     <!-- Overlay -->

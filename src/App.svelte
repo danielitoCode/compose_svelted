@@ -9,7 +9,7 @@
         Icon,
         ColorScheme,
         RoundedCornerShape, Row, TextField, Box, Alignment, TextStyle, Button, Density, LazyColumn, Card, Spacer,
-        LazyRow, Scaffold, ButtonWithIcon
+        LazyRow, Scaffold, ButtonWithIcon, OutlinedButton
     } from "./lib";
 
     import { Modifier } from "./lib";
@@ -38,9 +38,11 @@
                 color={ColorScheme.Background}
                 modifier={Modifier.fillMaxSize().verticalScroll(true)}
         >
-            <Scaffold modifier={Modifier.fillMaxSize()}>
-                <ProfesionalLogin/>
-            </Scaffold>
+            <Card elevation={6}>
+                <Column modifier={Modifier.padding(32)}>
+                    <Text>Login</Text>
+                </Column>
+            </Card>
         </Surface>
     </AppRoot>
 </ComposeTheme>
