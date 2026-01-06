@@ -29,7 +29,10 @@ export { default as LazyRow } from "./components/layouts/LazyRow.svelte"
 export { default as Icon } from "./components/Icon.svelte"
 export { default as Image } from "./components/Image.svelte"
 export { default as Scaffold } from "./components/layouts/Scafold.svelte"
+// Motions
 export { default as AnimatedVisibility } from "./components/motion/AnimatedVisibility.svelte"
+export { default as AnimatedContent } from "./components/motion/AnimatedContent.svelte"
+
 
 // =========================
 // TOKENS / API (TS only)
@@ -46,3 +49,4 @@ export * from "./components/ContentScale"
 export * from "./core/theme/Density"
 export * from "./core/motion/AnimationSpec"
 export * from "./core/motion/transitions"
+export * from "./core/motion/contentTransitions"
