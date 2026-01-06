@@ -1,16 +1,15 @@
 # Compose-like UI for Svelte
 <p align="start">
   <a href="https://www.npmjs.com/package/@danielito1996/compose-svelted">
-    <img src="https://img.shields.io/npm/v/svelted.svg" alt="npm version" />
+    <img src="https://img.shields.io/badge/version-0.0.1-blue" alt="npm version" />
   </a>
   <a href="https://www.npmjs.com/package/@danielito1996/compose-svelted">
-    <img src="https://img.shields.io/npm/dm/svelted.svg" alt="npm downloads" />
+    <img src="https://img.shields.io/npm/dm/@danielito1996/compose-svelted" alt="npm downloads" /> <!-- Si hay datos futuros -->
   </a>
-  <a href="https://github.com/danielitoCode/compose-svelte/blob/main/LICENSE">
-    <img src="https://img.shields.io/github/license/danielitoCode/compose-svelte" alt="license" />
+  <a href="https://github.com/danielitoCode/compose_svelted/blob/main/LICENSE">
+    <img src="https://img.shields.io/github/license/danielitoCode/compose_svelted" alt="license" />
   </a>
-   <img src="https://img.shields.io/badge/status-alpha-orange" />
-   <img src="https://img.shields.io/badge/version-0.0.1-blue" />
+  <img src="https://img.shields.io/badge/status-alpha-orange" alt="status" />
 </p>
 
 <p align="center">
