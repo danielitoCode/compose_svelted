@@ -18,8 +18,8 @@
 </script>
 
 <div
-    class="relative"
-    style={`${contentStyle} ${modifier.toStyle()}`}
+        class="relative"
+        style={`${contentStyle} ${modifier.toStyle()}`}
 >
-<slot />
+    <slot />
 </div>
