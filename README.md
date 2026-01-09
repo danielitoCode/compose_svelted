@@ -1,270 +1,110 @@
-# Compose-like UI for Svelte
+# compose-svelted
 
-<p align="start">
-  <a href="https://www.npmjs.com/package/@danielito1996/compose-svelted">
-    <img src="https://img.shields.io/badge/version-0.0.1-blue" alt="npm version" />
-  </a>
-  <a href="https://www.npmjs.com/package/@danielito1996/compose-svelted">
-    <img src="https://img.shields.io/npm/dm/@danielito1996/compose-svelted" alt="npm downloads" /> <!-- Si hay datos futuros -->
-  </a>
-  <a href="https://github.com/danielitoCode/compose_svelted/blob/main/LICENSE">
-    <img src="https://img.shields.io/github/license/danielitoCode/compose_svelted" alt="license" />
-  </a>
-  <img src="https://img.shields.io/badge/status-alpha-orange" alt="status" />
+<p align="center">
+  <img src="docs/assets/svelted.png" width="960" alt="compose-svelted" />
 </p>
 
 <p align="center">
-  <img src="docs/assets/svelted.png" width="1010" alt="ios" />
+  <b>Compose-inspired UI framework for Svelte</b><br/>
+  Declarative layout · Immutable modifiers · Structural motion · Compose-like navigation
 </p>
 
-A Compose-inspired UI toolkit for **Svelte**, focused on explicit composition,
-immutable modifiers, and theme-driven design.
-
-Inspired by **Jetpack Compose**, built natively for the web using Svelte and
-standard web technologies.
-
 <p align="center">
+  <img src="https://img.shields.io/badge/status-alpha-orange" />
   <img src="https://img.shields.io/badge/Svelte-FF3E00?logo=svelte&logoColor=white" />
   <img src="https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=white" />
-  <img src="https://img.shields.io/badge/Jetpack%20Compose-inspired-4285F4" />
 </p>
 
 ---
 
-## ✨ Goals
+## ✨ What is compose-svelted?
 
-- Explicit and predictable UI composition
-- Immutable, chainable `Modifier`s
-- Strong separation between core, layout and components
-- Theme-driven design (tokens, not raw CSS)
-- No virtual DOM abstractions
-- No hidden magic
+**compose-svelted** is an experimental but ambitious UI framework that brings the
+**Jetpack Compose mental model** to the Svelte ecosystem.
 
-> This is **not** a Material clone.
-> It is a Compose-like system that can be styled beyond Material Design.
+It is **not** a Material Design clone, and it is **not** a thin component library.
 
----
+Instead, it focuses on:
+- explicit UI composition
+- predictable layout
+- declarative motion
+- navigation as state
 
-## Why Compose-like for Svelte?
-
-Jetpack Compose introduced a clear, explicit and composable mental model for UI.
-This project explores how that same philosophy translates to the web,
-using Svelte as a native, compiler-driven foundation.
-
-The goal is not to replicate Android UI,
-but to bring Compose’s clarity and composability to modern web applications.
-
-## 🚀 Installation
-
-```bash
-npm install compose-svelte
-```
+All built on top of **Svelte**, without virtual DOM abstractions or hidden magic.
 
 ---
 
-## 🧭 Minimal Example
+## 🧠 Core Philosophy
 
-```svelte
-<script>
-  import {
-    ComposeTheme,
-    AppRoot,
-    Surface,
-    Text,
-    Modifier
-  } from "compose-svelte";
-</script>
+> UI is a function of state.  
+> Layout, motion, and navigation must be explicit and predictable.
 
-<ComposeTheme mode="system">
-  <AppRoot>
-    <Surface modifier={Modifier.fillMaxSize()}>
-      <Text>Hello Compose</Text>
-    </Surface>
-  </AppRoot>
-</ComposeTheme>
-```
+Key ideas:
+- No implicit behavior
+- No global side effects
+- No magic context you cannot reason about
+- Everything composes
 
 ---
 
-## 🧱 Layout
+## 🧱 Library Structure (High-Level)
 
-### Column
+### Core V1 – Layout & Styling
+- Column, Row, Box
+- Modifier (immutable, chainable)
+- Shapes
+- Theme system
+- Typography
 
-```svelte
-<Column modifier={Modifier.padding(16)}>
-  <Text textStyle="titleLarge">Title</Text>
-  <Text>Body text</Text>
-</Column>
-```
-
-### Row
-
-```svelte
-<Row horizontalArrangement={Arrangement.spacedBy(8)}>
-  <Text>Left</Text>
-  <Text>Right</Text>
-</Row>
-```
-
-### Box
-
-```svelte
-<Box modifier={Modifier.size(120)}>
-  <Text modifier={Modifier.align(Alignment.Center)}>Centered</Text>
-</Box>
-```
+### Core V2 – Motion & Navigation (CLOSED)
+- AnimatedVisibility
+- AnimatedContent
+- Declarative motion
+- NavController
+- NavHost
+- Internal backstack
 
 ---
 
-## 🎨 Theme
+## 💪 Strengths
 
-### ComposeTheme
+### Explicit Layout
+Layouts are predictable and composable.
 
-Provides theming for the entire app.
+### Immutable Modifiers
+Describe intent, not CSS.
 
-- Light / Dark / System modes
-- Tokens exposed as CSS variables
-- Inspired by MaterialTheme
+### Structural Motion
+Motion is part of the UI structure.
 
-```svelte
-<ComposeTheme mode="dark">
-  <AppRoot>
-    <Surface>
-      <Text>Dark mode</Text>
-    </Surface>
-  </AppRoot>
-</ComposeTheme>
-```
+### Compose-like Navigation
+Navigation without external routers.
 
 ---
 
-## 📝 TextField
+## 🚀 Innovation
 
-### Filled
-
-```svelte
-<TextField
-  label="Email"
-  placeholder="you@email.com"
-  value={email}
-  onValueChange={(v) => email = v}
-/>
-```
-
-### Outlined
-
-```svelte
-<OutlinedTextField
-  label="Email"
-  value={email}
-  onValueChange={(v) => email = v}
-/>
-```
+- Compose mental model on the web
+- Navigation as state
+- Motion as structure
+- No virtual DOM abstraction
 
 ---
 
-## 🔘 Buttons
+## 📦 Status
 
-```svelte
-<Button onClick={submit}>
-  Submit
-</Button>
-
-<TextButton onClick={cancel}>
-  Cancel
-</TextButton>
-
-<OutlinedButton>
-  Outlined
-</OutlinedButton>
-```
+- Alpha
+- Core V2 closed
+- Core V3 planned
 
 ---
 
-## 🧩 Modifiers
+## 🔮 Roadmap
 
-Modifiers are immutable and chainable.
-
-```ts
-Modifier
-  .padding(16)
-  .fillMaxWidth()
-  .background(ColorScheme.Surface)
-```
-
-### Available categories
-
-- Layout: `size`, `width`, `height`, `fill`, `weight`
-- Spacing: `padding`, `margin`
-- Drawing: `background`, `border`, `clip`
-- Interaction: `clickable`
-- Transform: `offset`
-- Scroll: `verticalScroll`, `horizontalScroll`
-
----
-
-## 🔲 Shapes
-
-```ts
-RoundedCornerShape(12)
-RoundedCornerShape({ topStart: 16, topEnd: 16 })
-```
-
-Shapes are value objects and reusable across components.
-
----
-
-## 🎨 Theme Tokens
-
-### ColorScheme
-
-```ts
-ColorScheme.Primary
-ColorScheme.Surface
-ColorScheme.OnSurface
-```
-
-### TextStyle
-
-```ts
-TextStyle.TitleLarge
-TextStyle.BodyMedium
-TextStyle.LabelSmall
-```
-
----
-
-## 🖼️ Images & Icons
-
-```svelte
-<Image
-  painter={painterResource(Res.image("logo.png"))}
-  contentScale={ContentScale.Fit}
-/>
-
-<Icon
-  painter="https://api.iconify.design/mdi/home.svg"
-  modifier={Modifier.size(24)}
-/>
-```
-
----
-
-## 📦 Project Status
-
-- Core v0.0.1: stable
-- Layout system: stable
-- Theme system: stable
-- Modifiers: stable
-- Lazy layouts: experimental
-
----
-
-## 🧠 Philosophy
-
-Clarity over cleverness.
-
-If something is not explicit, it is probably not part of the API.
+### Core V3
+- Nested navigation
+- Directional transitions
+- Shared elements
 
 ---
 
