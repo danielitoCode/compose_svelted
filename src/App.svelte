@@ -1,5 +1,6 @@
 <script lang="ts">
     import {
+        NavHost,
         AppRoot,
         Column,
         Surface,
@@ -9,13 +10,23 @@
         Icon,
         ColorScheme,
         RoundedCornerShape, Row, TextField, Box, Alignment, TextStyle, Button, Density, LazyColumn, Card, Spacer,
-        LazyRow, Scaffold, ButtonWithIcon, OutlinedButton, AnimatedVisibility, scaleIn, fadeOut, CheckButton, fadeIn
+        LazyRow, Scaffold, ButtonWithIcon, OutlinedButton, AnimatedVisibility, scaleIn, fadeOut, CheckButton, fadeIn,
+        composable, rememberNavController
     } from "./lib";
 
     import { Modifier } from "./lib";
+    import { Login, Home, Details } from "./samples/navigation/routes";
+
     import { Arrangement } from "./lib";
     import CustomLogin from "./samples/CustomLogin.svelte";
     import ProfesionalLogin from "./samples/ProfesionalLogin.svelte";
+
+    import LoginScreen from "./samples/navigation/LoginScreen.svelte";
+    import HomeScreen from "./samples/navigation/HomeScreen.svelte";
+    import DetailsScreen from "./samples/navigation/DetailsScreen.svelte";
+
+    // ✅ SOLO controller, el store está oculto
+    const navController = rememberNavController(Login.path);
 
     let enabled = false;
 
@@ -27,11 +38,15 @@
                 color={ColorScheme.Background}
                 modifier={Modifier.fillMaxSize()}
         >
-            <Box
+            <NavHost
+                navController={navController}
                 modifier={Modifier.fillMaxSize()}
-                contentAlignment={Alignment.Center}>
-                <Text>HOLA</Text>
-            </Box>
+                routes={[
+                    composable(Login, () => LoginScreen),
+                    composable(Home, () => HomeScreen),
+                    composable(Details, () => DetailsScreen)
+                ]}
+            />
         </Surface>
     </AppRoot>
 </ComposeTheme>

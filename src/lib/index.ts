@@ -32,7 +32,8 @@ export { default as Scaffold } from "./components/layouts/Scafold.svelte"
 // Motions
 export { default as AnimatedVisibility } from "./components/motion/AnimatedVisibility.svelte"
 export { default as AnimatedContent } from "./components/motion/AnimatedContent.svelte"
-
+// Navigation
+export { default as NavHost } from "./core/navigation/NavHost.svelte";
 
 // =========================
 // TOKENS / API (TS only)
@@ -50,3 +51,7 @@ export * from "./core/theme/Density"
 export * from "./core/motion/AnimationSpec"
 export * from "./core/motion/transitions"
 export * from "./core/motion/contentTransitions"
+export * from "./core/navigation/Route";
+export * from "./core/navigation/NavController";
+export * from "./core/navigation/rememberNavController";
+export * from "./core/navigation/composable";
