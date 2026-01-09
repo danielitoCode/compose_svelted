@@ -6,17 +6,18 @@
     import { fade } from "../motion/contentTransitions";
 
     export let navController: NavController;
+
     export let routes: {
         route: { path: string };
         component: any;
     }[];
 
-    // ✅ UNA sola transición, Compose-like
+    // 🔹 Transición única, Compose-like
     export let transition: ContentTransition = fade(320);
 
     export let modifier: Modifier = Modifier.empty();
 
-    // Store interno (estable)
+    // 🔹 Store interno (estable)
     const stackStore = navController._getStackStore();
 
     $: stack = $stackStore;
@@ -30,6 +31,8 @@
     <AnimatedContent
             targetState={currentEntry?.route}
             transition={transition}
+            modifier={Modifier.fillMaxSize()}
+            let:value
     >
         {#if active}
             <svelte:component

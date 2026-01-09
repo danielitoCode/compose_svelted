@@ -1,9 +1,13 @@
 <script lang="ts">
     import type { ContentTransition } from "../../core/motion/ContentTransition";
     import { fade } from "../../core/motion/contentTransitions";
+    import { Modifier } from "../../core/modifier/Modifier";
 
     export let targetState: any;
     export let transition: ContentTransition = fade();
+
+    // 🔥 NUEVO: modifier (Compose-like)
+    export let modifier: Modifier = Modifier.empty();
 
     let currentState = targetState;
     let previousState: any = null;
@@ -12,7 +16,6 @@
     let timeoutId: ReturnType<typeof setTimeout> | null = null;
 
     $: if (targetState !== currentState) {
-        // limpiar timeout previo si existe
         if (timeoutId) {
             clearTimeout(timeoutId);
             timeoutId = null;
@@ -30,14 +33,18 @@
     }
 </script>
 
-<div class="relative overflow-hidden">
+<!-- 🔥 CLAVE: el contenedor SIEMPRE ocupa espacio -->
+<div
+        class="relative overflow-hidden w-full h-full"
+        style={modifier.toStyle()}
+>
     {#if previousState !== null}
-        <div class={`absolute inset-0 ${transition.exit}`}>
+        <div class={`absolute inset-0 w-full h-full ${transition.exit}`}>
             <slot value={previousState} />
         </div>
     {/if}
 
-    <div class={animating ? transition.enter : ""}>
+    <div class={`w-full h-full ${animating ? transition.enter : ""}`}>
         <slot value={currentState} />
     </div>
 </div>

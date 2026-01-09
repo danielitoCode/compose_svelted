@@ -14,6 +14,8 @@
         composable, rememberNavController
     } from "./lib";
 
+    import { fade } from "./lib";
+
     import { Modifier } from "./lib";
     import { Login, Home, Details } from "./samples/navigation/routes";
 
@@ -41,6 +43,7 @@
             <NavHost
                 navController={navController}
                 modifier={Modifier.fillMaxSize()}
+                transition={fade(500)}
                 routes={[
                     composable(Login, () => LoginScreen),
                     composable(Home, () => HomeScreen),
