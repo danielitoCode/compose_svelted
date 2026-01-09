@@ -1,4 +1,5 @@
 # Compose-like UI for Svelte
+
 <p align="start">
   <a href="https://www.npmjs.com/package/@danielito1996/compose-svelted">
     <img src="https://img.shields.io/badge/version-0.0.1-blue" alt="npm version" />
@@ -13,9 +14,8 @@
 </p>
 
 <p align="center">
-  <img src="docs/assets/svelted.png" width="310" alt="ios" />
+  <img src="docs/assets/svelted.png" width="1010" alt="ios" />
 </p>
-
 
 A Compose-inspired UI toolkit for **Svelte**, focused on explicit composition,
 immutable modifiers, and theme-driven design.
@@ -40,7 +40,7 @@ standard web technologies.
 - No virtual DOM abstractions
 - No hidden magic
 
-> This is **not** a Material clone.  
+> This is **not** a Material clone.
 > It is a Compose-like system that can be styled beyond Material Design.
 
 ---

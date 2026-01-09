@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/svelted.png" alt="Svelted" width="480" />
+  <img src="assets/svelted.png" alt="Svelted" width="980" />
 </p>
 
 <h1 align="center">Svelted</h1>
@@ -20,7 +20,7 @@
 
 ## What is Svelted?
 
-**Svelted** is a UI toolkit for the web inspired by **Jetpack Compose**  
+**Svelted** is a UI toolkit for the web inspired by **Jetpack Compose**
 and built natively on top of **Svelte**.
 
 It brings the Compose mental model to the web:
@@ -36,9 +36,11 @@ It brings the Compose mental model to the web:
 ## Core Principles
 
 ### 🧩 Composition over configuration
+
 UI is built by composing small, predictable components.
 
 ### 🧱 Modifiers
+
 Layout, drawing, interaction and behavior are controlled through immutable modifiers.
 
 ```ts
@@ -49,6 +51,7 @@ Modifier
 ```
 
 ### 🎨 Theme-driven
+
 Design tokens come from the theme, not from hardcoded styles.
 
 ---
@@ -60,18 +63,22 @@ Design tokens come from the theme, not from hardcoded styles.
 </p>
 
 ### Layout
+
 - Column, Row, Box, Spacer
 - LazyColumn *(experimental)*
 - LazyRow *(experimental)*
 
 ### Foundation
+
 - Surface, Text, Image, Icon
 
 ### Inputs
+
 - TextField
 - OutlinedTextField
 
 ### Buttons
+
 - Button, TextButton
 - OutlinedButton, TonalButton
 - IconButton
