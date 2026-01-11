@@ -19,6 +19,27 @@ pnpm add compose-svelte
 
 ---
 
+## ⚠️ CSS Baseline (Required)
+
+Compose Svelted assumes a neutral CSS baseline.
+
+You MUST include the following reset in your app:
+
+```css
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+}
+```
+
 ## Basic Setup
 
 Wrap your app with `ComposeTheme` and `AppRoot`.
