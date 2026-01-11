@@ -1,10 +1,9 @@
 {
   "name": "@danielito1996/compose-svelted",
-  "version": "0.2.6",
+  "version": "0.2.7",
   "description": "Compose-like UI toolkit for Svelte, inspired by Jetpack Compose",
   "license": "MIT",
   "type": "module",
-
   "author": "Daniel Imbert Tabares",
   "repository": {
     "type": "git",
@@ -18,21 +17,18 @@
     ".": {
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js",
-      "svelte": "./dist/index.js",
-      "default": "./dist/index.js"
+      "svelte": "./dist/index.js"
     }
   },
-  "svelte": "./dist/index.js",
   "files": [
     "dist"
-  ],
-  "sideEffects": [
-    "**/*.css"
   ],
   "peerDependencies": {
     "svelte": "^5.0.0"
   },
-
+  "sideEffects": [
+    "**/*.css"
+  ],
   "scripts": {
     "dev": "vite",
     "build": "vite build",

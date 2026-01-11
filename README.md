@@ -111,3 +111,62 @@ Navigation without external routers.
 ## 📄 License
 
 MIT
+
+---
+
+## ⚠️ CSS Baseline Requirement (Important)
+
+Compose Svelted is **layout-deterministic**.
+
+To guarantee consistent and predictable behavior of layout components such as
+`Box`, `Column`, `Row`, `Surface`, `Scaffold`, and navigation containers,
+a **neutral CSS baseline is required** in the host application.
+
+This is **intentional** and mirrors the contract-based approach of **Jetpack Compose**.
+
+### Required baseline
+
+You must include the following reset in your global styles:
+
+```css
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+}
+```
+
+### Why this matters
+
+Compose Svelted does **not**:
+- force global CSS
+- inject layout styles silently
+- assume browser defaults
+
+Instead, it expects a minimal, explicit layout contract.
+Without this baseline, layout behavior may vary between browsers or projects.
+
+### Tailwind CSS
+
+Compose Svelted **does not require Tailwind CSS**.
+
+Tailwind is used internally as an implementation detail for predictable styling,
+but consumers of the library are **not required** to install or configure Tailwind.
+
+### Future (Core V3)
+
+A reusable `baseline.css` helper will be provided as an **optional import**
+to simplify adoption:
+
+```ts
+import "@danielito1996/compose-svelted/baseline.css";
+```
+
+This will remain optional and opt-in.
