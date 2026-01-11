@@ -9,7 +9,7 @@
         Text,
         TextField,
         TextStyle
-    } from "../lib";
+    } from "../../dist/index.d.ts";
     let name = "";
     let pass = "";
 </script>

@@ -9,7 +9,7 @@
         Modifier,
         Text,
         TextStyle
-    } from "../lib";
+    } from "../../dist/index.d.ts";
 
     let enabled = false
 </script>

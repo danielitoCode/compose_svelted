@@ -27,7 +27,7 @@
         wrap ? "whitespace-pre-wrap" : "whitespace-pre"
     }`}
             style={`
-        margin: 0;
+        margin: 2;
         background: var(--md-sys-color-surfaceVariant);
         color: var(--md-sys-color-onSurface);
         padding: 12px 16px;

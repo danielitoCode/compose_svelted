@@ -1,0 +1,10 @@
+export const About = { path: "about" };
+export const Started = { path: "started" };
+export const Theme = { path: "theme" };
+export const Layouts = { path: "layouts" };
+export const Components = { path: "components" };
+export const Motions = { path: "motions" };
+export const Utils = { path: "utils" };
+export const Design = { path: "designs" };
+export const Examples = { path: "examples" };
+export const Limitations = { path: "limitations" };

@@ -1,8 +1,8 @@
 import type { ColorScheme } from "../colors";
 
 export const lightColors: ColorScheme = {
-    primary: "#D4AF37",        // Violeta más intenso
-    onPrimary: "#080808",
+    primary: "#FF732F",        // Violeta más intenso
+    onPrimary: "#FFFBF2",
     secondary: "#3A3E49",      // Teal vibrante
     onSecondary: "#FFFFFF",
     background: "#FFFBF2",

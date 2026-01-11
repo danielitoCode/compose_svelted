@@ -6,7 +6,7 @@
         Modifier,
         Arrangement,
         Alignment
-    } from "../../lib";
+    } from "../../../dist";
 
     export let navController;
 </script>

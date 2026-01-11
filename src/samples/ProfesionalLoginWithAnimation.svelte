@@ -16,9 +16,9 @@
         Image,
         ContentScale,
         RoundedCornerShape, fadeIn
-    } from "../lib";
+    } from "../../dist/index.d.ts";
 
-    import { scaleIn, fadeOut } from "../lib";
+    import { scaleIn, fadeOut } from "../../dist/index.d.ts";
 
     let email = "";
     let password = "";

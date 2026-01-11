@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
     import {
         Alignment,
         Arrangement,
@@ -14,10 +14,14 @@
         Row,
         Image,
         ContentScale, RoundedCornerShape
-    } from "../lib";
+    } from "../../dist";
+    import {Home} from "./navigation/routes";
 
     let email = "";
     let password = "";
+
+    export let navController;
+
 </script>
 
 <Box modifier={Modifier.fillMaxSize()}>
@@ -91,7 +95,12 @@
                 </Column>
 
                 <!-- Action -->
-                <Button modifier={Modifier.fillMaxWidth()}>
+                <Button
+                    onClick={()=>{
+                        navController.navigate(Home.path)
+                    }}
+                    modifier={Modifier.fillMaxWidth()}
+                >
                     <Row
                             horizontalArrangement={Arrangement.spacedBy(10)}
                             verticalAlignment={Alignment.CenterVertically}

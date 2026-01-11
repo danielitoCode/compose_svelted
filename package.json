@@ -1,49 +1,62 @@
 {
   "name": "@danielito1996/compose-svelted",
-  "version": "0.0.1",
-  "type": "module",
+  "version": "0.2.6",
+  "description": "Compose-like UI toolkit for Svelte, inspired by Jetpack Compose",
   "license": "MIT",
-  "description": "Compose-like UI toolkit for Svelte",
-  "keywords": [
-    "svelte",
-    "ui",
-    "compose",
-    "design-system",
-    "material"
-  ],
+  "type": "module",
+
   "author": "Daniel Imbert Tabares",
   "repository": {
     "type": "git",
     "url": "https://github.com/danielitoCode/compose_svelted"
   },
+  "homepage": "https://github.com/danielitoCode/compose_svelted#readme",
+  "bugs": {
+    "url": "https://github.com/danielitoCode/compose_svelted/issues"
+  },
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "svelte": "./dist/index.js",
       "default": "./dist/index.js"
     }
   },
+  "svelte": "./dist/index.js",
+  "files": [
+    "dist"
+  ],
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "peerDependencies": {
+    "svelte": "^5.0.0"
+  },
+
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview",
-    "check": "svelte-check --tsconfig ./tsconfig.app.json && tsc -p tsconfig.node.json"
+    "package": "svelte-package",
+    "prepublishOnly": "npm run package"
   },
+
   "devDependencies": {
+    "@sveltejs/package": "^2.3.1",
     "@sveltejs/vite-plugin-svelte": "^6.2.1",
-    "@tsconfig/svelte": "^5.0.6",
-    "@types/node": "^24.10.1",
-    "autoprefixer": "^10.4.23",
-    "postcss": "^8.5.6",
     "svelte": "^5.43.8",
-    "svelte-check": "^4.3.4",
+    "typescript": "^5.9.0",
+    "vite": "^5.4.0",
     "tailwindcss": "^4.1.18",
-    "typescript": "~5.9.3",
-    "vite": "npm:rolldown-vite@7.2.5"
+    "postcss": "^8.5.6",
+    "autoprefixer": "^10.4.23"
   },
-  "overrides": {
-    "vite": "npm:rolldown-vite@7.2.5"
-  },
-  "dependencies": {
-    "@tailwindcss/vite": "^4.1.18"
-  }
+
+  "keywords": [
+    "svelte",
+    "svelte-components",
+    "ui",
+    "compose",
+    "jetpack-compose",
+    "design-system"
+  ]
 }

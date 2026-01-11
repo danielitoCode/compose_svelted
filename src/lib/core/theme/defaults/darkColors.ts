@@ -1,8 +1,8 @@
 import type { ColorScheme } from "../colors";
 
 export const darkColors: ColorScheme = {
-    primary: "#FFD700",
-    onPrimary: "#080808",
+    primary: "#FC4B19",
+    onPrimary: "#E6E6E6",
     secondary: "#3A3E49",
     onSecondary: "#E6E6E6",
     background: "#080808",
