@@ -5,11 +5,8 @@
 </script>
 
 <div
-        style={`
-    width:100vw;
-    height:100vh;
-    ${modifier.toStyle()}
-  `}
+        class="compose-relative"
+        style={`width:100vw;height:100vh;${modifier.toStyle()}`}
 >
     <slot />
 </div>

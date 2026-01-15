@@ -1,25 +1,59 @@
 <script lang="ts">
     import { Modifier } from "../../core/modifier/Modifier";
-    import type {BoxAlignment} from "./Alignment";
+    import type { BoxAlignment } from "./Alignment";
+    import {resolveBoxAlignment} from "./resolveAlignment";
 
     export let modifier: Modifier = Modifier.empty();
     export let contentAlignment: BoxAlignment | undefined = undefined;
 
-    $: contentStyle = contentAlignment ? alignmentToFlexStyle(contentAlignment) : "";
+    /**
+     * Box-level alignment:
+     * Alinea TODOS los hijos (Compose Box behavior)
+     */
+    function contentAlignmentStyle(alignment: BoxAlignment): string {
+        const [h, v = h] = alignment.split(" ");
 
-    function alignmentToFlexStyle(alignment: BoxAlignment): string {
-        const parts = alignment.split(" ");
-        const horiz = parts[0] === "flex-start" ? "flex-start" : parts[0] === "flex-end" ? "flex-end" : "center";
-        const vert = parts[1] || parts[0];
-        const v = vert === "flex-start" ? "flex-start" : vert === "flex-end" ? "flex-end" : "center";
+        const justify =
+            h === "flex-start" ? "flex-start" :
+                h === "flex-end" ? "flex-end" :
+                    "center";
 
-        return `display:flex; align-items:${v}; justify-content:${horiz};`;
+        const align =
+            v === "flex-start" ? "flex-start" :
+                v === "flex-end" ? "flex-end" :
+                    "center";
+
+        return `
+      display:flex;
+      justify-content:${justify};
+      align-items:${align};
+    `;
     }
 </script>
 
 <div
-        class="relative"
-        style={`${contentStyle} ${modifier.toStyle()}`}
+        class="compose-box"
+        style={`
+    position:relative;
+    ${contentAlignment ? contentAlignmentStyle(contentAlignment) : ""}
+    ${modifier.toStyle()}
+  `}
 >
-    <slot />
+    <!--
+      Slot con scope:
+      Cada hijo puede traer su propio Modifier
+    -->
+    <slot let:modifier>
+        {#if modifier}
+            <!--
+              Child-level alignment:
+              SOLO si el hijo usa Modifier.align()
+            -->
+            <div style={resolveBoxAlignment(modifier)}>
+                <slot />
+            </div>
+        {:else}
+            <slot />
+        {/if}
+    </slot>
 </div>

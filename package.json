@@ -1,6 +1,6 @@
 {
   "name": "@danielito1996/compose-svelted",
-  "version": "0.2.7",
+  "version": "0.2.7-alpha01",
   "description": "Compose-like UI toolkit for Svelte, inspired by Jetpack Compose",
   "license": "MIT",
   "type": "module",
