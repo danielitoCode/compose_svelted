@@ -25,6 +25,7 @@
     import HomeScreen from "./samples/navigation/HomeScreen.svelte";
     import DetailsScreen from "./samples/navigation/DetailsScreen.svelte";
     import MainNavigationWrapper from "./samples/navigation/MainNavigationWrapper.svelte";
+    import {Text} from "./lib/index";
 
     // ✅ SOLO controller, el store está oculto
     const navController = rememberNavController(Login.path);
