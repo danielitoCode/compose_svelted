@@ -1,0 +1,20 @@
+export declare const Alignment: {
+    readonly Start: "flex-start";
+    readonly CenterHorizontally: "center";
+    readonly End: "flex-end";
+    readonly Top: "flex-start";
+    readonly CenterVertically: "center";
+    readonly Bottom: "flex-end";
+    readonly TopStart: "flex-start flex-start";
+    readonly TopCenter: "center flex-start";
+    readonly TopEnd: "flex-end flex-start";
+    readonly CenterStart: "flex-start center";
+    readonly Center: "center center";
+    readonly CenterEnd: "flex-end center";
+    readonly BottomStart: "flex-start flex-end";
+    readonly BottomCenter: "center flex-end";
+    readonly BottomEnd: "flex-end flex-end";
+};
+export type HorizontalAlignment = typeof Alignment.Start | typeof Alignment.CenterHorizontally | typeof Alignment.End;
+export type VerticalAlignment = typeof Alignment.Top | typeof Alignment.CenterVertically | typeof Alignment.Bottom;
+export type BoxAlignment = typeof Alignment[keyof typeof Alignment];
