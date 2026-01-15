@@ -3,33 +3,33 @@
  * ========================= */
 
 import {ModifierImpl} from "../../core/modifier/ModifierImpl";
+import {BoxAlignment} from "./Alignment";
 
-export function resolveBoxAlignment(mod: ModifierImpl): string {
-    const align = mod.getMeta().align;
-    if (!align) return "";
+export function resolveBoxAlignment(alignment?: BoxAlignment): string {
+    if (!alignment) return "";
 
-    const [horizontal, vertical = horizontal] = align.split(" ");
+    const parts = alignment.split(" ");
+    const h = parts[0];
+    const v = parts[1] ?? parts[0];
 
     let style = "position:absolute;";
 
-    // vertical
-    if (vertical === "flex-start") style += "top:0;";
-    else if (vertical === "center") style += "top:50%;transform:translateY(-50%);";
-    else if (vertical === "flex-end") style += "bottom:0;";
+    // Vertical
+    if (v === "flex-start") style += "top:0;";
+    else if (v === "flex-end") style += "bottom:0;";
+    else style += "top:50%;";
 
-    // horizontal
-    if (horizontal === "flex-start") style += "left:0;";
-    else if (horizontal === "center") {
-        style += "left:50%;";
-        style = style.includes("translateY")
-            ? style.replace("translateY(-50%)", "translate(-50%,-50%)")
-            : style + "transform:translateX(-50%);";
+    // Horizontal
+    if (h === "flex-start") style += "left:0;";
+    else if (h === "flex-end") style += "right:0;";
+    else style += "left:50%;";
+
+    if (h === "center" || v === "center") {
+        style += "transform:translate(-50%,-50%);";
     }
-    else if (horizontal === "flex-end") style += "right:0;";
 
     return style;
 }
-
 /* =========================
  * Flex (Row / Column)
  * ========================= */

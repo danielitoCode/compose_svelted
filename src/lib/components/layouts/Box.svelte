@@ -43,17 +43,5 @@
       Slot con scope:
       Cada hijo puede traer su propio Modifier
     -->
-    <slot let:modifier>
-        {#if modifier}
-            <!--
-              Child-level alignment:
-              SOLO si el hijo usa Modifier.align()
-            -->
-            <div style={resolveBoxAlignment(modifier)}>
-                <slot />
-            </div>
-        {:else}
-            <slot />
-        {/if}
-    </slot>
+    style={`position:relative;${modifier.toStyle()}`}
 </div>

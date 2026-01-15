@@ -137,8 +137,8 @@ export class ModifierImpl {
         return this.then(
             new ModifierImpl([
                 {
-                    meta: { align: alignment },
-                },
+                    meta: { align: alignment }
+                }
             ])
         );
     }
@@ -167,10 +167,12 @@ export class ModifierImpl {
     }
 
     getMeta(): ModifierMeta {
-        const out: ModifierMeta = {};
-        for (const e of this.entries) {
-            if (e.meta) Object.assign(out, e.meta);
-        }
-        return out;
+        return this.entries.reduce<ModifierMeta>(
+            (acc, e) => ({
+                ...acc,
+                ...(e.meta ?? {})
+            }),
+            {}
+        );
     }
 }
