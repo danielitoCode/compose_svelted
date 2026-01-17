@@ -1,70 +1,50 @@
 <script lang="ts">
     import { Modifier } from "../../core/modifier/Modifier";
+    import { resolveBoxAlignment } from "./resolveAlignment";
+    import {Alignment, BoxAlignment} from "./Alignment";
 
     export let modifier: Modifier = Modifier.empty();
-
-    // Padding interno aplicado al content (como Scaffold paddingValues)
-    export let contentPadding: number = 16;
-
-    // Control del FAB
-    export let fabAlignment:
-        | "bottom-end"
-        | "bottom-center"
-        | "bottom-start" = "bottom-end";
+    export let contentPadding = 16;
+    export let fabAlignment: BoxAlignment = Alignment.BottomEnd;
 </script>
 
 <div
+        class="compose-relative"
         style={`
     display: flex;
     flex-direction: column;
-    height: 100%;
     width: 100%;
-    position: relative;
+    height: 100%;
     ${modifier.toStyle()}
   `}
 >
-    <!-- Top Bar -->
-    <div>
-        <slot name="topBar" />
-    </div>
+    <!-- Top bar -->
+    <slot name="topBar" />
 
     <!-- Content -->
     <div
-            style={`
-      flex: 1;
-      position: relative;
-      padding: ${contentPadding}px;
-      overflow: auto;
-    `}
+            class="compose-scaffold-content"
+            style={`padding:${contentPadding}px;`}
     >
         <slot />
     </div>
 
-    <!-- Bottom Bar -->
-    <div>
-        <slot name="bottomBar" />
-    </div>
+    <!-- Bottom bar -->
+    <slot name="bottomBar" />
 
-    <!-- Floating Action Button -->
+    <!-- FAB overlay -->
     <div
             style={`
-      position: absolute;
-      pointer-events: none;
-      inset: 0;
+      position:absolute;
+      inset:0;
+      pointer-events:none;
     `}
     >
         <div
                 style={`
-        position: absolute;
-        pointer-events: auto;
-
-        ${
-          fabAlignment === "bottom-end"
-            ? "right: 16px; bottom: 16px;"
-            : fabAlignment === "bottom-center"
-            ? "left: 50%; transform: translateX(-50%); bottom: 16px;"
-            : "left: 16px; bottom: 16px;"
-        }
+        ${resolveBoxAlignment(fabAlignment)}
+        pointer-events:auto;
+        margin:16px;
       `}
         >
             <slot name="floatingActionButton" />

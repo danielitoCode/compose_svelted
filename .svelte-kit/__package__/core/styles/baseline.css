@@ -41,3 +41,9 @@ img, svg, video, canvas {
     display: block;
     max-width: 100%;
 }
+
+.compose-lazy-row,
+.compose-lazy-column {
+    min-width: 0;
+    min-height: 0;
+}

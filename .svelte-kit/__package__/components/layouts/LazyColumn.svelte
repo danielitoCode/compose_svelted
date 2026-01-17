@@ -18,7 +18,7 @@
     let scrollTop = 0;
     let viewportHeight = 0;
 
-    let estimatedItemHeight = 56; // fallback Material
+    let estimatedItemHeight = 56;
     let measured = false;
 
     const overscan = 3;
@@ -43,7 +43,7 @@
         scrollTop = (e.target as HTMLDivElement).scrollTop;
     }
 
-    // --- Virtualization math ---
+    // --- Virtualization ---
     $: totalHeight = items.length * estimatedItemHeight;
 
     $: startIndex = Math.max(
@@ -55,13 +55,11 @@
         Math.ceil(viewportHeight / estimatedItemHeight) + overscan * 2;
 
     $: endIndex = Math.min(items.length, startIndex + visibleCount);
-
     $: visibleItems = items.slice(startIndex, endIndex);
 
-    // --- Arrangement ---
-    function resolveGap(arrangement: ArrangementValue): string {
-        return arrangement.type === "spaced"
-            ? `${arrangement.gap}px`
+    function resolveGap(): string {
+        return verticalArrangement.type === "spaced"
+            ? `${verticalArrangement.gap}px`
             : "0px";
     }
 </script>
@@ -69,15 +67,17 @@
 <div
         bind:this={container}
         on:scroll={onScroll}
+        class="compose-lazy-column"
         style={`
-    overflow-y:auto;
-    position:relative;
+    overflow-y: auto;
+    overflow-x: hidden;
+    position: relative;
     ${modifier.toStyle()}
   `}
 >
-    <!-- Total scroll space -->
+    <!-- Espacio total -->
     <div style={`height:${totalHeight}px; position:relative;`}>
-        <!-- Visible window -->
+        <!-- Ventana visible -->
         <div
                 style={`
         position:absolute;
@@ -88,7 +88,7 @@
         display:flex;
         flex-direction:column;
         align-items:${horizontalAlignment};
-        gap:${resolveGap(verticalArrangement)};
+        gap:${resolveGap()};
       `}
         >
             {#each visibleItems as item, i}

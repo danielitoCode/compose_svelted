@@ -9,7 +9,7 @@
   <!-- Background circle -->
   <circle cx="128" cy="128" r="112" fill="#FF3E00"/>
 
-  <!-- Inner compose-style layers -->
+  <!-- Inner compose-styles layers -->
   <rect
     x="72"
     y="72"

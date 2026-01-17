@@ -1,71 +1,107 @@
 <script lang="ts">
     import { Modifier } from "../../core/modifier/Modifier";
+    import { onMount, tick } from "svelte";
     import { Alignment } from "./Alignment";
     import { Arrangement } from "./Arrangement";
     import type { ArrangementValue } from "./Arrangement";
-    import type { VerticalAlignment } from "./Alignment";
+    import type { HorizontalAlignment } from "./Alignment";
 
     export let items: any[] = [];
     export let modifier: Modifier = Modifier.empty();
 
-    export let verticalAlignment: VerticalAlignment = Alignment.Top;
-    export let horizontalArrangement: ArrangementValue = Arrangement.Start;
+    export let horizontalAlignment: HorizontalAlignment = Alignment.Start;
+    export let verticalArrangement: ArrangementValue = Arrangement.Start;
 
-    export let scrollEnabled: boolean = true;
-    export let hideScrollbar: boolean = false;
-    export let horizontalSpacing: number | null = null;
+    let container: HTMLDivElement;
+    let probeItem: HTMLDivElement | null = null;
 
-    function resolveGap(): string {
-        if (horizontalSpacing !== null) {
-            return `${horizontalSpacing}px`;
+    let scrollTop = 0;
+    let viewportHeight = 0;
+
+    let estimatedItemHeight = 56; // fallback Material
+    let measured = false;
+
+    const overscan = 3;
+
+    onMount(() => {
+        viewportHeight = container.clientHeight;
+    });
+
+    async function measure() {
+        await tick();
+        if (probeItem) {
+            estimatedItemHeight = probeItem.offsetHeight;
+            measured = true;
         }
+    }
 
-        return horizontalArrangement.type === "spaced"
-            ? `${horizontalArrangement.gap}px`
+    $: if (probeItem && !measured) {
+        measure();
+    }
+
+    function onScroll(e: Event) {
+        scrollTop = (e.target as HTMLDivElement).scrollTop;
+    }
+
+    // --- Virtualization math ---
+    $: totalHeight = items.length * estimatedItemHeight;
+
+    $: startIndex = Math.max(
+        0,
+        Math.floor(scrollTop / estimatedItemHeight) - overscan
+    );
+
+    $: visibleCount =
+        Math.ceil(viewportHeight / estimatedItemHeight) + overscan * 2;
+
+    $: endIndex = Math.min(items.length, startIndex + visibleCount);
+
+    $: visibleItems = items.slice(startIndex, endIndex);
+
+    // --- Arrangement ---
+    function resolveGap(arrangement: ArrangementValue): string {
+        return arrangement.type === "spaced"
+            ? `${arrangement.gap}px`
             : "0px";
-    }
-
-    function resolveOverflowX(): string {
-        return scrollEnabled ? "auto" : "hidden";
-    }
-
-    function resolveScrollbarStyle(): string {
-        if (!hideScrollbar) return "";
-
-        return `
-      scrollbar-width: none;
-      -ms-overflow-style: none;
-    `;
     }
 </script>
 
 <div
-        class={hideScrollbar ? "lazy-row--hide-scrollbar" : ""}
+        bind:this={container}
+        on:scroll={onScroll}
         style={`
-    display: flex;
-    flex-direction: row;
-
-    align-items: ${verticalAlignment};
-    justify-content: ${horizontalArrangement.justifyContent};
-    gap: ${resolveGap()};
-
-    overflow-x: ${resolveOverflowX()};
-    overflow-y: visible;
-
-    height: fit-content;
-    min-height: fit-content;
-
-    ${resolveScrollbarStyle()}
+    overflow-y:auto;
+    position:relative;
     ${modifier.toStyle()}
   `}
 >
-    {#each items as item}
-        <slot {item} />
-    {/each}
-</div>
+    <!-- Total scroll space -->
+    <div style={`height:${totalHeight}px; position:relative;`}>
+        <!-- Visible window -->
+        <div
+                style={`
+        position:absolute;
+        top:${startIndex * estimatedItemHeight}px;
+        left:0;
+        right:0;
 
-<style>
-    .lazy-row--hide-scrollbar::-webkit-scrollbar {
-        display: none;
-    }
-</style>
+        display:flex;
+        flex-direction:column;
+        align-items:${horizontalAlignment};
+        gap:${resolveGap(verticalArrangement)};
+      `}
+        >
+            {#each visibleItems as item, i}
+                {#if i === 0 && !measured}
+                    <div bind:this={probeItem}>
+                        <slot {item} />
+                    </div>
+                {:else}
+                    <div>
+                        <slot {item} />
+                    </div>
+                {/if}
+            {/each}
+        </div>
+    </div>
+</div>
