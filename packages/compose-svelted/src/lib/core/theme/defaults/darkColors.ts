@@ -1,0 +1,17 @@
+import type { ColorScheme } from "../colors";
+
+export const darkColors: ColorScheme = {
+    primary: "#FC4B19",
+    onPrimary: "#E6E6E6",
+    secondary: "#3A3E49",
+    onSecondary: "#E6E6E6",
+    background: "#080808",
+    onBackground: "#E6E6E6",
+    surface: "#101010",
+    onSurface: "#E6E6E6",
+    surfaceVariant: "#1E1E1E",
+    onSurfaceVariant: "#CAC4D0",
+    outline: "#4A4A4A",
+    error: "#FF6F61",
+    onError: "#080808",
+};

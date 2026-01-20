@@ -1,0 +1,16 @@
+{
+  "extends": "@tsconfig/svelte/tsconfig.json",
+  "compilerOptions": {
+    "module": "ESNext",
+    "target": "ESNext",
+    "moduleResolution": "bundler",
+    "baseUrl": ".",
+    "paths": {
+      "@danielito1996/compose-svelted": [
+        "../compose-svelted/src/lib/index.ts"
+      ]
+    },
+    "types": ["svelte", "node"]
+  },
+  "include": ["src/**/*", "vite.config.ts"]
+}
