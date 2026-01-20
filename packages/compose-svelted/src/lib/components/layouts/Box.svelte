@@ -1,47 +1,43 @@
 <script lang="ts">
+    import { setContext } from "svelte";
     import { Modifier } from "../../core/modifier/Modifier";
     import type { BoxAlignment } from "./Alignment";
+    import { Alignment } from "./Alignment";
+    import { resolveBoxAlignment } from "./resolveAlignment";
+    import { BOX_CTX, type BoxLayoutContext } from "./boxContext";
+    import type { ModifierImpl } from "../../core/modifier/ModifierImpl";
 
     export let modifier: Modifier = Modifier.empty();
-    export let contentAlignment: BoxAlignment | undefined = undefined;
+    export let contentAlignment: BoxAlignment = Alignment.TopStart;
 
-    /**
-     * Box-level alignment:
-     * Alinea TODOS los hijos (Compose Box behavior)
-     */
-    function contentAlignmentStyle(alignment: BoxAlignment): string {
-        const [h, v = h] = alignment.split(" ");
+    const ctx: BoxLayoutContext = {
+        contentAlignment,
+        resolveChildPosition: (childModifier?: ModifierImpl) => {
+            const align = childModifier?.getMeta().align ?? contentAlignment;
+            // resolveBoxAlignment ya devuelve "position:absolute; top... left..."
+            return resolveBoxAlignment(align);
+        }
+    };
 
-        const justify =
-            h === "flex-start" ? "flex-start" :
-                h === "flex-end" ? "flex-end" :
-                    "center";
-
-        const align =
-            v === "flex-start" ? "flex-start" :
-                v === "flex-end" ? "flex-end" :
-                    "center";
-
-        return `
-      display:flex;
-      justify-content:${justify};
-      align-items:${align};
-    `;
-    }
+    // Actualiza el contexto cuando cambie contentAlignment
+    $: setContext(BOX_CTX, { ...ctx, contentAlignment });
 </script>
 
 <div
-        class="compose-box"
         style={`
-    position:relative;
-    ${contentAlignment ? contentAlignmentStyle(contentAlignment) : ""}
+    position: relative;
+    width: 100%;
+    height: 100%;
     ${modifier.toStyle()}
   `}
 >
-    <!--
-      Slot con scope:
-      Cada hijo puede traer su propio Modifier
-    -->
-    style={`position:relative;${modifier.toStyle()}`}
     <slot />
 </div>
+
+<style>
+    /* 👇 ESTO ES LO QUE FALTABA */
+    :global(> *) {
+        position: absolute;
+        inset: 0;
+    }
+</style>

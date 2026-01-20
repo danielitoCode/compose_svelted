@@ -1,22 +1,28 @@
-/* compose-svelted baseline.css */
+/* ===============================
+ * Compose-Svelted baseline.css
+ * =============================== */
 
 /* 1. Modelo de caja consistente */
 *, *::before, *::after {
     box-sizing: border-box;
 }
 
-/* 2. Root layout estable */
+/* 2. Root real (sin overflow fantasma) */
 html, body {
     margin: 0;
     padding: 0;
     width: 100%;
     height: 100%;
+    overflow: hidden; /* 🔑 CLAVE */
 }
 
-/* 3. Host de la app */
-#app, body > div {
+/* 3. Host explícito de la app */
+#app {
     width: 100%;
     height: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden; /* 🔑 CLAVE */
 }
 
 /* 4. Prevención de colapso en flex */
@@ -25,7 +31,7 @@ html, body {
     min-height: 0;
 }
 
-/* 5. Soporte para absolute alignment */
+/* 5. Soporte para posicionamiento */
 .compose-relative {
     position: relative;
 }
@@ -36,12 +42,13 @@ html, body {
     user-select: none;
 }
 
-/* 7. Evitar interferencia de estilos externos */
+/* 7. Media elements estables */
 img, svg, video, canvas {
     display: block;
     max-width: 100%;
 }
 
+/* 8. Lazy layouts */
 .compose-lazy-row,
 .compose-lazy-column {
     min-width: 0;

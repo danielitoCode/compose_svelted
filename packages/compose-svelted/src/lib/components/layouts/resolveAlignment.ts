@@ -3,7 +3,7 @@
  * ========================= */
 
 import {ModifierImpl} from "../../core/modifier/ModifierImpl";
-import {BoxAlignment} from "./Alignment";
+import type {BoxAlignment} from "./Alignment";
 
 export function resolveBoxAlignment(alignment?: BoxAlignment): string {
     if (!alignment) return "";
@@ -14,18 +14,19 @@ export function resolveBoxAlignment(alignment?: BoxAlignment): string {
 
     let style = "position:absolute;";
 
-    // Vertical
     if (v === "flex-start") style += "top:0;";
     else if (v === "flex-end") style += "bottom:0;";
     else style += "top:50%;";
 
-    // Horizontal
     if (h === "flex-start") style += "left:0;";
     else if (h === "flex-end") style += "right:0;";
     else style += "left:50%;";
 
+    const tx = h === "center" ? "-50%" : "0";
+    const ty = v === "center" ? "-50%" : "0";
+
     if (h === "center" || v === "center") {
-        style += "transform:translate(-50%,-50%);";
+        style += `transform:translate(${tx},${ty});`;
     }
 
     return style;

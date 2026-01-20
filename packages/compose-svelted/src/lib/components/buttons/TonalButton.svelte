@@ -6,8 +6,9 @@
     export let onClick: () => void = () => {};
     export let modifier: Modifier = Modifier.empty();
 
-    export let color: ColorToken | string = "primary";
-    export let onColor: ColorToken | string = "onPrimary";
+    // MD3 Tonal defaults (IMPORTANTES)
+    export let color: ColorToken | string = "secondaryContainer";
+    export let onColor: ColorToken | string = "onSecondaryContainer";
 
     export let shape: "none" | "extraSmall" | "small" | "medium" | "large" = "large";
 
@@ -19,11 +20,9 @@
 <button
         on:click={onClick}
         style={`
-    background: ${backgroundColor};
+    background: ${backgroundColor};   /* 👈 CLAVE */
     color: ${contentColor};
     border-radius: ${borderRadius};
-
-    box-shadow: var(--md-sys-elevation-level1);
 
     position: relative;
     isolation: isolate;
@@ -46,19 +45,17 @@
     outline: none;
 
     transition:
-      box-shadow 180ms cubic-bezier(0.2,0,0,1),
-      transform 90ms cubic-bezier(0.2,0,0,1);
+      background-color 160ms cubic-bezier(0.2,0,0,1);
 
     ${modifier.toStyle()}
   `}
 >
-    <!-- STATE LAYER -->
+    <!-- State layer -->
     <span
             class="md-state-layer"
             style={`background:${contentColor};`}
     />
 
-    <!-- CONTENT -->
     <span class="md-content">
     <slot />
   </span>
@@ -71,10 +68,7 @@
         opacity: 0;
         pointer-events: none;
         border-radius: inherit;
-
-        transition:
-                opacity 140ms cubic-bezier(0.2,0,0,1),
-                inset 160ms cubic-bezier(0.2,0,0,1);
+        transition: opacity 140ms cubic-bezier(0.2,0,0,1);
         z-index: 0;
     }
 
@@ -83,35 +77,20 @@
         z-index: 1;
     }
 
-    /* 🫁 Hover = respiración */
+    /* Hover: perceptible pero sin “respirar” */
     button:hover .md-state-layer {
-        opacity: 0.16;
-        inset: -2px;              /* 👈 esto es la “respiración” */
-    }
-
-    button:hover {
-        box-shadow: var(--md-sys-elevation-level2);
+        opacity: 0.12;
     }
 
     /* Pressed */
     button:active .md-state-layer {
-        opacity: 0.28;
-        inset: 0;
-    }
-
-    button:active {
-        box-shadow: var(--md-sys-elevation-level1);
-        transform: translateY(1px);
+        opacity: 0.22;
     }
 
     /* Focus */
-    button:focus-visible .md-state-layer {
-        opacity: 0.18;
-    }
-
     button:focus-visible {
-        box-shadow:
-                0 0 0 3px color-mix(in srgb, currentColor 35%, transparent),
-                var(--md-sys-elevation-level2);
+        outline: 2px solid
+        color-mix(in srgb, currentColor 40%, transparent);
+        outline-offset: 2px;
     }
 </style>

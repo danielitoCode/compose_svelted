@@ -17,8 +17,8 @@
 <ComposeTheme mode="system">
     <AppRoot>
         <Surface modifier={Modifier.fillMaxSize()}>
-            <Box modifier={Modifier.fillMaxSize()}>
-                <Text modifier={Modifier.align(Alignment.Center)}>HOLA SOY UN COMPONENTE DE LIBRERIA</Text>
+            <Box contentAlignment={Alignment.TopEnd} modifier={Modifier.fillMaxSize()}>
+                <Text modifier={Modifier.align(Alignment.Center)}>HOLA SOY UN COMPONENTE DE LIBRERIA DENTRO DEL BOX</Text>
                 <Button modifier={Modifier.align(Alignment.Center)} onClick={() => {alert("CLICK EN BOTON DE LIBRERIA")}}>
                     HOLA SOY UN BOTON
                 </Button>
