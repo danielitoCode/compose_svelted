@@ -1,5 +1,1 @@
-export type ContentTransition = {
-    enter: string;
-    exit: string;
-    duration: number;
-};
+export type { ContentTransition } from "../../components/motion/motion/ContentTransition";

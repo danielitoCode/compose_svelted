@@ -37,8 +37,8 @@ export { default as Image } from "./components/Image.svelte";
 export { default as Icon } from "./components/Icon.svelte";
 
 // Motion
-export { default as AnimatedVisibility } from "./components/motion/AnimatedVisibility.svelte";
-export { default as AnimatedContent } from "./components/motion/AnimatedContent.svelte";
+export { default as AnimatedVisibility } from "./components/motion/motion/AnimatedVisibility.svelte";
+export { default as AnimatedContent } from "./components/motion/motion/AnimatedContent.svelte";
 
 // Navigation
 export { default as NavHost } from "./core/navigation/NavHost.svelte";
@@ -48,6 +48,7 @@ export { default as CodeBlock } from "./components/custom/CodeBlock.svelte";
 
 // TS-only exports
 export * from "./core/modifier/Modifier";
+export * from "./core/shapes/RoundedCornerShape";
 export * from "./components/layouts/Alignment";
 export * from "./components/layouts/Arrangement";
 export * from "./components/ContentScale";

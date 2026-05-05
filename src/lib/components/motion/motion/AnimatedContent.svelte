@@ -1,6 +1,6 @@
 <script lang="ts">
-    import type { ContentTransition } from "../../core/motion/ContentTransition";
-    import { fade } from "../../core/motion/contentTransitions";
+    import type {ContentTransition} from "./ContentTransition";
+    import {fade} from "./contentTransitions";
 
     export let targetState: any;
     export let transition: ContentTransition = fade();

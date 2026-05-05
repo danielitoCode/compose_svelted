@@ -39,9 +39,5 @@
     ${modifier.toStyle()}
   `}
 >
-    <!--
-      Slot con scope:
-      Cada hijo puede traer su propio Modifier
-    -->
-    style={`position:relative;${modifier.toStyle()}`}
+    <slot />
 </div>
