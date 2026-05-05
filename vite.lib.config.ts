@@ -6,7 +6,7 @@ export default defineConfig({
     plugins: [svelte()],
     build: {
         lib: {
-            entry: path.resolve(__dirname, "src/lib/index.d.ts"),
+            entry: path.resolve(__dirname, "src/lib/index.ts"),
             formats: ["es"],
             fileName: () => "index.js"
         },
