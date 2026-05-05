@@ -1,9 +1,16 @@
-import { defineConfig } from 'vite'
-import * as svelte from "svelte";
+import { defineConfig } from 'vite';
+import { svelte } from '@sveltejs/vite-plugin-svelte';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 
-// https://vite.dev/config/
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+
 export default defineConfig({
-  plugins: [
-      svelte()
-  ],
-})
+  root: __dirname,
+  plugins: [svelte()],
+  resolve: {
+    alias: {
+      '@danielito1996/compose-svelted': path.resolve(__dirname, '../src/lib/index.ts')
+    }
+  }
+});

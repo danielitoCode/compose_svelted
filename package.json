@@ -5,7 +5,6 @@
   "license": "MIT",
   "type": "module",
   "author": "Daniel Imbert Tabares",
-
   "repository": {
     "type": "git",
     "url": "https://github.com/danielitoCode/compose_svelted"
@@ -14,7 +13,6 @@
   "bugs": {
     "url": "https://github.com/danielitoCode/compose_svelted/issues"
   },
-
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
@@ -23,48 +21,40 @@
     },
     "./baseline.css": "./dist/core/styles/baseline.css"
   },
-
   "files": [
     "dist"
   ],
-
   "peerDependencies": {
     "svelte": "^5.0.0"
   },
-
   "sideEffects": [
     "**/*.css"
   ],
-
   "workspaces": [
     "playground"
   ],
-
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "package": "svelte-package",
     "prepublishOnly": "npm run package",
-
-    "dev:playground": "npm run dev --workspace=playground"
+    "dev:playground": "npm run dev --workspace=playground",
+    "playground:dev": "npm --prefix playground run dev",
+    "playground:build": "npm --prefix playground run build",
+    "playground:check": "npm --prefix playground run check"
   },
-
   "devDependencies": {
     "@sveltejs/package": "^2.3.1",
     "@sveltejs/vite-plugin-svelte": "^6.2.1",
     "@types/node": "^24.10.1",
-
     "svelte": "^5.43.8",
     "svelte-check": "^4.3.4",
     "typescript": "~5.9.3",
-
     "vite": "npm:rolldown-vite@7.2.5"
   },
-
   "overrides": {
     "vite": "npm:rolldown-vite@7.2.5"
   },
-
   "keywords": [
     "svelte",
     "svelte-components",

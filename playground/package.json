@@ -2,15 +2,13 @@
   "name": "compose-svelted-playground",
   "private": true,
   "type": "module",
-
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
     "check": "svelte-check --tsconfig ./tsconfig.app.json && tsc -p tsconfig.node.json"
   },
-
   "dependencies": {
-    "@danielito1996/compose-svelted": "workspace:*"
+    "@danielito1996/compose-svelted": "file:.."
   }
 }
