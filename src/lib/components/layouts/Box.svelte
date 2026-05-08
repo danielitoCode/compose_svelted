@@ -1,43 +1,54 @@
 <script lang="ts">
     import { Modifier } from "../../core/modifier/Modifier";
+    import { Alignment } from "./Alignment";
     import type { BoxAlignment } from "./Alignment";
-    import {resolveBoxAlignment} from "./resolveAlignment";
+    import { resolveBoxPlaceItems } from "./resolveAlignment";
 
     export let modifier: Modifier = Modifier.empty();
-    export let contentAlignment: BoxAlignment | undefined = undefined;
 
     /**
-     * Box-level alignment:
-     * Alinea TODOS los hijos (Compose Box behavior)
+     * Alineación por defecto para TODOS los hijos del Box.
+     * Equivalente a contentAlignment en Jetpack Compose.
+     *
+     * Cada hijo puede sobreescribir con Modifier.align(Alignment.XXX).
+     *
+     * @default Alignment.TopStart
      */
-    function contentAlignmentStyle(alignment: BoxAlignment): string {
-        const [h, v = h] = alignment.split(" ");
+    export let contentAlignment: BoxAlignment = Alignment.TopStart;
 
-        const justify =
-            h === "flex-start" ? "flex-start" :
-                h === "flex-end" ? "flex-end" :
-                    "center";
-
-        const align =
-            v === "flex-start" ? "flex-start" :
-                v === "flex-end" ? "flex-end" :
-                    "center";
-
-        return `
-      display:flex;
-      justify-content:${justify};
-      align-items:${align};
-    `;
-    }
+    /**
+     * CSS Grid place-items resuelto desde el contentAlignment.
+     * Formato: "<vertical> <horizontal>"
+     */
+    $: placeItems = resolveBoxPlaceItems(contentAlignment);
 </script>
 
+<!--
+    Box — contenedor de apilamiento (stack), fiel a Jetpack Compose.
+
+    Implementación:
+    • display: grid con grid-template-areas: 'stack'
+    • El CSS interno fuerza a todos los hijos directos a usar grid-area: 'stack'
+    • Esto hace que todos los hijos se solapen en la misma celda.
+    • place-items controla la alineación por defecto de TODOS los hijos.
+    • Cada hijo puede sobreescribir con place-self via Modifier.align().
+-->
 <div
-        class="compose-box"
-        style={`
-    position:relative;
-    ${contentAlignment ? contentAlignmentStyle(contentAlignment) : ""}
-    ${modifier.toStyle()}
-  `}
+    class="cs-box"
+    style={`
+        display: grid;
+        grid-template-areas: 'stack';
+        place-items: ${placeItems};
+        position: relative;
+        ${modifier.toStyle()}
+    `}
 >
     <slot />
 </div>
+
+<style>
+    /* Fuerza a todos los hijos directos a apilarse en la misma área de grid */
+    .cs-box > :global(*) {
+        grid-area: stack;
+    }
+</style>

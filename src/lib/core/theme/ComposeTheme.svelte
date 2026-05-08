@@ -17,6 +17,21 @@
     $: css = $resolvedTheme ? themeToCssVars($resolvedTheme) : "";
 </script>
 
-<div style={css}>
+<!--
+    ComposeTheme — Proveedor de tokens y estilos globales.
+    Aplica las variables CSS y establece el fondo/color base siguiendo el esquema de Material 3.
+    Ocupa el 100% para asegurar que los fondos cubran toda la pantalla.
+-->
+<div
+    style={`
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        background-color: var(--md-sys-color-surface, white);
+        color: var(--md-sys-color-onSurface, black);
+        ${css}
+    `}
+>
     <slot />
 </div>

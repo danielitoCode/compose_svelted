@@ -12,12 +12,11 @@
         component: any;
     }[];
 
-    // 🔹 Transición única, Compose-like
+    // Transición única, Compose-like
     export let transition: ContentTransition = fade(320);
 
     export let modifier: Modifier = Modifier.empty();
 
-    // 🔹 Store interno (estable)
     const stackStore = navController._getStackStore();
 
     $: stack = $stackStore;
@@ -27,7 +26,11 @@
         routes.find(r => r.route.path === currentEntry?.route);
 </script>
 
-<div style={modifier.toStyle()}>
+<!--
+    NavHost ocupa todo el espacio disponible del padre.
+    Cada screen registrada recibe navController y navBackStackEntry como props.
+-->
+<div style={`width:100%;height:100%;position:relative;${modifier.toStyle()}`}>
     <AnimatedContent
             targetState={currentEntry?.route}
             transition={transition}

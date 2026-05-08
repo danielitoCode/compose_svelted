@@ -1,13 +1,32 @@
 <script lang="ts">
-  import { AppRoot, Column, Text, Button } from '@danielito1996/compose-svelted';
+  import {
+    AppRoot,
+    ComposeTheme,
+    NavHost,
+    rememberNavController,
+    composable
+  } from '@danielito1996/compose-svelted';
 
-  let count = 0;
+  // Pantallas
+  import Home from './screens/Home.svelte';
+  import LayoutsMenu from './screens/LayoutsMenu.svelte';
+  import BoxPlayground from './screens/BoxPlayground.svelte';
+  import RowPlayground from './screens/RowPlayground.svelte';
+  import ColumnPlayground from './screens/ColumnPlayground.svelte';
+
+  const navController = rememberNavController('home');
+
+  const routes = [
+    composable({ path: 'home' }, () => Home),
+    composable({ path: 'layouts' }, () => LayoutsMenu),
+    composable({ path: 'box-playground' }, () => BoxPlayground),
+    composable({ path: 'row-playground' }, () => RowPlayground),
+    composable({ path: 'column-playground' }, () => ColumnPlayground),
+  ];
 </script>
 
-<AppRoot>
-  <Column gap={12} style="padding: 24px; max-width: 520px; margin: 0 auto;">
-    <Text text="Compose Svelted Playground" />
-    <Text text={`Clicks: ${count}`} />
-    <Button label="Click me" onClick={() => count++} />
-  </Column>
-</AppRoot>
+<ComposeTheme mode="system">
+  <AppRoot>
+    <NavHost {navController} {routes} />
+  </AppRoot>
+</ComposeTheme>

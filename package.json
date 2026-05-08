@@ -34,16 +34,19 @@
     "playground"
   ],
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
+    "dev": "npm run playground:dev",
+    "build": "npm run package",
+    "check": "svelte-check --tsconfig ./playground/tsconfig.app.json && tsc -p ./playground/tsconfig.node.json",
     "package": "svelte-package",
     "prepublishOnly": "npm run package",
-    "dev:playground": "npm run dev --workspace=playground",
+
+    "dev:playground": "npm --prefix playground run dev",
     "playground:dev": "npm --prefix playground run dev",
     "playground:build": "npm --prefix playground run build",
-    "playground:check": "npm --prefix playground run check"
+    "playground:check": "npm run check"
   },
   "devDependencies": {
+    "@tsconfig/svelte": "^5.0.5",
     "@sveltejs/package": "^2.3.1",
     "@sveltejs/vite-plugin-svelte": "^6.2.1",
     "@types/node": "^24.10.1",

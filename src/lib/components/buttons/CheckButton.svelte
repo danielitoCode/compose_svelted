@@ -3,7 +3,7 @@
     import { ColorScheme } from "../../core/theme/ColorScheme";
     import { resolveColor } from "../../core/theme/resolve";
     import { RoundedCornerShape } from "../../core/shapes/RoundedCornerShape";
-    import AnimatedVisibility from "../motion/AnimatedVisibility.svelte";
+    import AnimatedVisibility from "../motion/motion/AnimatedVisibility.svelte";
     import { scaleIn, scaleOut } from "../../core/motion/transitions";
     import type { Shape } from "../../core/shapes/Shape";
 

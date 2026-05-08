@@ -14,6 +14,7 @@
     export let label = "";
     export let placeholder = "";
     export let supportingText: string | undefined;
+    export let floatingLabelScale = 0.72;
 
     export let singleLine = true;
     export let textStyle: TextStyleToken = "bodyLarge";
@@ -111,7 +112,7 @@
               top:${floating ? "2px" : "50%"};
               transform:
                 translateY(${floating ? "0" : "-50%"})
-                scale(${floating ? 0.72 : 1});
+                scale(${floating ? floatingLabelScale : 1});
               color:${labelColor};
             `}
                     >

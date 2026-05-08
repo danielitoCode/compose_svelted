@@ -1,10 +1,10 @@
-import {BoxAlignment} from "./Alignment";
+import type { BoxAlignment } from './Alignment';
+import { resolveBoxPlaceSelf } from './resolveAlignment';
 
+/**
+ * @deprecated Usar resolveBoxPlaceSelf desde resolveAlignment.ts
+ * Mantenido por compatibilidad interna durante la transición.
+ */
 export function resolveFlexAlignSelf(alignment: BoxAlignment): string {
-    const parts = alignment.split(" ");
-    const vertical = parts[1] ?? parts[0];
-
-    if (vertical === "flex-start") return "align-self:flex-start;";
-    if (vertical === "flex-end") return "align-self:flex-end;";
-    return "align-self:center;";
+    return resolveBoxPlaceSelf(alignment);
 }

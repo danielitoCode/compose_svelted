@@ -1,10 +1,12 @@
 import { resolveColor } from "../theme/resolve";
-import type { BoxAlignment } from "../../components/layouts/Alignment";
+import type { BoxAlignment, HorizontalAlignment, VerticalAlignment } from "../../components/layouts/Alignment";
+import { resolveBoxPlaceSelf, resolveColumnAlignSelf, resolveRowAlignSelf } from "../../components/layouts/resolveAlignment";
 import type { Shape } from "../shapes/Shape";
 import type { ColorToken } from "../theme/ColorScheme";
 
 export type ModifierMeta = {
-    align?: BoxAlignment;
+    /** Alineación de este hijo dentro de su contenedor (place-self en grid, align-self en flex) */
+    align?: BoxAlignment | HorizontalAlignment | VerticalAlignment;
 };
 
 export type ModifierEntry = {
@@ -32,15 +34,18 @@ export class ModifierImpl {
     }
 
     fillMaxWidth(): ModifierImpl {
-        return this.then(new ModifierImpl([{ style: "width:100%;" }]));
+        // En flexbox, width:100% y align-self:stretch aseguran ocupar el ancho
+        return this.then(new ModifierImpl([{ style: "width:100%;align-self:stretch;" }]));
     }
 
     fillMaxHeight(): ModifierImpl {
-        return this.then(new ModifierImpl([{ style: "height:100%;" }]));
+        // En flexbox (como Row), align-self:stretch es clave para llenar el alto transversal
+        // height:100% ayuda en contextos de bloque o flex-direction: column
+        return this.then(new ModifierImpl([{ style: "height:100%;align-self:stretch;" }]));
     }
 
     fillMaxSize(): ModifierImpl {
-        return this.then(new ModifierImpl([{ style: "width:100%;height:100%;" }]));
+        return this.then(new ModifierImpl([{ style: "width:100%;height:100%;align-self:stretch;" }]));
     }
 
     width(value: number | string, unit = "px"): ModifierImpl {
@@ -130,7 +135,11 @@ export class ModifierImpl {
         ]));
     }
 
-    align(alignment: BoxAlignment): ModifierImpl {
+    /**
+     * Sobreescribe la alineación de este hijo dentro de un contenedor (Box, Column, Row).
+     * Equivalente a Modifier.align() en Jetpack Compose.
+     */
+    align(alignment: BoxAlignment | HorizontalAlignment | VerticalAlignment): ModifierImpl {
         return this.then(new ModifierImpl([{ meta: { align: alignment } }]));
     }
 
@@ -153,7 +162,21 @@ export class ModifierImpl {
     }
 
     toStyle(): string {
-        return this.entries.map((entry) => entry.style ?? "").join("");
+        const meta = this.getMeta();
+        let alignStyle = "";
+
+        if (meta.align) {
+            const a = meta.align;
+            if (a._brand === 'BoxAlignment') {
+                alignStyle = resolveBoxPlaceSelf(a as BoxAlignment);
+            } else if (a._brand === 'HorizontalAlignment') {
+                alignStyle = resolveColumnAlignSelf(a as HorizontalAlignment);
+            } else if (a._brand === 'VerticalAlignment') {
+                alignStyle = resolveRowAlignSelf(a as VerticalAlignment);
+            }
+        }
+
+        return this.entries.map((entry) => entry.style ?? "").join("") + alignStyle;
     }
 
     toClass(): string {

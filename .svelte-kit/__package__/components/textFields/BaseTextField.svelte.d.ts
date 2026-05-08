@@ -22,6 +22,7 @@ declare const BaseTextField: $$__sveltets_2_IsomorphicComponent<{
     label?: string;
     placeholder?: string;
     supportingText: string | undefined;
+    floatingLabelScale?: number;
     singleLine?: boolean;
     textStyle?: TextStyleToken;
     modifier?: Modifier;

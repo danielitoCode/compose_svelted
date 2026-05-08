@@ -1,52 +1,58 @@
-/* =========================
- * Box (position:absolute)
- * ========================= */
+/**
+ * resolveAlignment.ts
+ *
+ * Funciones puras que traducen los tokens de Alignment a CSS inline.
+ * Trabajan con el nuevo shape de BoxAlignment (objeto con .horizontal / .vertical).
+ */
 
-import {ModifierImpl} from "../../core/modifier/ModifierImpl";
-import {BoxAlignment} from "./Alignment";
+import type { BoxAlignment, HorizontalAlignment, VerticalAlignment } from './Alignment';
 
-export function resolveBoxAlignment(alignment?: BoxAlignment): string {
-    if (!alignment) return "";
+// ─── Box (CSS Grid stacking) ──────────────────────────────────────────────────
 
-    const parts = alignment.split(" ");
-    const h = parts[0];
-    const v = parts[1] ?? parts[0];
-
-    let style = "position:absolute;";
-
-    // Vertical
-    if (v === "flex-start") style += "top:0;";
-    else if (v === "flex-end") style += "bottom:0;";
-    else style += "top:50%;";
-
-    // Horizontal
-    if (h === "flex-start") style += "left:0;";
-    else if (h === "flex-end") style += "right:0;";
-    else style += "left:50%;";
-
-    if (h === "center" || v === "center") {
-        style += "transform:translate(-50%,-50%);";
-    }
-
-    return style;
+/**
+ * Resuelve el `place-items` de un Box stack container.
+ * CSS Grid: "align-items justify-items"
+ */
+export function resolveBoxPlaceItems(alignment: BoxAlignment): string {
+    // grid place-items = "<vertical> <horizontal>"
+    const v = resolveCssAlign(alignment.vertical);
+    const h = resolveCssAlign(alignment.horizontal);
+    return `${v} ${h}`;
 }
-/* =========================
- * Flex (Row / Column)
- * ========================= */
 
-export function resolveFlexAlignment(mod: ModifierImpl): string {
-    const align = mod.getMeta().align;
-    if (!align) return "";
+/**
+ * Resuelve el `place-self` de un hijo de Box que sobreescribe su alineación.
+ * Usado por Modifier.align() dentro de un Box.
+ */
+export function resolveBoxPlaceSelf(alignment: BoxAlignment): string {
+    const v = resolveCssAlign(alignment.vertical);
+    const h = resolveCssAlign(alignment.horizontal);
+    return `place-self:${v} ${h};`;
+}
 
-    const [horizontal] = align.split(" ");
+// ─── Flex (Column / Row cross-axis align-self) ────────────────────────────────
 
-    return `
-    align-self:${
-        horizontal === "center"
-            ? "center"
-            : horizontal === "flex-end"
-                ? "flex-end"
-                : "flex-start"
-    };
-  `;
+/**
+ * Resuelve `align-self` para un hijo de Column (eje horizontal).
+ */
+export function resolveColumnAlignSelf(alignment: HorizontalAlignment): string {
+    return `align-self:${alignment.cssValue};`;
+}
+
+/**
+ * Resuelve `align-self` para un hijo de Row (eje vertical).
+ */
+export function resolveRowAlignSelf(alignment: VerticalAlignment): string {
+    return `align-self:${alignment.cssValue};`;
+}
+
+// ─── Internos ─────────────────────────────────────────────────────────────────
+
+/** Normaliza los valores CSS de flex a los equivalentes de grid */
+function resolveCssAlign(value: string): string {
+    switch (value) {
+        case 'flex-start': return 'start';
+        case 'flex-end':   return 'end';
+        default:           return 'center';
+    }
 }

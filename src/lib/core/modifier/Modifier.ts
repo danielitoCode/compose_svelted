@@ -1,5 +1,5 @@
 import { ModifierImpl } from "./ModifierImpl";
-import type { BoxAlignment } from "../../components/layouts/Alignment";
+import type { BoxAlignment, HorizontalAlignment, VerticalAlignment } from "../../components/layouts/Alignment";
 import type { Shape } from "../shapes/Shape";
 import type { ColorToken } from "../theme/ColorScheme";
 
@@ -47,7 +47,7 @@ export const Modifier = {
         return new ModifierImpl().horizontalScroll(enabled);
     },
 
-    align(alignment: BoxAlignment): ModifierImpl {
+    align(alignment: BoxAlignment | HorizontalAlignment | VerticalAlignment): ModifierImpl {
         return new ModifierImpl().align(alignment);
     },
 

@@ -1,6 +1,6 @@
 <script lang="ts">
-    import type { AnimationSpec } from "../../core/motion/AnimationSpec";
-    import { fadeIn, fadeOut } from "../../core/motion/transitions";
+    import type { AnimationSpec } from "../../../core/motion/AnimationSpec";
+    import { fadeIn, fadeOut } from "../../../core/motion/transitions";
 
     export let visible: boolean;
 

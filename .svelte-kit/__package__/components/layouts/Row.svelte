@@ -31,13 +31,13 @@
     ${modifier.toStyle()}
   `}
 >
-    <slot let:modifier>
+    <slot let:modifier={itemModifier}>
         <div
                 style={`
-      ${modifier?.getMeta().align
-        ? resolveFlexAlignSelf(modifier.getMeta().align)
+      ${itemModifier?.getMeta().align
+        ? resolveFlexAlignSelf(itemModifier.getMeta().align)
         : ""}
-      ${modifier?.toStyle()}
+      ${itemModifier?.toStyle()}
     `}
         >
             <slot />

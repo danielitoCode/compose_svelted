@@ -43,6 +43,7 @@
     <BaseTextField
             value={value}
             supportingText={supportingText}
+            floatingLabelScale={floatingLabelScale}
             density={density}
             readOnly={readOnly}
             enabled={enabled}

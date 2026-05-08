@@ -1,49 +1,74 @@
-/* compose-svelted baseline.css */
+/**
+ * compose-svelted — baseline.css
+ *
+ * Este CSS establece la base mínima necesaria para que los layouts de
+ * compose-svelted funcionen con la filosofía de Jetpack Compose:
+ *
+ *  • El viewport es la unidad raíz — html/body/app ocupan exactamente 100%.
+ *  • NO hay scroll por defecto — el overflow está bloqueado en el root.
+ *    El scroll solo ocurre cuando el layout o Modifier lo habilitan
+ *    explícitamente (verticalScroll, LazyColumn, LazyRow).
+ *  • Los layouts controlan tamaños y alineaciones — el CSS global no impone
+ *    ninguna opinión sobre disposición de hijos.
+ *  • box-sizing: border-box universal — padding no suma al ancho declarado.
+ *  • min-width/min-height: 0 universal — los hijos flex/grid no desbordan
+ *    si su contenido es mayor que el espacio asignado.
+ */
 
-/* 1. Modelo de caja consistente */
-*, *::before, *::after {
+/* ── 1. Box model consistente ──────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
     box-sizing: border-box;
-}
-
-/* 2. Root layout estable */
-html, body {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    height: 100%;
-}
-
-/* 3. Host de la app */
-#app, body > div {
-    width: 100%;
-    height: 100%;
-}
-
-/* 4. Prevención de colapso en flex */
-* {
+    /* Evita que hijos flex/grid ignoren su tamaño asignado */
     min-width: 0;
     min-height: 0;
 }
 
-/* 5. Soporte para absolute alignment */
-.compose-relative {
-    position: relative;
+/* ── 2. Root de viewport — sin scroll ─────────────────────────────────────── */
+html {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    /* Bloquea scroll: los layouts deciden si se scrollea, no el browser */
+    overflow: hidden;
 }
 
-/* 6. Clickable base */
-.compose-clickable {
-    cursor: pointer;
-    user-select: none;
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
 }
 
-/* 7. Evitar interferencia de estilos externos */
-img, svg, video, canvas {
+/* ── 3. Host del app ───────────────────────────────────────────────────────── */
+#app {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+/* ── 4. Imágenes y media — no interfieren con el layout ──────────────────── */
+img,
+svg,
+video,
+canvas {
     display: block;
     max-width: 100%;
 }
 
-.compose-lazy-row,
-.compose-lazy-column {
-    min-width: 0;
-    min-height: 0;
+/* ── 5. Utilidades internas ────────────────────────────────────────────────── */
+
+/* Usado por Modifier.clickable() */
+.cs-clickable {
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+/* Ancla para capas absolutas internas (Box, Scaffold FAB, etc.) */
+.cs-relative {
+    position: relative;
 }

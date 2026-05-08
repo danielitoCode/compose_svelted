@@ -9,6 +9,12 @@ export type ModifierEntry = {
     style?: string;
     meta?: ModifierMeta;
 };
+type PaddingValue = number | {
+    top?: number;
+    bottom?: number;
+    start?: number;
+    end?: number;
+};
 export declare class ModifierImpl {
     private readonly entries;
     constructor(entries?: ModifierEntry[]);
@@ -16,17 +22,24 @@ export declare class ModifierImpl {
     fillMaxWidth(): ModifierImpl;
     fillMaxHeight(): ModifierImpl;
     fillMaxSize(): ModifierImpl;
+    width(value: number | string, unit?: string): ModifierImpl;
+    height(value: number | string, unit?: string): ModifierImpl;
+    size(value: number | string, unit?: string): ModifierImpl;
     weight(weight: number, fill?: boolean): ModifierImpl;
-    padding(value: number): ModifierImpl;
+    padding(valueOrParams?: PaddingValue, unit?: string): ModifierImpl;
     paddingHorizontal(value: number): ModifierImpl;
     paddingVertical(value: number): ModifierImpl;
-    marginTop(value: number): ModifierImpl;
+    marginTop(value: number, unit?: string): ModifierImpl;
     background(color: ColorToken | string): ModifierImpl;
     border(width: number, color: string, shape?: Shape): ModifierImpl;
     clip(shape: Shape): ModifierImpl;
+    offset(x: number, y: number): ModifierImpl;
     align(alignment: BoxAlignment): ModifierImpl;
-    clickable(): ModifierImpl;
+    clickable(_onClick?: () => void): ModifierImpl;
+    verticalScroll(enabled?: boolean): ModifierImpl;
+    horizontalScroll(enabled?: boolean): ModifierImpl;
     toStyle(): string;
     toClass(): string;
     getMeta(): ModifierMeta;
 }
+export {};

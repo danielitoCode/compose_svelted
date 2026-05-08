@@ -97,6 +97,27 @@ Navigation without external routers.
 - Core V2 closed
 - Core V3 planned
 
+## Project Zones
+
+- `src/lib`: publishable library source.
+- `playground`: local app for developing and validating the library against live source changes.
+- `src/App.svelte` and `src/samples`: legacy examples, not part of the active library/playground workflow.
+
+## Development Commands
+
+```bash
+npm install
+npm run dev
+npm run build
+npm run check
+npm run playground:build
+```
+
+- `npm run dev`: starts the playground.
+- `npm run build`: packages the library into `dist/`.
+- `npm run check`: type-checks the playground against the current library source.
+- `playground/vite.config.ts` aliases `@danielito1996/compose-svelted` to `src/lib/index.ts`, so playground changes reflect library source immediately.
+
 ---
 
 ## 🔮 Roadmap

@@ -6,7 +6,7 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "check": "svelte-check --tsconfig ./tsconfig.app.json && tsc -p tsconfig.node.json"
+    "check": "npm exec -- svelte-check --tsconfig ./tsconfig.app.json && npm exec -- tsc -p ./tsconfig.node.json"
   },
   "dependencies": {
     "@danielito1996/compose-svelted": "file:.."

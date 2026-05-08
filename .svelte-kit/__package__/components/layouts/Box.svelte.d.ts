@@ -13,11 +13,20 @@ interface $$__sveltets_2_IsomorphicComponent<Props extends Record<string, any> =
     };
     z_$$bindings?: Bindings;
 }
-declare const Box: $$__sveltets_2_IsomorphicComponent<{
+type $$__sveltets_2_PropsWithChildren<Props, Slots> = Props & (Slots extends {
+    default: any;
+} ? Props extends Record<string, never> ? any : {
+    children?: any;
+} : {});
+declare const Box: $$__sveltets_2_IsomorphicComponent<$$__sveltets_2_PropsWithChildren<{
     modifier?: Modifier;
     contentAlignment?: BoxAlignment | undefined;
 }, {
+    default: {};
+}>, {
     [evt: string]: CustomEvent<any>;
-}, {}, {}, string>;
+}, {
+    default: {};
+}, {}, string>;
 type Box = InstanceType<typeof Box>;
 export default Box;
