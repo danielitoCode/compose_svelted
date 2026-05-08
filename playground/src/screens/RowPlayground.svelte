@@ -57,7 +57,7 @@
     </svelte:fragment>
 
     <Column modifier={Modifier.fillMaxSize().padding(24)} verticalArrangement={Arrangement.spacedBy(32)}>
-        
+
         <!-- Info Card -->
         <Surface color="secondary" modifier={Modifier.fillMaxWidth().padding(20).clip({ toCssBorderRadius: () => '16px' })}>
             <Row horizontalArrangement={Arrangement.SpaceBetween} verticalAlignment={Alignment.CenterVertically}>
@@ -77,18 +77,20 @@
         </Surface>
 
         <!-- Preview Area -->
-        <Column verticalArrangement={Arrangement.spacedBy(8)}>
+        <Column verticalArrangement={Arrangement.spacedBy(8)} modifier={Modifier.fillMaxWidth()}>
             <Text textStyle="labelLarge" color="outline">PREVISUALIZACIÓN</Text>
-            <Surface color="surfaceVariant" modifier={Modifier.fillMaxWidth().height(200).clip({ toCssBorderRadius: () => '24px' }).border(1, "#DEE1E6")}>
-                <Row
-                    modifier={Modifier.fillMaxSize()}
-                    horizontalArrangement={horizontalArrangement}
-                    verticalAlignment={verticalAlignment}
-                >
-                    <Surface modifier={Modifier.size(80).background(ColorScheme.Primary).clip({ toCssBorderRadius: () => '12px' })} />
-                    <Surface modifier={Modifier.size(60).background(ColorScheme.Secondary).clip({ toCssBorderRadius: () => '12px' })} />
-                    <Surface modifier={Modifier.size(100).background(ColorScheme.Outline).clip({ toCssBorderRadius: () => '12px' })} />
-                </Row>
+            <Surface color="surfaceVariant" modifier={Modifier.fillMaxWidth().height(260).clip({ toCssBorderRadius: () => '24px' }).border(1, "#DEE1E6").padding(12)}>
+                <div class="preview-canvas">
+                    <Row
+                            modifier={Modifier.fillMaxSize().clip({ toCssBorderRadius: () => '12px' }).padding(10)}
+                            horizontalArrangement={horizontalArrangement}
+                            verticalAlignment={verticalAlignment}
+                    >
+                        <Surface modifier={Modifier.size(88).background(ColorScheme.Primary).clip({ toCssBorderRadius: () => '12px' }).border(2, 'rgba(255,255,255,0.35)')} />
+                        <Surface modifier={Modifier.size(64).background(ColorScheme.Secondary).clip({ toCssBorderRadius: () => '12px' }).border(2, 'rgba(255,255,255,0.35)')} />
+                        <Surface modifier={Modifier.size(104).background(ColorScheme.Tertiary).clip({ toCssBorderRadius: () => '12px' }).border(2, 'rgba(255,255,255,0.35)')} />
+                    </Row>
+                </div>
             </Surface>
         </Column>
 
@@ -99,10 +101,10 @@
                 <div class="control-grid">
                     {#each arrangements as arr}
                         <Button
-                            onClick={() => horizontalArrangement = arr.value}
-                            color={horizontalArrangement.justifyContent === arr.value.justifyContent && horizontalArrangement.gap === arr.value.gap ? "primary" : "surfaceVariant"}
-                            onColor={horizontalArrangement.justifyContent === arr.value.justifyContent && horizontalArrangement.gap === arr.value.gap ? "onPrimary" : "onSurfaceVariant"}
-                            modifier={Modifier.fillMaxWidth()}
+                                onClick={() => horizontalArrangement = arr.value}
+                                color={horizontalArrangement.justifyContent === arr.value.justifyContent && horizontalArrangement.gap === arr.value.gap ? "primary" : "surfaceVariant"}
+                                onColor={horizontalArrangement.justifyContent === arr.value.justifyContent && horizontalArrangement.gap === arr.value.gap ? "onPrimary" : "onSurfaceVariant"}
+                                modifier={Modifier.fillMaxWidth()}
                         >
                             {arr.label}
                         </Button>
@@ -115,10 +117,10 @@
                 <div class="control-grid">
                     {#each alignments as align}
                         <Button
-                            onClick={() => verticalAlignment = align.value}
-                            color={verticalAlignment === align.value ? "primary" : "surfaceVariant"}
-                            onColor={verticalAlignment.cssValue === align.value.cssValue ? "onPrimary" : "onSurfaceVariant"}
-                            modifier={Modifier.fillMaxWidth()}
+                                onClick={() => verticalAlignment = align.value}
+                                color={verticalAlignment === align.value ? "primary" : "surfaceVariant"}
+                                onColor={verticalAlignment.cssValue === align.value.cssValue ? "onPrimary" : "onSurfaceVariant"}
+                                modifier={Modifier.fillMaxWidth()}
                         >
                             {align.label}
                         </Button>
@@ -135,5 +137,19 @@
         grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
         gap: 12px;
         width: 100%;
+    }
+
+    .preview-canvas {
+        width: 100%;
+        height: 100%;
+        border-radius: 16px;
+        border: 1px dashed rgba(255, 255, 255, 0.25);
+        background:
+                linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+                linear-gradient(0deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+                radial-gradient(circle at top right, rgba(255, 115, 47, 0.18), transparent 40%),
+                #15161a;
+        background-size: 24px 24px, 24px 24px, auto, auto;
+        overflow: hidden;
     }
 </style>

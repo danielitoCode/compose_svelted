@@ -49,7 +49,7 @@
     </svelte:fragment>
 
     <Column modifier={Modifier.fillMaxSize().padding(24)} verticalArrangement={Arrangement.spacedBy(32)}>
-        
+
         <!-- Info Card -->
         <Surface color="secondary" modifier={Modifier.fillMaxWidth().padding(20).clip({ toCssBorderRadius: () => '16px' })}>
             <Column verticalArrangement={Arrangement.spacedBy(8)}>
@@ -59,23 +59,25 @@
         </Surface>
 
         <!-- Preview Area -->
-        <Column verticalArrangement={Arrangement.spacedBy(8)} modifier={Modifier.weight(1)}>
+        <Column verticalArrangement={Arrangement.spacedBy(8)} modifier={Modifier.fillMaxWidth().weight(1)}>
             <Text textStyle="labelLarge" color="outline">PREVISUALIZACIÓN (STACK)</Text>
-            <Surface color="surfaceVariant" modifier={Modifier.fillMaxSize().clip({ toCssBorderRadius: () => '24px' }).border(1, "#DEE1E6")}>
-                <Box
-                    modifier={Modifier.fillMaxSize()}
-                    contentAlignment={selectedAlignment}
-                >
-                    <Surface modifier={Modifier.size(160).background(ColorScheme.Primary).clip({ toCssBorderRadius: () => '16px' }).padding(16)}>
-                         <Text color="onPrimary" textStyle="labelMedium">Fondo</Text>
-                    </Surface>
-                    <Surface modifier={Modifier.size(110).background(ColorScheme.Secondary).clip({ toCssBorderRadius: () => '16px' }).padding(12)}>
-                        <Text color="onSecondary" textStyle="labelSmall">Medio</Text>
-                    </Surface>
-                    <Surface modifier={Modifier.size(60).background(ColorScheme.Tertiary).clip({ toCssBorderRadius: () => '16px' }).padding(8)}>
-                         <Text color="onTertiary" textStyle="labelSmall">Top</Text>
-                    </Surface>
-                </Box>
+            <Surface color="surfaceVariant" modifier={Modifier.fillMaxSize().clip({ toCssBorderRadius: () => '24px' }).border(1, "#DEE1E6").padding(12)}>
+                <div class="preview-canvas">
+                    <Box
+                            modifier={Modifier.fillMaxSize()}
+                            contentAlignment={selectedAlignment}
+                    >
+                        <Surface modifier={Modifier.size(176).background(ColorScheme.Primary).clip({ toCssBorderRadius: () => '16px' }).padding(16).border(2, 'rgba(255,255,255,0.35)')}>
+                            <Text color="onPrimary" textStyle="labelMedium">Fondo</Text>
+                        </Surface>
+                        <Surface modifier={Modifier.size(124).background(ColorScheme.Secondary).clip({ toCssBorderRadius: () => '16px' }).padding(12).border(2, 'rgba(255,255,255,0.35)')}>
+                            <Text color="onSecondary" textStyle="labelSmall">Medio</Text>
+                        </Surface>
+                        <Surface modifier={Modifier.size(80).background(ColorScheme.Tertiary).clip({ toCssBorderRadius: () => '16px' }).padding(8).border(2, 'rgba(255,255,255,0.35)')}>
+                            <Text color="onTertiary" textStyle="labelSmall">Top</Text>
+                        </Surface>
+                    </Box>
+                </div>
             </Surface>
         </Column>
 
@@ -85,10 +87,10 @@
             <div class="control-grid">
                 {#each alignments as align}
                     <Button
-                        onClick={() => selectedAlignment = align.value}
-                        color={selectedAlignment.horizontal === align.value.horizontal && selectedAlignment.vertical === align.value.vertical ? "primary" : "surfaceVariant"}
-                        onColor={selectedAlignment.horizontal === align.value.horizontal && selectedAlignment.vertical === align.value.vertical ? "onPrimary" : "onSurfaceVariant"}
-                        modifier={Modifier.fillMaxWidth()}
+                            onClick={() => selectedAlignment = align.value}
+                            color={selectedAlignment.horizontal === align.value.horizontal && selectedAlignment.vertical === align.value.vertical ? "primary" : "surfaceVariant"}
+                            onColor={selectedAlignment.horizontal === align.value.horizontal && selectedAlignment.vertical === align.value.vertical ? "onPrimary" : "onSurfaceVariant"}
+                            modifier={Modifier.fillMaxWidth()}
                     >
                         {align.label}
                     </Button>
@@ -104,5 +106,19 @@
         grid-template-columns: repeat(3, 1fr);
         gap: 12px;
         width: 100%;
+    }
+
+    .preview-canvas {
+        width: 100%;
+        height: 100%;
+        border-radius: 16px;
+        border: 1px dashed rgba(255, 255, 255, 0.25);
+        background:
+                linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+                linear-gradient(0deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+                radial-gradient(circle at top right, rgba(255, 115, 47, 0.20), transparent 40%),
+                #15161a;
+        background-size: 24px 24px, 24px 24px, auto, auto;
+        overflow: hidden;
     }
 </style>

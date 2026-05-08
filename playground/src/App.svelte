@@ -8,11 +8,11 @@
   } from '@danielito1996/compose-svelted';
 
   // Pantallas
-  import Home from './screens/Home.svelte';
-  import LayoutsMenu from './screens/LayoutsMenu.svelte';
-  import BoxPlayground from './screens/BoxPlayground.svelte';
   import RowPlayground from './screens/RowPlayground.svelte';
   import ColumnPlayground from './screens/ColumnPlayground.svelte';
+  import Home from "./screens/Home.svelte";
+  import LayoutsMenu from "./screens/LayoutsMenu.svelte";
+  import BoxPlayground from "./screens/BoxPlayground.svelte";
 
   const navController = rememberNavController('home');
 

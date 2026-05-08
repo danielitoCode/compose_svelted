@@ -58,24 +58,26 @@
 
     <Row modifier={Modifier.fillMaxSize().padding(24)} horizontalArrangement={Arrangement.spacedBy(32)}>
         <!-- View Area -->
-        <Column verticalArrangement={Arrangement.spacedBy(8)} modifier={Modifier.width(260).fillMaxHeight()}>
-             <Text textStyle="labelLarge" color="outline">PREVISUALIZACIÓN</Text>
-             <Surface color="surfaceVariant" modifier={Modifier.fillMaxSize().clip({ toCssBorderRadius: () => '24px' }).border(1, "#DEE1E6")}>
-                <Column
-                    modifier={Modifier.fillMaxSize()}
-                    verticalArrangement={verticalArrangement}
-                    horizontalAlignment={horizontalAlignment}
-                >
-                    <Surface modifier={Modifier.size(80).background(ColorScheme.Primary).clip({ toCssBorderRadius: () => '12px' })} />
-                    <Surface modifier={Modifier.size(60).background(ColorScheme.Secondary).clip({ toCssBorderRadius: () => '12px' })} />
-                    <Surface modifier={Modifier.size(100).background(ColorScheme.Tertiary).clip({ toCssBorderRadius: () => '12px' })} />
-                </Column>
+        <Column verticalArrangement={Arrangement.spacedBy(8)} modifier={Modifier.width(320).fillMaxHeight()}>
+            <Text textStyle="labelLarge" color="outline">PREVISUALIZACIÓN</Text>
+            <Surface color="surfaceVariant" modifier={Modifier.fillMaxSize().clip({ toCssBorderRadius: () => '24px' }).border(1, "#DEE1E6").padding(12)}>
+                <div class="preview-canvas">
+                    <Column
+                            modifier={Modifier.fillMaxSize().clip({ toCssBorderRadius: () => '12px' }).padding(10)}
+                            verticalArrangement={verticalArrangement}
+                            horizontalAlignment={horizontalAlignment}
+                    >
+                        <Surface modifier={Modifier.size(88).background(ColorScheme.Primary).clip({ toCssBorderRadius: () => '12px' }).border(2, 'rgba(255,255,255,0.35)')} />
+                        <Surface modifier={Modifier.size(64).background(ColorScheme.Secondary).clip({ toCssBorderRadius: () => '12px' }).border(2, 'rgba(255,255,255,0.35)')} />
+                        <Surface modifier={Modifier.size(104).background(ColorScheme.Tertiary).clip({ toCssBorderRadius: () => '12px' }).border(2, 'rgba(255,255,255,0.35)')} />
+                    </Column>
+                </div>
             </Surface>
         </Column>
 
         <!-- Controls Area -->
         <Column modifier={Modifier.weight(1).verticalScroll()} verticalArrangement={Arrangement.spacedBy(32)}>
-            
+
             <Surface color="secondary" modifier={Modifier.fillMaxWidth().padding(20).clip({ toCssBorderRadius: () => '16px' })}>
                 <Column verticalArrangement={Arrangement.spacedBy(8)}>
                     <Text textStyle="titleMedium" color="onSecondary">Configuración Actual</Text>
@@ -86,15 +88,15 @@
                 </Column>
             </Surface>
 
-             <Column verticalArrangement={Arrangement.spacedBy(16)}>
+            <Column verticalArrangement={Arrangement.spacedBy(16)}>
                 <Text textStyle="titleSmall">Vertical Arrangement (Y)</Text>
                 <div class="control-grid">
                     {#each arrangements as arr}
                         <Button
-                            onClick={() => verticalArrangement = arr.value}
-                            color={verticalArrangement.justifyContent === arr.value.justifyContent && verticalArrangement.gap === arr.value.gap ? "primary" : "surfaceVariant"}
-                            onColor={verticalArrangement.justifyContent === arr.value.justifyContent && verticalArrangement.gap === arr.value.gap ? "onPrimary" : "onSurfaceVariant"}
-                            modifier={Modifier.fillMaxWidth()}
+                                onClick={() => verticalArrangement = arr.value}
+                                color={verticalArrangement.justifyContent === arr.value.justifyContent && verticalArrangement.gap === arr.value.gap ? "primary" : "surfaceVariant"}
+                                onColor={verticalArrangement.justifyContent === arr.value.justifyContent && verticalArrangement.gap === arr.value.gap ? "onPrimary" : "onSurfaceVariant"}
+                                modifier={Modifier.fillMaxWidth()}
                         >
                             {arr.label}
                         </Button>
@@ -107,10 +109,10 @@
                 <div class="control-grid">
                     {#each alignments as align}
                         <Button
-                            onClick={() => horizontalAlignment = align.value}
-                            color={horizontalAlignment.cssValue === align.value.cssValue ? "primary" : "surfaceVariant"}
-                            onColor={horizontalAlignment.cssValue === align.value.cssValue ? "onPrimary" : "onSurfaceVariant"}
-                            modifier={Modifier.fillMaxWidth()}
+                                onClick={() => horizontalAlignment = align.value}
+                                color={horizontalAlignment.cssValue === align.value.cssValue ? "primary" : "surfaceVariant"}
+                                onColor={horizontalAlignment.cssValue === align.value.cssValue ? "onPrimary" : "onSurfaceVariant"}
+                                modifier={Modifier.fillMaxWidth()}
                         >
                             {align.label}
                         </Button>
@@ -127,5 +129,19 @@
         grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
         gap: 12px;
         width: 100%;
+    }
+
+    .preview-canvas {
+        width: 100%;
+        height: 100%;
+        border-radius: 16px;
+        border: 1px dashed rgba(255, 255, 255, 0.25);
+        background:
+                linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+                linear-gradient(0deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+                radial-gradient(circle at top right, rgba(255, 115, 47, 0.18), transparent 40%),
+                #15161a;
+        background-size: 24px 24px, 24px 24px, auto, auto;
+        overflow: hidden;
     }
 </style>
