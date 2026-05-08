@@ -72,8 +72,8 @@
                     <Surface modifier={Modifier.size(110).background(ColorScheme.Secondary).clip({ toCssBorderRadius: () => '16px' }).padding(12)}>
                         <Text color="onSecondary" textStyle="labelSmall">Medio</Text>
                     </Surface>
-                    <Surface modifier={Modifier.size(60).background(ColorScheme.Tertiary).clip({ toCssBorderRadius: () => '16px' }).padding(8)}>
-                         <Text color="onTertiary" textStyle="labelSmall">Top</Text>
+                    <Surface modifier={Modifier.size(60).background(ColorScheme.Outline).clip({ toCssBorderRadius: () => '16px' }).padding(8)}>
+                         <Text color="onSurface" textStyle="labelSmall">Top</Text>
                     </Surface>
                 </Box>
             </Surface>

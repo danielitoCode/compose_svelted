@@ -68,7 +68,7 @@
                 >
                     <Surface modifier={Modifier.size(80).background(ColorScheme.Primary).clip({ toCssBorderRadius: () => '12px' })} />
                     <Surface modifier={Modifier.size(60).background(ColorScheme.Secondary).clip({ toCssBorderRadius: () => '12px' })} />
-                    <Surface modifier={Modifier.size(100).background(ColorScheme.Tertiary).clip({ toCssBorderRadius: () => '12px' })} />
+                    <Surface modifier={Modifier.size(100).background(ColorScheme.Outline).clip({ toCssBorderRadius: () => '12px' })} />
                 </Column>
             </Surface>
         </Column>
