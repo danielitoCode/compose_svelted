@@ -14,6 +14,9 @@ export interface ColorScheme {
     surfaceVariant: string;
     onSurfaceVariant: string;
 
+    tertiary: string;
+    onTertiary: string;
+
     outline: string;
 
     error: string;

@@ -18,6 +18,9 @@ export const ColorScheme = {
     SurfaceVariant: "surfaceVariant",
     OnSurfaceVariant: "onSurfaceVariant",
 
+    Tertiary: "tertiary",
+    OnTertiary: "onTertiary",
+
     Outline: "outline",
 
     Error: "error",
