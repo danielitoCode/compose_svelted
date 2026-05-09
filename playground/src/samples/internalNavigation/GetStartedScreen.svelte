@@ -1,22 +1,11 @@
 <script lang="ts">
-    import {
-        ColorScheme,
-        Arrangement,
-        Box,
-        Column,
-        Modifier,
-        Text,
-        TextStyle,
-        CodeBlock,
-        Spacer
-    } from '@danielito1996/compose-svelted';
 
+    import {Alignment, Arrangement, Box, Column, Modifier, Text, TextStyle, CodeBlock, Spacer} from '@danielito1996/compose-svelted';
     export let modifier: Modifier = Modifier.empty();
 
 </script>
-
 <Column
-        modifier={ modifier
+        modifier={modifier
             .fillMaxSize()
             .padding(24)
             .verticalScroll(true)
@@ -24,13 +13,11 @@
         verticalArrangement={Arrangement.spacedBy(20)}
 >
     <!-- Header -->
-    <Text
-            color={ColorScheme.OnBackground}
-            textStyle={TextStyle.HeadlineLarge}>
+    <Text textStyle={TextStyle.HeadlineLarge}>
         🚀 Get Started
     </Text>
 
-    <Text color={ColorScheme.OnSurface} textStyle={TextStyle.BodyLarge}>
+    <Text textStyle={TextStyle.BodyLarge}>
         Esta guía te ayudará a comenzar con Compose Svelted de forma rápida.
         No necesitas conocer CSS avanzado ni configuraciones complejas.
         Si vienes de Jetpack Compose, el modelo te resultará familiar.
@@ -39,7 +26,7 @@
     <Spacer />
 
     <!-- Installation -->
-    <Text color={ColorScheme.OnBackground} textStyle={TextStyle.TitleLarge}>
+    <Text textStyle={TextStyle.TitleLarge}>
         📦 Instalación
     </Text>
 
@@ -53,7 +40,48 @@
 
     <Text textStyle={TextStyle.BodyLarge}>
         Compose Svelted está pensado para usarse directamente en proyectos Svelte
-        sin configuraciones adicionales.
+        sin configuraciones adicionales.:
+    </Text>
+
+    <Spacer />
+
+    <!-- Baseline CSS -->
+    <Text textStyle={TextStyle.TitleLarge}>
+        🎯 Baseline CSS (recomendado)
+    </Text>
+
+    <Text textStyle={TextStyle.BodyLarge}>
+        Para que <b>fillMaxSize()</b>, <b>AppRoot</b> y los layouts funcionen
+        de forma consistente en cualquier proyecto, recomendamos importar
+        el baseline oficial de la librería.
+    </Text>
+
+    <CodeBlock language="css">
+        {`/* src/main.ts o src/app.css */
+import "@danielito1996/compose-svelted/baseline.css";`}
+    </CodeBlock>
+
+    <Text textStyle={TextStyle.BodyLarge}>
+        Si prefieres no usar baseline completo, al menos define:
+        <b> html, body y #app al 100% de ancho/alto</b>.
+        Aun así, baseline.css es la opción recomendada. Diciendo esto, para usar la variante personalizada,
+        se debe sustituir el contenido del app.css , borrarlo completamente y pegar el siguiente código:
+
+        <CodeBlock language="css">
+            {`
+    *,:before,:after { box-sizing: border-box; }
+
+    html, body, #app {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+    }
+
+    body { font-family: Inter, system-ui, sans-serif; }
+        `}
+        </CodeBlock>
     </Text>
 
     <Spacer />
@@ -104,8 +132,7 @@
     </Text>
 
     <CodeBlock language="svelte">
-        {`import {Column} from "@danielito1996/compose-svelted";
-
+        {`
 <Column modifier={Modifier.padding(16)}>
     <Text textStyle={TextStyle.TitleLarge}>
         Title
@@ -162,8 +189,7 @@ Modifier
     </Text>
 
     <CodeBlock language="svelte">
-        {`import {rememberNavController} from "@danielito1996/compose-svelted";
-
+        {`
 const navController = rememberNavController("home");
 
 <NavHost
