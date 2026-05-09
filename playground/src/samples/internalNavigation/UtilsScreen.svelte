@@ -26,7 +26,7 @@
         verticalArrangement={Arrangement.spacedBy(32)}
 >
     <!-- Header -->
-    <Text textStyle={TextStyle.HeadlineSmall}>
+    <Text textStyle={TextStyle.HeadlineLarge}>
         🧰 Utils
     </Text>
 
@@ -38,7 +38,7 @@
 
     <!-- ================= ALIGNMENT ================= -->
 
-    <Text textStyle={TextStyle.TitleMedium}>
+    <Text textStyle={TextStyle.TitleLarge}>
         🎯 Alignment
     </Text>
 
@@ -65,7 +65,7 @@
 
     <!-- ================= ARRANGEMENT ================= -->
 
-    <Text textStyle={TextStyle.TitleMedium}>
+    <Text textStyle={TextStyle.TitleLarge}>
         📐 Arrangement
     </Text>
 
@@ -92,7 +92,7 @@
 
     <!-- ================= TEXT STYLES ================= -->
 
-    <Text textStyle={TextStyle.TitleMedium}>
+    <Text textStyle={TextStyle.TitleLarge}>
         📝 TextStyle
     </Text>
 
@@ -121,7 +121,7 @@
 
     <!-- ================= MOTION HELPERS ================= -->
 
-    <Text textStyle={TextStyle.TitleMedium}>
+    <Text textStyle={TextStyle.TitleLarge}>
         🎥 Motion helpers
     </Text>
 

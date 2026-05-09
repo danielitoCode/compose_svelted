@@ -23,7 +23,7 @@
         verticalArrangement={Arrangement.spacedBy(20)}
 >
     <!-- Header -->
-    <Text textStyle={TextStyle.HeadlineSmall}>
+    <Text textStyle={TextStyle.HeadlineLarge}>
         🎨 Theme
     </Text>
 
@@ -36,7 +36,7 @@
     <Spacer />
 
     <!-- What is a theme -->
-    <Text textStyle={TextStyle.TitleMedium}>
+    <Text textStyle={TextStyle.TitleLarge}>
         🧠 ¿Qué es un Theme?
     </Text>
 
@@ -54,7 +54,7 @@
     <Spacer />
 
     <!-- ComposeTheme -->
-    <Text textStyle={TextStyle.TitleMedium}>
+    <Text textStyle={TextStyle.TitleLarge}>
         🧩 ComposeTheme
     </Text>
 
@@ -83,7 +83,7 @@
     <Spacer />
 
     <!-- Modes -->
-    <Text textStyle={TextStyle.TitleMedium}>
+    <Text textStyle={TextStyle.TitleLarge}>
         🌗 Modos de color
     </Text>
 
@@ -121,7 +121,7 @@
     <Spacer />
 
     <!-- ColorScheme -->
-    <Text textStyle={TextStyle.TitleMedium}>
+    <Text textStyle={TextStyle.TitleLarge}>
         🎨 ColorScheme
     </Text>
 
@@ -152,7 +152,7 @@ Button color={ColorScheme.Primary}
     <Spacer />
 
     <!-- Customization -->
-    <Text textStyle={TextStyle.TitleMedium}>
+    <Text textStyle={TextStyle.TitleLarge}>
         🛠️ Personalización
     </Text>
 
@@ -169,7 +169,7 @@ Button color={ColorScheme.Primary}
     <Spacer />
 
     <!-- Philosophy -->
-    <Text textStyle={TextStyle.TitleMedium}>
+    <Text textStyle={TextStyle.TitleLarge}>
         🧭 Filosofía
     </Text>
 

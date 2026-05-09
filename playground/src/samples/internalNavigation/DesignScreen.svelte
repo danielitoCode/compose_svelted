@@ -23,7 +23,7 @@
         verticalArrangement={Arrangement.spacedBy(40)}
 >
     <!-- Header -->
-    <Text textStyle={TextStyle.HeadlineSmall}>
+    <Text textStyle={TextStyle.HeadlineLarge}>
         🎨 Design
     </Text>
 
@@ -37,7 +37,7 @@
     <!-- COLUMN -->
     <!-- ===================================================== -->
 
-    <Text textStyle={TextStyle.TitleMedium}>
+    <Text textStyle={TextStyle.TitleLarge}>
         📦 Column
     </Text>
 
@@ -102,7 +102,7 @@
     <!-- ROW -->
     <!-- ===================================================== -->
 
-    <Text textStyle={TextStyle.TitleMedium}>
+    <Text textStyle={TextStyle.TitleLarge}>
         📏 Row
     </Text>
 
@@ -159,7 +159,7 @@
     <!-- BOX -->
     <!-- ===================================================== -->
 
-    <Text textStyle={TextStyle.TitleMedium}>
+    <Text textStyle={TextStyle.TitleLarge}>
         🧩 Box
     </Text>
 

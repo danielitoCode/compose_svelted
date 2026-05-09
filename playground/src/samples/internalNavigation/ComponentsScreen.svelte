@@ -30,7 +30,7 @@
         verticalArrangement={Arrangement.spacedBy(32)}
 >
     <!-- Header -->
-    <Text textStyle={TextStyle.HeadlineSmall}>
+    <Text textStyle={TextStyle.HeadlineLarge}>
         🧩 Components
     </Text>
 
@@ -42,7 +42,7 @@
 
     <!-- ================= TEXT ================= -->
 
-    <Text textStyle={TextStyle.TitleMedium}>
+    <Text textStyle={TextStyle.TitleLarge}>
         📝 Text
     </Text>
 
@@ -84,7 +84,7 @@
 
     <!-- ================= BUTTON ================= -->
 
-    <Text textStyle={TextStyle.TitleMedium}>
+    <Text textStyle={TextStyle.TitleLarge}>
         🔘 Button
     </Text>
 
@@ -143,7 +143,7 @@
 
     <!-- ================= TEXTFIELD ================= -->
 
-    <Text textStyle={TextStyle.TitleMedium}>
+    <Text textStyle={TextStyle.TitleLarge}>
         ⌨️ TextField
     </Text>
 
@@ -181,7 +181,7 @@
 
     <!-- ================= SURFACE ================= -->
 
-    <Text textStyle={TextStyle.TitleMedium}>
+    <Text textStyle={TextStyle.TitleLarge}>
         🧱 Surface
     </Text>
 
@@ -221,7 +221,7 @@
 
     <!-- ================= IMAGE & ICON ================= -->
 
-    <Text textStyle={TextStyle.TitleMedium}>
+    <Text textStyle={TextStyle.TitleLarge}>
         🖼️ Image & Icon
     </Text>
 
@@ -272,7 +272,7 @@
 
     <!-- ================= COMPOSITION ================= -->
 
-    <Text textStyle={TextStyle.TitleMedium}>
+    <Text textStyle={TextStyle.TitleLarge}>
         🧩 Ejemplo de componente mixto (Botón con Icono)
     </Text>
 

@@ -1,15 +1,3 @@
-Perfecto 👍
-Te dejo las vistas completas, listas para copiar/pegar, ya refactorizadas con el patrón Code + Preview, coherentes con todo lo que has construido hasta ahora y sin dependencias externas.
-
-Voy a darte dos pantallas completas:
-
-LayoutsScreen.svelte
-
-MotionsScreen.svelte
-
-(ComponentsScreen ya la tienes cerrada y correcta).
-
-📐 LayoutsScreen.svelte (COMPLETA)
 <script lang="ts">
     import {
         Arrangement,
@@ -32,7 +20,7 @@ MotionsScreen.svelte
         modifier={Modifier.fillMaxSize().padding(24).verticalScroll(true)}
         verticalArrangement={Arrangement.spacedBy(32)}
 >
-    <Text textStyle={TextStyle.HeadlineSmall}>
+    <Text textStyle={TextStyle.HeadlineLarge}>
         📐 Layouts
     </Text>
 
@@ -43,7 +31,7 @@ MotionsScreen.svelte
 
     <!-- ================= COLUMN ================= -->
 
-    <Text textStyle={TextStyle.TitleMedium}>
+    <Text textStyle={TextStyle.TitleLarge}>
         📦 Column
     </Text>
 
@@ -76,7 +64,7 @@ MotionsScreen.svelte
 
     <!-- ================= ROW ================= -->
 
-    <Text textStyle={TextStyle.TitleMedium}>
+    <Text textStyle={TextStyle.TitleLarge}>
         📏 Row
     </Text>
 
@@ -118,7 +106,7 @@ MotionsScreen.svelte
 
     <!-- ================= BOX ================= -->
 
-    <Text textStyle={TextStyle.TitleMedium}>
+    <Text textStyle={TextStyle.TitleLarge}>
         🧩 Box
     </Text>
 
