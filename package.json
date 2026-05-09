@@ -19,7 +19,8 @@
       "import": "./dist/index.js",
       "svelte": "./dist/index.js"
     },
-    "./baseline.css": "./dist/core/styles/baseline.css"
+    "./baseline.css": "./dist/core/styles/baseline.css",
+    "./baseline-safe.css": "./dist/core/styles/baseline-safe.css"
   },
   "files": [
     "dist"

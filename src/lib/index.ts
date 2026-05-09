@@ -1,4 +1,4 @@
-import "./core/styles/baseline.css";
+//import "./core/styles/baseline.css";
 
 // Root
 export { default as ComposeTheme } from "./core/theme/ComposeTheme.svelte";

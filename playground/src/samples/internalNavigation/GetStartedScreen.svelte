@@ -1,105 +1,139 @@
 <script lang="ts">
+    import {
+        Arrangement,
+        Column,
+        Modifier,
+        Text,
+        TextStyle,
+        CodeBlock,
+        Spacer
+    } from '@danielito1996/compose-svelted';
 
-    import {Alignment, Arrangement, Box, Column, Modifier, Text, TextStyle, CodeBlock, Spacer} from '@danielito1996/compose-svelted';
     export let modifier: Modifier = Modifier.empty();
-
 </script>
+
 <Column
-        modifier={modifier
-            .fillMaxSize()
-            .padding(24)
-            .verticalScroll(true)
-        }
+        modifier={modifier.fillMaxSize().padding(24).verticalScroll(true)}
         verticalArrangement={Arrangement.spacedBy(20)}
 >
-    <!-- Header -->
-    <Text textStyle={TextStyle.HeadlineLarge}>
-        🚀 Get Started
-    </Text>
+    <Text textStyle={TextStyle.HeadlineLarge}>🚀 Get Started</Text>
 
     <Text textStyle={TextStyle.BodyLarge}>
-        Esta guía te ayudará a comenzar con Compose Svelted de forma rápida.
-        No necesitas conocer CSS avanzado ni configuraciones complejas.
-        Si vienes de Jetpack Compose, el modelo te resultará familiar.
+        Guía paso a paso para integrar Compose Svelted en un proyecto nuevo, sin confusiones.
+        Vamos a cubrir: instalación, baseline estricto, baseline seguro y alternativa manual con app.css.
     </Text>
 
     <Spacer />
 
-    <!-- Installation -->
-    <Text textStyle={TextStyle.TitleLarge}>
-        📦 Instalación
-    </Text>
+    <Text textStyle={TextStyle.TitleLarge}>📦 Paso 1 — Instalación</Text>
 
     <Text textStyle={TextStyle.BodyLarge}>
-        Instala la librería desde npm:
+        1) Crea tu proyecto Svelte.
+    </Text>
+    <Text textStyle={TextStyle.BodyLarge}>
+        2) Entra a la carpeta del proyecto.
+    </Text>
+    <Text textStyle={TextStyle.BodyLarge}>
+        3) Instala la librería.
     </Text>
 
-    <CodeBlock language="bash">
-        {`npm install @danielito1996/compose-svelted`}
-    </CodeBlock>
+    <CodeBlock language="bash">{`npm install @danielito1996/compose-svelted`}</CodeBlock>
 
     <Text textStyle={TextStyle.BodyLarge}>
-        Compose Svelted está pensado para usarse directamente en proyectos Svelte
-        sin configuraciones adicionales.:
+        Desde aquí eliges UNA de estas 3 rutas de configuración CSS.
+        No mezcles baseline estricto + baseline seguro al mismo tiempo.
     </Text>
 
     <Spacer />
 
-    <!-- Baseline CSS -->
-    <Text textStyle={TextStyle.TitleLarge}>
-        🎯 Baseline CSS (recomendado)
+    <Text textStyle={TextStyle.TitleLarge}>🎯 Paso 2 Configuración de css</Text>
+
+    <Text textStyle={TextStyle.TitleMedium}>-> Variante A — Baseline estricto (recomendado para proyectos nuevos)</Text>
+
+    <Text textStyle={TextStyle.BodyLarge}>
+        Qué hace: aplica un baseline completo para garantizar comportamiento consistente de
+        fillMaxSize(), AppRoot, layouts y navegación.
+        Úsalo si el proyecto es nuevo y todavía no tienes CSS global complejo.
     </Text>
 
     <Text textStyle={TextStyle.BodyLarge}>
-        Para que <b>fillMaxSize()</b>, <b>AppRoot</b> y los layouts funcionen
-        de forma consistente en cualquier proyecto, recomendamos importar
-        el baseline oficial de la librería.
+        Qué editar exactamente:
+        - Abre src/main.ts.
+        - Agrega este import arriba de tu app.css.
     </Text>
 
-    <CodeBlock language="css">
-        {`/* src/main.ts o src/app.css */
-import "@danielito1996/compose-svelted/baseline.css";`}
-    </CodeBlock>
+    <CodeBlock language="ts">{`// src/main.ts
+import "@danielito1996/compose-svelted/baseline.css";
+import "./app.css";`}</CodeBlock>
 
     <Text textStyle={TextStyle.BodyLarge}>
-        Si prefieres no usar baseline completo, al menos define:
-        <b> html, body y #app al 100% de ancho/alto</b>.
-        Aun así, baseline.css es la opción recomendada. Diciendo esto, para usar la variante personalizada,
-        se debe sustituir el contenido del app.css , borrarlo completamente y pegar el siguiente código:
-
-        <CodeBlock language="css">
-            {`
-    *,:before,:after { box-sizing: border-box; }
-
-    html, body, #app {
-        margin: 0;
-        padding: 0;
-        width: 100%;
-        height: 100%;
-        overflow: hidden;
-    }
-
-    body { font-family: Inter, system-ui, sans-serif; }
-        `}
-        </CodeBlock>
+        Qué NO hacer:
+        - No importes baseline-safe.css en este modo.
+        - No dupliques resets globales fuertes en app.css.
     </Text>
 
     <Spacer />
 
-    <!-- App root -->
-    <Text textStyle={TextStyle.TitleLarge}>
-        🧱 Estructura básica
+    <Text textStyle={TextStyle.TitleMedium}>-> Variante B — Baseline seguro (para apps con CSS existente)</Text>
+
+    <Text textStyle={TextStyle.BodyLarge}>
+        Qué hace: aplica solo lo mínimo (box-sizing + root 100%) para reducir conflictos
+        con estilos globales ya existentes.
+        Úsalo si vienes de un proyecto con Tailwind, Bootstrap o reset propio.
     </Text>
 
     <Text textStyle={TextStyle.BodyLarge}>
-        Toda aplicación debe comenzar con un tema y un contenedor raíz.
-        Esto permite que los componentes funcionen correctamente
-        y que el sistema de diseño sea consistente.
+        Qué editar exactamente:
+        - Abre src/main.ts.
+        - Importa baseline-safe.css en lugar de baseline.css.
     </Text>
 
-    <CodeBlock language="svelte">
-        {`
-<script>
+    <CodeBlock language="ts">{`// src/main.ts
+import "@danielito1996/compose-svelted/baseline-safe.css";
+import "./app.css";`}</CodeBlock>
+
+    <Text textStyle={TextStyle.BodyLarge}>
+        Qué NO hacer:
+        - No importes baseline.css junto con baseline-safe.css.
+        - Si algo se rompe visualmente, usa esta variante primero.
+    </Text>
+
+    <Spacer />
+
+    <Text textStyle={TextStyle.TitleMedium}>-> Variante C — Sin baseline importado (control total en app.css)</Text>
+
+    <Text textStyle={TextStyle.BodyLarge}>
+        Si no quieres importar ningún baseline del paquete:
+        - No importes baseline.css ni baseline-safe.css.
+        - Reemplaza el contenido de src/app.css por este mínimo requerido.
+    </Text>
+
+    <CodeBlock language="css">{`/* src/app.css */
+*,:before,:after { box-sizing: border-box; }
+
+html, body, #app {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  font-family: Inter, system-ui, sans-serif;
+}`}</CodeBlock>
+
+    <Text textStyle={TextStyle.BodyLarge}>
+        Nota técnica:
+        - Si necesitas desbloquear scroll global, puedes quitar el overflow: hidden.
+        - Si prefieres scroll natural del documento, quitalo.
+    </Text>
+
+    <Spacer />
+
+    <Text textStyle={TextStyle.TitleLarge}>🧱 Paso 3 — Estructura base de la app</Text>
+
+    <CodeBlock language="svelte">{`<script>
   import {
     ComposeTheme,
     AppRoot,
@@ -115,121 +149,29 @@ import "@danielito1996/compose-svelted/baseline.css";`}
       <Text>Hello Compose Svelted</Text>
     </Surface>
   </AppRoot>
-</ComposeTheme>
-`}
-    </CodeBlock>
-
-    <Spacer />
-
-    <!-- Layout -->
-    <Text textStyle={TextStyle.TitleLarge}>
-        📐 Layouts declarativos
-    </Text>
+</ComposeTheme>`}</CodeBlock>
 
     <Text textStyle={TextStyle.BodyLarge}>
-        En lugar de trabajar directamente con flexbox o clases CSS,
-        Compose Svelted ofrece layouts declarativos como Column, Row y Box.
-    </Text>
-
-    <CodeBlock language="svelte">
-        {`
-<Column modifier={Modifier.padding(16)}>
-    <Text textStyle={TextStyle.TitleLarge}>
-        Title
-    </Text>
-
-    <Text>
-        Description text
-    </Text>
-</Column>
-`}
-    </CodeBlock>
-
-    <Text textStyle={TextStyle.BodyLarge}>
-        El layout describe la intención del diseño de forma explícita,
-        sin estilos ocultos.
+        Si esta pantalla renderiza bien, la base está correcta.
     </Text>
 
     <Spacer />
 
-    <!-- Modifier -->
-    <Text textStyle={TextStyle.TitleLarge}>
-        🧩 Modifier
-    </Text>
+    <Text textStyle={TextStyle.TitleLarge}>✅ Checklist rápido (para “no fallar”)</Text>
 
     <Text textStyle={TextStyle.BodyLarge}>
-        Modifier es una API inmutable y encadenable que describe cómo
-        un componente debe comportarse visualmente.
+        1• Instalaste el paquete con npm.
     </Text>
-
-    <CodeBlock language="typescript">
-        {`
-Modifier
-  .fillMaxSize()
-  .padding(16)
-  .background(ColorScheme.Surface)
-`}
-    </CodeBlock>
-
     <Text textStyle={TextStyle.BodyLarge}>
-        Los modifiers no mutan el componente,
-        solo describen intención.
+        2• Elegiste solo 1 estrategia CSS (estricto / seguro / manual).
     </Text>
-
-    <Spacer />
-
-    <!-- Navigation -->
-    <Text textStyle={TextStyle.TitleLarge}>
-        🧭 Navegación (Core V2)
-    </Text>
-
     <Text textStyle={TextStyle.BodyLarge}>
-        Compose Svelted incluye un sistema de navegación declarativo,
-        inspirado en Jetpack Compose.
+        3• No mezclaste baseline.css con baseline-safe.css.
     </Text>
-
-    <CodeBlock language="svelte">
-        {`
-const navController = rememberNavController("home");
-
-<NavHost
-  navController={navController}
-  routes={[
-    composable(Home, () => HomeScreen),
-    composable(Details, () => DetailsScreen)
-  ]}
-/>
-`}
-    </CodeBlock>
-
     <Text textStyle={TextStyle.BodyLarge}>
-        La navegación es estado, no rutas acopladas al navegador.
+        4• html, body y #app ocupan 100%.
     </Text>
-
-    <Spacer />
-
-    <!-- Next -->
-    <Text textStyle={TextStyle.TitleLarge}>
-        👉 ¿Qué sigue?
-    </Text>
-
     <Text textStyle={TextStyle.BodyLarge}>
-        A partir de aquí puedes explorar:
-    </Text>
-
-    <Text textStyle={TextStyle.BodyLarge}>
-        • Theme y ColorScheme
-        • Layouts avanzados
-        • Componentes disponibles
-        • Motion y animaciones
-        • Limitaciones actuales
-    </Text>
-
-    <Spacer />
-
-    <Text textStyle={TextStyle.BodyLarge}>
-        Compose Svelted está en evolución,
-        pero su núcleo ya es estable y predecible.
-        Experimenta, compón y construye.
+        5• AppRoot está presente en la raíz.
     </Text>
 </Column>

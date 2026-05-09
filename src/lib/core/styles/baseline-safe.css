@@ -1,0 +1,34 @@
+/**
+ * compose-svelted — baseline-safe.css
+ *
+ * Variante conservadora para apps existentes:
+ * - Mantiene contrato mínimo de layout (box-sizing + root 100%)
+ * - No fuerza overflow global
+ * - No normaliza media globalmente
+ * - No aplica min-width/min-height universal
+ */
+
+* ,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html,
+body,
+#app {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.cs-clickable {
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.cs-relative {
+    position: relative;
+}
