@@ -131,9 +131,31 @@ npm run playground:build
 
 ## ⚠️ CSS Baseline (Required)
 
-Compose Svelted assumes a neutral CSS baseline.
+Compose Svelted is **layout-deterministic**, assumes a neutral CSS baseline.
 
 You MUST include the following reset in your app:
+
+To avoid layout regressions in existing apps, use one of these two paths:
+
+### Path A (Primary): import baseline from the package
+
+- **Strict baseline** (Compose-like deterministic behavior):
+
+```ts
+import "@danielito1996/compose-svelted/baseline.css";
+```
+
+- **Safe baseline** (less intrusive for existing projects):
+
+```ts
+import "@danielito1996/compose-svelted/baseline-safe.css";
+```
+
+Use `baseline-safe.css` if your app already has strong global styles and you want minimal interference.
+
+### Path B (Alternative): do not import baseline, adapt your own `app.css`
+
+If you prefer full control, keep your app stylesheet and ensure at least:
 
 ```css
 *,
@@ -142,48 +164,19 @@ You MUST include the following reset in your app:
   box-sizing: border-box;
 }
 
-html,
-body {
+html, body, #app {
+  width: 100%;
+  height: 100%;
   margin: 0;
   padding: 0;
-  min-height: 100vh;
 }
 ```
-
-## 📄 License
-
-MIT
-
----
-
-## ⚠️ CSS Baseline Requirement (Important)
-
-Compose Svelted is **layout-deterministic**.
 
 To guarantee consistent and predictable behavior of layout components such as
 `Box`, `Column`, `Row`, `Surface`, `Scaffold`, and navigation containers,
 a **neutral CSS baseline is required** in the host application.
 
 This is **intentional** and mirrors the contract-based approach of **Jetpack Compose**.
-
-### Required baseline
-
-You must include the following reset in your global styles:
-
-```css
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-
-html,
-body {
-  margin: 0;
-  padding: 0;
-  min-height: 100vh;
-}
-```
 
 ### Why this matters
 
@@ -201,14 +194,3 @@ Compose Svelted **does not require Tailwind CSS**.
 
 Tailwind is used internally as an implementation detail for predictable styling,
 but consumers of the library are **not required** to install or configure Tailwind.
-
-### Future (Core V3)
-
-A reusable `baseline.css` helper will be provided as an **optional import**
-to simplify adoption:
-
-```ts
-import "@danielito1996/compose-svelted/baseline.css";
-```
-
-This will remain optional and opt-in.

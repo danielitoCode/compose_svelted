@@ -9,8 +9,19 @@ export default defineConfig({
   root: __dirname,
   plugins: [svelte()],
   resolve: {
-    alias: {
-      '@danielito1996/compose-svelted': path.resolve(__dirname, '../src/lib/index.ts')
-    }
+    alias: [
+      {
+        find: '@danielito1996/compose-svelted/baseline.css',
+        replacement: path.resolve(__dirname, '../src/lib/core/styles/baseline.css')
+      },
+      {
+        find: '@danielito1996/compose-svelted/baseline-safe.css',
+        replacement: path.resolve(__dirname, '../src/lib/core/styles/baseline-safe.css')
+      },
+      {
+        find: '@danielito1996/compose-svelted',
+        replacement: path.resolve(__dirname, '../src/lib/index.ts')
+      }
+    ]
   }
 });

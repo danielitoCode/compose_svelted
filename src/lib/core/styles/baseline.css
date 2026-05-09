@@ -20,55 +20,26 @@
 *::before,
 *::after {
     box-sizing: border-box;
-    /* Evita que hijos flex/grid ignoren su tamaño asignado */
-    min-width: 0;
-    min-height: 0;
 }
 
-/* ── 2. Root de viewport — sin scroll ─────────────────────────────────────── */
-html {
-    width: 100%;
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    /* Bloquea scroll: los layouts deciden si se scrollea, no el browser */
-    overflow: hidden;
-}
-
-body {
-    width: 100%;
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-}
-
-/* ── 3. Host del app ───────────────────────────────────────────────────────── */
+/* 2) Root sizing + bloqueo de overflow global */
+html,
+body,
 #app {
     width: 100%;
     height: 100%;
+    margin: 0;
+    padding: 0;
     overflow: hidden;
 }
 
-/* ── 4. Imágenes y media — no interfieren con el layout ──────────────────── */
-img,
-svg,
-video,
-canvas {
-    display: block;
-    max-width: 100%;
-}
-
-/* ── 5. Utilidades internas ────────────────────────────────────────────────── */
-
-/* Usado por Modifier.clickable() */
+/* 3) Utilidades internas usadas por la librería */
 .cs-clickable {
     cursor: pointer;
     user-select: none;
     -webkit-user-select: none;
 }
 
-/* Ancla para capas absolutas internas (Box, Scaffold FAB, etc.) */
 .cs-relative {
     position: relative;
 }
