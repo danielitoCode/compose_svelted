@@ -1,3 +1,4 @@
+import "./core/styles/baseline.css";
 
 // Root
 export { default as ComposeTheme } from "./core/theme/ComposeTheme.svelte";
@@ -24,12 +25,16 @@ export { default as ButtonWithIcon } from "./components/buttons/ButtonWithIcon.s
 export { default as OutlinedButton } from "./components/buttons/OutlinedButton.svelte";
 export { default as OutlinedButtonWithIcon } from "./components/buttons/OutlinedButtonWithIcon.svelte";
 export { default as CheckButton } from "./components/buttons/CheckButton.svelte";
+export { default as OutlinedIconButton } from "./components/buttons/OutlinedIconButton.svelte";
 
 export { default as Card } from "./components/cards/Card.svelte";
 export { default as OutlinedCard } from "./components/cards/OutlinedCard.svelte";
 
 export { default as TextField } from "./components/textFields/TextField.svelte";
 export { default as OutlinedTextField } from "./components/textFields/OutlinedTextField.svelte";
+
+export { default as DropdownMenu } from "./components/menus/DropdownMenu.svelte";
+export { default as DropdownMenuItem } from "./components/menus/DropdownMenuItem.svelte";
 
 export { default as Image } from "./components/Image.svelte";
 export { default as Icon } from "./components/Icon.svelte";
