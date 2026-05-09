@@ -11,9 +11,9 @@
         Surface,
         Text,
         TextStyle
-    } from "../../dist";
+    } from '@danielito1996/compose-svelted';
 
-    import {Scaffold} from "../../dist";
+    import {Scaffold} from '@danielito1996/compose-svelted';
     import NavButton from "./components/NavButton.svelte";
     import {
         About,

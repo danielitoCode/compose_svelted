@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { Row, Modifier, Surface } from "../../../dist";
+    import { Row, Modifier, Surface } from '@danielito1996/compose-svelted';
 
     export let modifier: Modifier = Modifier.empty();
 </script>

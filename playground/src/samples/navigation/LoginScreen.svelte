@@ -6,7 +6,7 @@
         Modifier,
         Arrangement,
         Alignment
-    } from "../../../dist";
+    } from '@danielito1996/compose-svelted';
 
     export let navController;
 </script>

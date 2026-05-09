@@ -7,10 +7,9 @@
         TextStyle,
         Spacer,
         Surface,
-        ColorScheme
-    } from "../../../dist";
-
-    import CodeBlock from "../../lib/components/custom/CodeBlock.svelte";
+        ColorScheme,
+        CodeBlock
+    } from '@danielito1996/compose-svelted';
 
     export let modifier: Modifier = Modifier.empty();
 </script>

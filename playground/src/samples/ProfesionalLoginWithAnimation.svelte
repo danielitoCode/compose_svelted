@@ -15,10 +15,8 @@
         Row,
         Image,
         ContentScale,
-        RoundedCornerShape, fadeIn
-    } from "../../dist/index.d.ts";
-
-    import { scaleIn, fadeOut } from "../../dist/index.d.ts";
+        RoundedCornerShape, fadeIn, scaleIn, fadeOut
+    } from '@danielito1996/compose-svelted';
 
     let email = "";
     let password = "";

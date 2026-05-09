@@ -6,7 +6,7 @@
         Text,
         TextStyle,
         Spacer
-    } from "../../../dist";
+    } from '@danielito1996/compose-svelted';
 </script>
 
 <Column

@@ -11,10 +11,10 @@
         Spacer,
         Surface,
         Button,
-        ColorScheme
-    } from "../../../dist";
+        ColorScheme,
+        CodeBlock
+    } from '@danielito1996/compose-svelted';
 
-    import CodeBlock from "../../lib/components/custom/CodeBlock.svelte";
 </script>
 
 <Column

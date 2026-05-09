@@ -13,7 +13,7 @@
         Button,
         ColorScheme,
         RoundedCornerShape
-    } from "../../../dist";
+    } from '@danielito1996/compose-svelted';
     import ProjectCard from "../components/ProjectCard.svelte";
 </script>
 

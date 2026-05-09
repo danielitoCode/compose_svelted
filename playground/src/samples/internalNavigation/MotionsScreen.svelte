@@ -8,12 +8,11 @@
         TextStyle,
         Spacer,
         Surface,
-        Button
-    } from "../../../dist";
-
-    import AnimatedVisibility from "../../lib/components/motion/AnimatedVisibility.svelte";
-    import AnimatedContent from "../../lib/components/motion/AnimatedContent.svelte";
-    import CodeBlock from "../../lib/components/custom/CodeBlock.svelte";
+        Button,
+        AnimatedVisibility,
+        AnimatedContent,
+        CodeBlock
+    } from '@danielito1996/compose-svelted';
 
     let visible = true;
     let state: "A" | "B" = "A";

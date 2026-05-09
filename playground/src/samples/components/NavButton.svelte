@@ -1,5 +1,5 @@
 <script lang="ts">
-    import {Alignment, Arrangement, Button, ColorScheme, Icon, Modifier, Row, Spacer, Text, TextStyle} from "../../../dist";
+    import {Alignment, Arrangement, Button, ColorScheme, Icon, Modifier, Row, Spacer, Text, TextStyle} from '@danielito1996/compose-svelted';
 
     export let onClick: () => void = () => {};
     export let painter: string = "";

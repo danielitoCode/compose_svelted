@@ -9,7 +9,7 @@
         Text,
         TextField,
         TextStyle
-    } from "../../dist/index.d.ts";
+    } from '@danielito1996/compose-svelted';
     let name = "";
     let pass = "";
 </script>

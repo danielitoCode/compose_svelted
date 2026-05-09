@@ -9,18 +9,14 @@
         TextStyle,
         Spacer,
         Surface,
-        Button
-    } from "../../../dist";
-
-    import {
+        Button,
+        CodeBlock,
+        AnimatedVisibility,
         fadeIn,
         fadeOut,
         scaleIn,
         scaleOut
-    } from "../../lib/core/motion/transitions";
-
-    import AnimatedVisibility from "../../lib/components/motion/AnimatedVisibility.svelte";
-    import CodeBlock from "../../lib/components/custom/CodeBlock.svelte";
+    } from '@danielito1996/compose-svelted' ;
 
     let visible = true;
 </script>

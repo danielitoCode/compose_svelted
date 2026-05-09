@@ -13,7 +13,7 @@
     } from '@danielito1996/compose-svelted';
     import type { NavController } from '@danielito1996/compose-svelted';
 
-    let { navController }: { navController: NavController } = $props();
+    let { navController } : { navController: NavController } = $props();
 </script>
 
 <Scaffold modifier={Modifier.fillMaxSize()}>

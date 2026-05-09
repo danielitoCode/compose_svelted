@@ -5,10 +5,9 @@
         Modifier,
         Text,
         TextStyle,
-        Spacer
-    } from "../../../dist";
-
-    import CodeBlock from "../../lib/components/custom/CodeBlock.svelte";
+        Spacer,
+        CodeBlock
+    } from '@danielito1996/compose-svelted';
 
     export let modifier: Modifier = Modifier.empty();
 </script>

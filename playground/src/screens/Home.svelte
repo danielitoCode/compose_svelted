@@ -53,6 +53,22 @@
             </Button>
 
             <Button
+                    onClick={() => navController.navigate('layouts')}
+                    modifier={Modifier.fillMaxWidth().height(56)}
+                    shape="large"
+            >
+                Explorar Componentes
+            </Button>
+
+            <Button
+                    onClick={() => navController.navigate('samples')}
+                    modifier={Modifier.fillMaxWidth().height(56)}
+                    shape="large"
+            >
+                Explorar Casos de uso
+            </Button>
+
+            <Button
                 onClick={() => {}}
                 modifier={Modifier.fillMaxWidth().height(56)}
                 color="surfaceVariant"

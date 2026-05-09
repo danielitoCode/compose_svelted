@@ -9,7 +9,7 @@
         Modifier,
         Text,
         TextStyle
-    } from "../../dist/index.d.ts";
+    } from '@danielito1996/compose-svelted';
 
     let enabled = false
 </script>

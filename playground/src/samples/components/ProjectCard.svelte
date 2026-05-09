@@ -10,7 +10,7 @@
         Surface,
         Text,
         TextStyle
-    } from "../../../dist";
+    } from '@danielito1996/compose-svelted';
 
     export let title: string;
     export let description: string;

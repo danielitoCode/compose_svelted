@@ -1,9 +1,10 @@
 <script lang="ts">
 
-    import {Alignment, Arrangement, Box, Column, Modifier, Text, TextStyle, CodeBlock, Spacer} from "../../../dist";
+    import {Alignment, Arrangement, Box, Column, Modifier, Text, TextStyle, CodeBlock, Spacer} from '@danielito1996/compose-svelted';
     export let modifier: Modifier = Modifier.empty();
 
 </script>
+
 <Column
         modifier={modifier
             .fillMaxSize()

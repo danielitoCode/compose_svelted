@@ -14,7 +14,7 @@
         Row,
         Image,
         ContentScale, RoundedCornerShape
-    } from "../../dist";
+    } from '@danielito1996/compose-svelted';
     import {Home} from "./navigation/routes";
 
     let email = "";

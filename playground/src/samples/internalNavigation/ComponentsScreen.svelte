@@ -13,11 +13,9 @@
         Button,
         TextField,
         Image,
-        Icon,
+        Icon,CodeBlock,
         ColorScheme, painterResource, Res
-    } from "../../../dist";
-
-    import CodeBlock from "../../lib/components/custom/CodeBlock.svelte";
+    } from '@danielito1996/compose-svelted';
 
     let email = "";
 </script>

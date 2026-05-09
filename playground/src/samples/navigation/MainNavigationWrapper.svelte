@@ -1,8 +1,7 @@
 <script lang="ts">
-    import {composable, Modifier, NavHost, rememberNavController} from "../../../dist";
+    import {composable, Modifier, NavHost, rememberNavController} from '@danielito1996/compose-svelted';
     import ProfesionalLogin from "../ProfesionalLogin.svelte";
     import {Details, Home, Login} from "./routes";
-    import HomeScreen from "./HomeScreen.svelte";
     import DetailsScreen from "./DetailsScreen.svelte";
     import ProfesionalHomeScreen from "../ProfesionalHomeScreen.svelte";
 
