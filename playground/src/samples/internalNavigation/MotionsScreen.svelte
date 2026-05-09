@@ -11,8 +11,10 @@
         Button,
         AnimatedVisibility,
         AnimatedContent,
-        CodeBlock
+        CodeBlock,
+        Alignment
     } from '@danielito1996/compose-svelted';
+    import PreviewBox from "../components/PreviewBox.svelte";
 
     let visible = true;
     let state: "A" | "B" = "A";
@@ -22,7 +24,7 @@
         modifier={Modifier.fillMaxSize().padding(24).verticalScroll(true)}
         verticalArrangement={Arrangement.spacedBy(32)}
 >
-    <Text textStyle={TextStyle.HeadlineSmall}>
+    <Text textStyle={TextStyle.HeadlineLarge}>
         🎥 Motion
     </Text>
 
@@ -33,67 +35,87 @@
 
     <!-- ================= ANIMATED VISIBILITY ================= -->
 
-    <Text textStyle={TextStyle.TitleMedium}>
+    <Text textStyle={TextStyle.TitleLarge}>
         🎬 AnimatedVisibility
     </Text>
 
-    <Row modifier={Modifier.fillMaxWidth()}>
+    <Row
+            verticalAlignment = {Alignment.Bottom}
+            modifier={Modifier.fillMaxWidth()}
+    >
         <!-- Code -->
         <Surface modifier={Modifier.weight(1).padding(8)}>
             <CodeBlock language="svelte">
-                {`<AnimatedVisibility visible={visible}>
-    <Surface modifier={Modifier.padding(16)}>
-        <Text>Hello Motion</Text>
-    </Surface>
-</AnimatedVisibility>`}
+                {`
+                    <AnimatedVisibility visible={visible}>
+                        <Surface modifier={Modifier.padding(16)}>
+                            <Text>Hello Motion</Text>
+                        </Surface>
+                    </AnimatedVisibility>
+                `}
             </CodeBlock>
         </Surface>
 
         <!-- Preview -->
         <Surface modifier={Modifier.weight(1).padding(16)}>
-            <Column verticalArrangement={Arrangement.spacedBy(12)}>
-                <Button onClick={() => visible = !visible}>
-                    Toggle
-                </Button>
+            <PreviewBox modifier={Modifier.fillMaxWidth().height(160)}>
+                <Column
+                        horizontalAlignment={Alignment.CenterHorizontally}
+                        verticalArrangement={Arrangement.spacedBy(12)}
+                >
+                    <Button onClick={() => visible = !visible}>
+                        Toggle
+                    </Button>
 
-                <AnimatedVisibility visible={visible}>
-                    <Surface modifier={Modifier.padding(16)}>
-                        <Text>Hello Motion</Text>
-                    </Surface>
-                </AnimatedVisibility>
-            </Column>
+                    <AnimatedVisibility visible={visible}>
+                        <Surface modifier={Modifier.padding(16)}>
+                            <Text>Hello Motion</Text>
+                        </Surface>
+                    </AnimatedVisibility>
+                </Column>
+            </PreviewBox>
         </Surface>
     </Row>
 
     <!-- ================= ANIMATED CONTENT ================= -->
 
-    <Text textStyle={TextStyle.TitleMedium}>
+    <Text textStyle={TextStyle.TitleLarge}>
         🔄 AnimatedContent
     </Text>
 
-    <Row modifier={Modifier.fillMaxWidth()}>
+    <Row
+            verticalAlignment={Alignment.Bottom}
+            modifier={Modifier.fillMaxWidth()}
+    >
         <!-- Code -->
         <Surface modifier={Modifier.weight(1).padding(8)}>
             <CodeBlock language="svelte">
-                {`<AnimatedContent targetState={state}>
-    <Text>{state}</Text>
-</AnimatedContent>`}
+                {`
+                    <AnimatedContent targetState={state}>
+                        <Text>{state}</Text>
+                    </AnimatedContent>
+                `}
             </CodeBlock>
         </Surface>
 
         <!-- Preview -->
         <Surface modifier={Modifier.weight(1).padding(16)}>
-            <Column verticalArrangement={Arrangement.spacedBy(12)}>
-                <Button onClick={() => state = state === "A" ? "B" : "A"}>
-                    Change state
-                </Button>
+            <PreviewBox modifier={Modifier.fillMaxWidth().height(125)}>
+                <Column
+                        horizontalAlignment={Alignment.CenterHorizontally}
+                        verticalArrangement={Arrangement.spacedBy(12)}
+                >
+                    <Button onClick={() => state = state === "A" ? "B" : "A"}>
+                        Change state
+                    </Button>
 
-                <AnimatedContent targetState={state}>
-                    <Text textStyle={TextStyle.HeadlineMedium}>
-                        {state}
-                    </Text>
-                </AnimatedContent>
-            </Column>
+                    <AnimatedContent targetState={state}>
+                        <Text textStyle={TextStyle.HeadlineMedium}>
+                            {state}
+                        </Text>
+                    </AnimatedContent>
+                </Column>
+            </PreviewBox>
         </Surface>
     </Row>
 

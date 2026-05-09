@@ -101,7 +101,7 @@
                 modifier={Modifier.size(25)}
             />
             <Text>
-                <a href="https://github.com/danielitoCode">Daniel Imbert Tabares</a>
+                <a style="color: GrayText" href="https://github.com/danielitoCode">Daniel Imbert Tabares (DanielitoCode)</a>
             </Text>
         </Row>
         <Row

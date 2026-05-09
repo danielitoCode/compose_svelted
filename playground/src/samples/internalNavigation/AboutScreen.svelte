@@ -21,20 +21,23 @@
         verticalArrangement={Arrangement.spacedBy(20)}
 >
     <!-- Header -->
-    <Text textStyle={TextStyle.HeadlineSmall}>
+    <Text
+            textStyle={TextStyle.HeadlineLarge}
+    >
         🙋‍♂️ Bienvenido a Compose Svelted
     </Text>
 
     <Text textStyle={TextStyle.BodyLarge}>
         Compose Svelted es una librería de UI inspirada en Jetpack Compose,
         diseñada para llevar el modelo mental declarativo y predecible
-        de Android al ecosistema web usando Svelte.
+        de Android al ecosistema web usando Svelte. Esta dirijido a reducir la curva de aprendizaje y el tiempo de desarrollo
+        a desarrolladores fundamentalmente androids para llegar a un producto rapidamente
     </Text>
 
     <Spacer />
 
     <!-- Problema clásico -->
-    <Text textStyle={TextStyle.TitleMedium}>
+    <Text textStyle={TextStyle.TitleLarge}>
         🌎 El problema clásico en la Web
     </Text>
 
@@ -52,7 +55,7 @@
     </Text>
 
     <!-- Contexto -->
-    <Text textStyle={TextStyle.TitleMedium}>
+    <Text textStyle={TextStyle.TitleLarge}>
         ⚙️ El contexto actual
     </Text>
 
@@ -68,7 +71,7 @@
     </Text>
 
     <!-- Propuesta -->
-    <Text textStyle={TextStyle.TitleMedium}>
+    <Text textStyle={TextStyle.TitleLarge}>
         🤷‍♂️ ¿Dónde entra Compose Svelted?
     </Text>
 
@@ -84,8 +87,15 @@
         explícito y componible.
     </Text>
 
+    <Text textStyle={TextStyle.BodyLarge}>
+        También como resultado en basarse al sistema de composicion y conceptos de Jetpack compose la legibilidad
+        del sistema de diseño de una UI resulta muy entendible para los desarrolladores web que se quieran adentrar
+        a la declaratividad explicitita, basada en intenciones y en la predictivilidad de los componentes sin abandonar
+        la tecnólogia webs
+    </Text>
+
     <!-- Código ejemplo -->
-    <Text textStyle={TextStyle.TitleMedium}>
+    <Text textStyle={TextStyle.TitleLarge}>
         🧩 Un ejemplo simple
     </Text>
 
@@ -110,7 +120,7 @@
     </Text>
 
     <!-- Filosofía -->
-    <Text textStyle={TextStyle.TitleMedium}>
+    <Text textStyle={TextStyle.TitleLarge}>
         🧠 Filosofía
     </Text>
 
@@ -129,7 +139,7 @@
     </Text>
 
     <!-- Dogfooding -->
-    <Text textStyle={TextStyle.TitleMedium}>
+    <Text textStyle={TextStyle.TitleLarge}>
         🐶 Dogfooding
     </Text>
 
@@ -152,6 +162,8 @@
         pero su núcleo ya es sólido.
         Si vienes de Jetpack Compose, te sentirás en casa.
         Si vienes del mundo web, encontrarás una forma
-        diferente y explícita de construir interfaces.
+        diferente y explícita de construir interfaces pero conservando de igual manera la expresibidad y una curva de
+        aprendizaje relativamente bajo incluso si no estas familiarizado con Jetpack Compose ni tecnologias similares como
+        flutter.
     </Text>
 </Column>

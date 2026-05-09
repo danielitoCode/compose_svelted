@@ -1,12 +1,22 @@
 <script lang="ts">
+    import {
+        ColorScheme,
+        Arrangement,
+        Box,
+        Column,
+        Modifier,
+        Text,
+        TextStyle,
+        CodeBlock,
+        Spacer
+    } from '@danielito1996/compose-svelted';
 
-    import {Alignment, Arrangement, Box, Column, Modifier, Text, TextStyle, CodeBlock, Spacer} from '@danielito1996/compose-svelted';
     export let modifier: Modifier = Modifier.empty();
 
 </script>
 
 <Column
-        modifier={modifier
+        modifier={ modifier
             .fillMaxSize()
             .padding(24)
             .verticalScroll(true)
@@ -14,11 +24,13 @@
         verticalArrangement={Arrangement.spacedBy(20)}
 >
     <!-- Header -->
-    <Text textStyle={TextStyle.HeadlineSmall}>
+    <Text
+            color={ColorScheme.OnBackground}
+            textStyle={TextStyle.HeadlineLarge}>
         🚀 Get Started
     </Text>
 
-    <Text textStyle={TextStyle.BodyLarge}>
+    <Text color={ColorScheme.OnSurface} textStyle={TextStyle.BodyLarge}>
         Esta guía te ayudará a comenzar con Compose Svelted de forma rápida.
         No necesitas conocer CSS avanzado ni configuraciones complejas.
         Si vienes de Jetpack Compose, el modelo te resultará familiar.
@@ -27,7 +39,7 @@
     <Spacer />
 
     <!-- Installation -->
-    <Text textStyle={TextStyle.TitleMedium}>
+    <Text color={ColorScheme.OnBackground} textStyle={TextStyle.TitleLarge}>
         📦 Instalación
     </Text>
 
@@ -47,7 +59,7 @@
     <Spacer />
 
     <!-- App root -->
-    <Text textStyle={TextStyle.TitleMedium}>
+    <Text textStyle={TextStyle.TitleLarge}>
         🧱 Estructura básica
     </Text>
 
@@ -82,7 +94,7 @@
     <Spacer />
 
     <!-- Layout -->
-    <Text textStyle={TextStyle.TitleMedium}>
+    <Text textStyle={TextStyle.TitleLarge}>
         📐 Layouts declarativos
     </Text>
 
@@ -92,7 +104,8 @@
     </Text>
 
     <CodeBlock language="svelte">
-        {`
+        {`import {Column} from "@danielito1996/compose-svelted";
+
 <Column modifier={Modifier.padding(16)}>
     <Text textStyle={TextStyle.TitleLarge}>
         Title
@@ -113,7 +126,7 @@
     <Spacer />
 
     <!-- Modifier -->
-    <Text textStyle={TextStyle.TitleMedium}>
+    <Text textStyle={TextStyle.TitleLarge}>
         🧩 Modifier
     </Text>
 
@@ -139,7 +152,7 @@ Modifier
     <Spacer />
 
     <!-- Navigation -->
-    <Text textStyle={TextStyle.TitleMedium}>
+    <Text textStyle={TextStyle.TitleLarge}>
         🧭 Navegación (Core V2)
     </Text>
 
@@ -149,7 +162,8 @@ Modifier
     </Text>
 
     <CodeBlock language="svelte">
-        {`
+        {`import {rememberNavController} from "@danielito1996/compose-svelted";
+
 const navController = rememberNavController("home");
 
 <NavHost
@@ -169,7 +183,7 @@ const navController = rememberNavController("home");
     <Spacer />
 
     <!-- Next -->
-    <Text textStyle={TextStyle.TitleMedium}>
+    <Text textStyle={TextStyle.TitleLarge}>
         👉 ¿Qué sigue?
     </Text>
 

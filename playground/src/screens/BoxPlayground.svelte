@@ -73,7 +73,7 @@
                         <Surface modifier={Modifier.size(124).background(ColorScheme.Secondary).clip({ toCssBorderRadius: () => '16px' }).padding(12).border(2, 'rgba(255,255,255,0.35)')}>
                             <Text color="onSecondary" textStyle="labelSmall">Medio</Text>
                         </Surface>
-                        <Surface modifier={Modifier.size(80).background(ColorScheme.Tertiary).clip({ toCssBorderRadius: () => '16px' }).padding(8).border(2, 'rgba(255,255,255,0.35)')}>
+                        <Surface modifier={Modifier.size(80).background(ColorScheme.Outline).clip({ toCssBorderRadius: () => '16px' }).padding(8).border(2, 'rgba(255,255,255,0.35)')}>
                             <Text color="onTertiary" textStyle="labelSmall">Top</Text>
                         </Surface>
                     </Box>

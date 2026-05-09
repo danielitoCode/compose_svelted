@@ -18,7 +18,7 @@
         scaleOut
     } from '@danielito1996/compose-svelted' ;
 
-    let visible = true;
+    export let visible = true;
 </script>
 
 <Column
@@ -48,13 +48,15 @@
     </Text>
 
     <CodeBlock language="typescript">
-        {`Alignment.Center
-Alignment.CenterHorizontally
-Alignment.CenterVertically
-Alignment.TopStart
-Alignment.TopEnd
-Alignment.BottomStart
-Alignment.BottomEnd`}
+        {`
+    Alignment.Center
+    Alignment.CenterHorizontally
+    Alignment.CenterVertically
+    Alignment.TopStart
+    Alignment.TopEnd
+    Alignment.BottomStart
+    Alignment.BottomEnd
+    `}
     </CodeBlock>
 
     <Text textStyle={TextStyle.BodyLarge}>
@@ -73,12 +75,14 @@ Alignment.BottomEnd`}
     </Text>
 
     <CodeBlock language="typescript">
-        {`Arrangement.Start
-Arrangement.Center
-Arrangement.End
-Arrangement.SpaceBetween
-Arrangement.SpaceAround
-Arrangement.spacedBy(16)`}
+        {`
+    Arrangement.Start
+    Arrangement.Center
+    Arrangement.End
+    Arrangement.SpaceBetween
+    Arrangement.SpaceAround
+    Arrangement.spacedBy(16)
+    `}
     </CodeBlock>
 
     <Text textStyle={TextStyle.BodyLarge}>
@@ -99,13 +103,15 @@ Arrangement.spacedBy(16)`}
     </Text>
 
     <CodeBlock language="typescript">
-        {`TextStyle.DisplayLarge
-TextStyle.HeadlineLarge
-TextStyle.HeadlineMedium
-TextStyle.TitleMedium
-TextStyle.BodyLarge
-TextStyle.BodyMedium
-TextStyle.LabelSmall`}
+        {`
+    TextStyle.DisplayLarge
+    TextStyle.HeadlineLarge
+    TextStyle.HeadlineMedium
+    TextStyle.TitleMedium
+    TextStyle.BodyLarge
+    TextStyle.BodyMedium
+    TextStyle.LabelSmall
+    `}
     </CodeBlock>
 
     <Text textStyle={TextStyle.BodyLarge}>
@@ -126,10 +132,12 @@ TextStyle.LabelSmall`}
     </Text>
 
     <CodeBlock language="typescript">
-        {`fadeIn()
-fadeOut()
-scaleIn()
-scaleOut()`}
+        {`
+    fadeIn()
+    fadeOut()
+    scaleIn()
+    scaleOut()
+    `}
     </CodeBlock>
 
     <Text textStyle={TextStyle.BodyLarge}>
@@ -143,15 +151,17 @@ scaleOut()`}
         <!-- Code -->
         <Surface modifier={Modifier.weight(1).padding(8)}>
             <CodeBlock language="svelte">
-                {`<AnimatedVisibility
-    visible={visible}
-    enter={fadeIn()}
-    exit={fadeOut()}
->
-    <Surface modifier={Modifier.padding(16)}>
-        <Text>Animated content</Text>
-    </Surface>
-</AnimatedVisibility>`}
+                {`
+    <AnimatedVisibility
+        visible={visible}
+        enter={fadeIn()}
+        exit={fadeOut()}
+    >
+        <Surface modifier={Modifier.padding(16)}>
+            <Text>Animated content</Text>
+        </Surface>
+    </AnimatedVisibility>
+    `}
             </CodeBlock>
         </Surface>
 

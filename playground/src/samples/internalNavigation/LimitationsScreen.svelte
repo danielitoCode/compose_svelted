@@ -14,7 +14,7 @@
         verticalArrangement={Arrangement.spacedBy(24)}
 >
     <!-- Header -->
-    <Text textStyle={TextStyle.HeadlineSmall}>
+    <Text textStyle={TextStyle.HeadlineLarge}>
         🚧 Limitations
     </Text>
 
@@ -27,7 +27,7 @@
 
     <!-- ================= SCOPE ================= -->
 
-    <Text textStyle={TextStyle.TitleMedium}>
+    <Text textStyle={TextStyle.TitleLarge}>
         🎯 Alcance del proyecto
     </Text>
 
@@ -39,12 +39,14 @@
     <Text textStyle={TextStyle.BodyLarge}>
         El objetivo es ofrecer una capa declarativa y predecible
         inspirada en Jetpack Compose,
-        especialmente pensada para desarrolladores Android.
+        especialmente pensada para desarrolladores Android, con el objetivo de aumentar su productividad
+        en la web, evitando tener que lidear con la complejidad de frameworks más completos
+        o con la necesidad de escribir CSS avanzado.
     </Text>
 
     <!-- ================= NO MAGIC ================= -->
 
-    <Text textStyle={TextStyle.TitleMedium}>
+    <Text textStyle={TextStyle.TitleLarge}>
         🧙‍♂️ No hay magia oculta
     </Text>
 
@@ -62,13 +64,13 @@
 
     <!-- ================= MOTION ================= -->
 
-    <Text textStyle={TextStyle.TitleMedium}>
+    <Text textStyle={TextStyle.TitleLarge}>
         🎥 Animaciones avanzadas
     </Text>
 
     <Text textStyle={TextStyle.BodyLarge}>
         El sistema de motion cubre los casos más comunes
-        como visibilidad y cambios de estado.
+        como visibilidad y cambios de estado. Actualmente no incluye animaciones complejas o personalizadas.
     </Text>
 
     <Text textStyle={TextStyle.BodyLarge}>
@@ -76,7 +78,8 @@
         transiciones compartidas,
         animaciones basadas en gestos,
         o sincronización avanzada entre vistas
-        no forman parte de Core V2.
+        no forman parte de Core V2. En el futuro se prevee implementar animaciones al estilo Jetpack Compose
+        que conviertan las animaciones en componentes declarativos.
     </Text>
 
     <Text textStyle={TextStyle.BodyLarge}>
@@ -86,7 +89,7 @@
 
     <!-- ================= RESPONSIVE ================= -->
 
-    <Text textStyle={TextStyle.TitleMedium}>
+    <Text textStyle={TextStyle.TitleLarge}>
         📱 Diseño responsive
     </Text>
 
@@ -104,7 +107,7 @@
 
     <!-- ================= PERFORMANCE ================= -->
 
-    <Text textStyle={TextStyle.TitleMedium}>
+    <Text textStyle={TextStyle.TitleLarge}>
         ⚡ Rendimiento
     </Text>
 
@@ -117,12 +120,14 @@
 
     <Text textStyle={TextStyle.BodyLarge}>
         El rendimiento depende en gran medida
-        del uso correcto de los layouts y del tamaño del árbol de UI.
+        del uso correcto de los layouts y del tamaño del árbol de UI, aunque es necesario mencionar de que Svelte
+        nativamente hace uso optimo de los recuersos del navegador, por lo que el rendimiento de Compose Svelted
+        es excelente incluso sin optimizaciones específicas.
     </Text>
 
     <!-- ================= ECOSYSTEM ================= -->
 
-    <Text textStyle={TextStyle.TitleMedium}>
+    <Text textStyle={TextStyle.TitleLarge}>
         🌱 Ecosistema y componentes
     </Text>
 
@@ -139,7 +144,7 @@
 
     <!-- ================= ROADMAP ================= -->
 
-    <Text textStyle={TextStyle.TitleMedium}>
+    <Text textStyle={TextStyle.TitleLarge}>
         🗺️ Roadmap
     </Text>
 

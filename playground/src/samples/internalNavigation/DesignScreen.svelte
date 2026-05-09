@@ -14,6 +14,7 @@
         ColorScheme,
         CodeBlock
     } from '@danielito1996/compose-svelted';
+    import PreviewBox from "../components/PreviewBox.svelte";
 
 </script>
 
@@ -47,16 +48,20 @@
 
     <!-- Demo -->
     <Surface
+            modifier={Modifier.fillMaxWidth()}
             color={ColorScheme.Surface}
-            modifier={Modifier.padding(16)}
     >
-        <Column verticalArrangement={Arrangement.spacedBy(8)}>
-            <Text textStyle={TextStyle.TitleMedium}>
-                Profile
-            </Text>
-            <Text>Username</Text>
-            <Button>Follow</Button>
-        </Column>
+        <PreviewBox
+            modifier={Modifier.fillMaxWidth().height(150)}
+        >
+            <Column verticalArrangement={Arrangement.spacedBy(8)}>
+                <Text textStyle={TextStyle.TitleMedium}>
+                    Profile
+                </Text>
+                <Text>Username</Text>
+                <Button>Follow</Button>
+            </Column>
+        </PreviewBox>
     </Surface>
 
     <!-- Code comparison -->
@@ -64,13 +69,15 @@
         <Surface modifier={Modifier.weight(1).padding(8)}>
             <Text textStyle={TextStyle.LabelSmall}>Compose Svelted</Text>
             <CodeBlock language="svelte">
-                {`<Column verticalArrangement={Arrangement.spacedBy(8)}>
-    <Text textStyle={TextStyle.TitleMedium}>
-        Profile
-    </Text>
-    <Text>Username</Text>
-    <Button>Follow</Button>
-</Column>`}
+                {`
+    <Column verticalArrangement={Arrangement.spacedBy(8)}>
+        <Text textStyle={TextStyle.TitleMedium}>
+            Profile
+        </Text>
+        <Text>Username</Text>
+        <Button onClick={()=>  }>Follow</Button>
+    </Column>
+    `}
             </CodeBlock>
         </Surface>
 
@@ -85,9 +92,7 @@
         style = MaterialTheme.typography.titleMedium
     )
     Text("Username")
-    Button(onClick = {}) {
-        Text("Follow")
-    }
+    Button(onClick = {}) { Text("Follow") }
 }`}
             </CodeBlock>
         </Surface>
@@ -107,14 +112,18 @@
     </Text>
 
     <!-- Demo -->
-    <Surface modifier={Modifier.padding(16)}>
-        <Row
-                horizontalArrangement={Arrangement.spacedBy(12)}
-                verticalAlignment={Alignment.CenterVertically}
+    <Surface modifier={Modifier.fillMaxWidth()}>
+        <PreviewBox
+                modifier={Modifier.fillMaxWidth().height(150)}
         >
-            <Button>Like</Button>
-            <Button>Share</Button>
-        </Row>
+            <Row
+                    horizontalArrangement={Arrangement.spacedBy(12)}
+                    verticalAlignment={Alignment.CenterVertically}
+            >
+                <Button>Like</Button>
+                <Button>Share</Button>
+            </Row>
+        </PreviewBox>
     </Surface>
 
     <!-- Code comparison -->
@@ -160,16 +169,21 @@
     </Text>
 
     <!-- Demo -->
-    <Surface modifier={Modifier.padding(16)}>
-        <Box
-                modifier={Modifier.size(120).background(ColorScheme.Surface)}
-                contentAlignment={Alignment.Center}
-        >
-            <Text>Center</Text>
-            <Text modifier={Modifier.align(Alignment.BottomEnd)}>
-                Badge
-            </Text>
-        </Box>
+    <Surface modifier={Modifier.fillMaxWidth()}>
+        <PreviewBox modifier={Modifier.fillMaxWidth().height(150)}>
+            <Box
+                    modifier={Modifier.fillMaxSize().padding(20).background(ColorScheme.Surface)}
+                    contentAlignment={Alignment.Center}
+            >
+                <Text modifier={Modifier.align(Alignment.TopStart)}>
+                    Start
+                </Text>
+                <Text>Center</Text>
+                <Text modifier={Modifier.align(Alignment.BottomEnd)}>
+                    Badge
+                </Text>
+            </Box>
+        </PreviewBox>
     </Surface>
 
     <!-- Code comparison -->
@@ -177,15 +191,20 @@
         <Surface modifier={Modifier.weight(1).padding(8)}>
             <Text textStyle={TextStyle.LabelSmall}>Compose Svelted</Text>
             <CodeBlock language="svelte">
-                {`<Box
-    modifier={Modifier.size(120)}
-    contentAlignment={Alignment.Center}
->
-    <Text>Center</Text>
-    <Text modifier={Modifier.align(Alignment.BottomEnd)}>
-        Badge
-    </Text>
-</Box>`}
+                {`
+    <Box
+        modifier={Modifier.size(120)}
+        contentAlignment={Alignment.Center}
+    >
+        <Text modifier={Modifier.align(Alignment.TopStart)}>
+            Start
+        </Text>
+        <Text>Center</Text>
+        <Text modifier={Modifier.align(Alignment.BottomEnd)}>
+            Badge
+        </Text>
+    </Box>
+    `}
             </CodeBlock>
         </Surface>
 
@@ -196,6 +215,10 @@
     modifier = Modifier.size(120.dp),
     contentAlignment = Alignment.Center
 ) {
+    Text(
+        text = "Start",
+        modifier = Modifier.align(Alignment.TopStart)
+    )
     Text("Center")
     Text(
         text = "Badge",

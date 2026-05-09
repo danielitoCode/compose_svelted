@@ -16,6 +16,7 @@
         Icon,CodeBlock,
         ColorScheme, painterResource, Res
     } from '@danielito1996/compose-svelted';
+    import PreviewBox from "../components/PreviewBox.svelte";
 
     let email = "";
 </script>
@@ -45,30 +46,39 @@
         📝 Text
     </Text>
 
-    <Row modifier={Modifier.fillMaxWidth()}>
+    <Row
+            verticalAlignment = {Alignment.Bottom}
+            modifier={Modifier.fillMaxWidth()}
+    >
         <!-- Code -->
         <Surface modifier={Modifier.weight(1).padding(8)}>
             <CodeBlock language="svelte">
-                {`<Text textStyle={TextStyle.TitleLarge}>
-    Title
-</Text>
+                {`
+                    <Text textStyle={TextStyle.TitleLarge}>
+                        Title
+                    </Text>
 
-<Text textStyle={TextStyle.BodyLarge}>
-    Body text
-</Text>`}
+                    <Text textStyle={TextStyle.BodyLarge}>
+                        Body text
+                    </Text>
+                `}
             </CodeBlock>
         </Surface>
 
         <!-- Preview -->
         <Surface modifier={Modifier.weight(1).padding(16)}>
-            <Column verticalArrangement={Arrangement.spacedBy(8)}>
-                <Text textStyle={TextStyle.TitleLarge}>
-                    Title
-                </Text>
-                <Text textStyle={TextStyle.BodyLarge}>
-                    Body text
-                </Text>
-            </Column>
+            <PreviewBox
+                    modifier={Modifier.fillMaxWidth().height(195)}
+            >
+                <Column verticalArrangement={Arrangement.spacedBy(8)}>
+                    <Text textStyle={TextStyle.TitleLarge}>
+                        Title
+                    </Text>
+                    <Text textStyle={TextStyle.BodyLarge}>
+                        Body text
+                    </Text>
+                </Column>
+            </PreviewBox>
         </Surface>
     </Row>
 
@@ -78,37 +88,56 @@
         🔘 Button
     </Text>
 
-    <Row modifier={Modifier.fillMaxWidth()}>
+    <Row
+            verticalAlignment = {Alignment.Bottom}
+            modifier={Modifier.fillMaxWidth()}
+    >
         <!-- Code -->
         <Surface modifier={Modifier.weight(1).padding(8)}>
             <CodeBlock language="svelte">
-                {`<Button>
-    Confirm
-</Button>
+                {`
+                    <Button
+                        onClick={ ()=> alert("Boton de confirmar presionado") }
+                    >
+                        Confirm
+                    </Button>
 
-<Button
-    color={ColorScheme.Secondary}
-    modifier={Modifier.fillMaxWidth()}
->
-    Secondary action
-</Button>`}
+                    <Button
+                        onClick={ ()=> alert("Boton secundario presionado") }
+                        color={ColorScheme.Secondary}
+                        modifier={Modifier.fillMaxWidth()}
+                    >
+                        Secondary action
+                    </Button>
+                `}
             </CodeBlock>
         </Surface>
 
         <!-- Preview -->
         <Surface modifier={Modifier.weight(1).padding(16)}>
-            <Column verticalArrangement={Arrangement.spacedBy(12)}>
-                <Button>
-                    Confirm
-                </Button>
+            <PreviewBox
+                    modifier={Modifier.fillMaxWidth().height(300)}
+            >
+                <Column
 
-                <Button
-                        color={ColorScheme.Secondary}
-                        modifier={Modifier.fillMaxWidth()}
+                        horizontalAlignment = {Alignment.CenterHorizontally}
+                        verticalArrangement={Arrangement.spacedBy(12)}
                 >
-                    Secondary action
-                </Button>
-            </Column>
+                    <Button
+                            onClick={()=> alert("Boton de confirmar presionado")}
+                    >
+                        Confirm
+                    </Button>
+
+                    <Button
+                            onClick={ ()=> alert("Boton secundario presionado")}
+                            color={ColorScheme.Secondary}
+                            modifier={Modifier.fillMaxWidth()}
+                    >
+                        Secondary action
+                    </Button>
+                </Column>
+            </PreviewBox>
         </Surface>
     </Row>
 
@@ -118,25 +147,35 @@
         ⌨️ TextField
     </Text>
 
-    <Row modifier={Modifier.fillMaxWidth()}>
+    <Row
+            verticalAlignment = {Alignment.Bottom}
+            modifier={Modifier.fillMaxWidth()}
+    >
         <!-- Code -->
         <Surface modifier={Modifier.weight(1).padding(8)}>
             <CodeBlock language="svelte">
-                {`<TextField
-    label="Email"
-    value={email}
-    onValueChange={v => email = v}
-/>`}
+                {`
+                    <TextField
+                        label="Email"
+                        value={email}
+                        onValueChange={v => email = v}
+                    />
+                `}
             </CodeBlock>
         </Surface>
 
         <!-- Preview -->
         <Surface modifier={Modifier.weight(1).padding(16)}>
-            <TextField
-                    label="Email"
-                    value={email}
-                    onValueChange={v => email = v}
-            />
+            <PreviewBox
+                modifier= {Modifier.fillMaxWidth().height(155)}
+            >
+                <TextField
+                        label="Email"
+                        value={email}
+                        onValueChange={v => email = v}
+                />
+            </PreviewBox>
+
         </Surface>
     </Row>
 
@@ -146,27 +185,37 @@
         🧱 Surface
     </Text>
 
-    <Row modifier={Modifier.fillMaxWidth()}>
+    <Row
+            verticalAlignment = {Alignment.Bottom}
+            modifier={Modifier.fillMaxWidth()}
+    >
         <!-- Code -->
         <Surface modifier={Modifier.weight(1).padding(8)}>
             <CodeBlock language="svelte">
-                {`<Surface
-    color={ColorScheme.Surface}
-    modifier={Modifier.padding(16)}
->
-    <Text>Surface content</Text>
-</Surface>`}
+                {`
+                    <Surface
+                        color={ColorScheme.Surface}
+                        modifier={Modifier.padding(16)}
+                    >
+                        <Text>Surface content</Text>
+                    </Surface>
+                `}
             </CodeBlock>
         </Surface>
 
         <!-- Preview -->
         <Surface modifier={Modifier.weight(1).padding(16)}>
-            <Surface
-                    color={ColorScheme.Surface}
-                    modifier={Modifier.padding(16)}
+            <PreviewBox
+                    modifier= {Modifier.fillMaxWidth().height(175)}
             >
-                <Text>Surface content</Text>
-            </Surface>
+                <Surface
+                        color={ColorScheme.Surface}
+                        modifier={Modifier.padding(16)}
+                >
+                    <Text>Surface content</Text>
+                </Surface>
+            </PreviewBox>
+
         </Surface>
     </Row>
 
@@ -176,78 +225,101 @@
         🖼️ Image & Icon
     </Text>
 
-    <Row modifier={Modifier.fillMaxWidth()}>
+    <Row
+            verticalAlignment = {Alignment.Bottom}
+            modifier={Modifier.fillMaxWidth()}
+    >
         <!-- Code -->
         <Surface modifier={Modifier.weight(1).padding(8)}>
             <CodeBlock language="svelte">
-                {` <Image
+                {`
+                    <Image
                         painter={painterResource(Res.raw("icon.svg"))}
                         modifier={Modifier.size(48)}
-                />
-                <Icon
+                    />
+                    <Icon
                         painter={painterResource(Res.raw("icon.svg"))}
                         modifier={Modifier.size(48)}
                         tint={ColorScheme.OnBackground}
-                />`}
+                    />
+                `}
             </CodeBlock>
         </Surface>
 
         <!-- Preview -->
         <Surface modifier={Modifier.weight(1).padding(16)}>
-            <Row
-                    horizontalArrangement={Arrangement.spacedBy(16)}
-                    verticalAlignment={Alignment.CenterVertically}
+            <PreviewBox
+                modifier={Modifier.fillMaxWidth().height(190)}
             >
-                <Image
-                        painter={painterResource(Res.raw("icon.svg"))}
-                        modifier={Modifier.size(48)}
-                />
-                <Icon
-                        painter={painterResource(Res.raw("icon.svg"))}
-                        modifier={Modifier.size(48)}
-                        tint={ColorScheme.OnBackground}
-                />
-            </Row>
+                <Row
+                        modifier = {Modifier.fillMaxWidth()}
+                        horizontalArrangement={Arrangement.SpaceEvenly}
+                        verticalAlignment={Alignment.CenterVertically}
+                >
+                    <Image
+                            painter={painterResource(Res.raw("icon.svg"))}
+                            modifier={Modifier.size(80)}
+                    />
+                    <Icon
+                            painter={painterResource(Res.raw("icon.svg"))}
+                            modifier={Modifier.size(80)}
+                            tint={ColorScheme.OnBackground}
+                    />
+                </Row>
+            </PreviewBox>
         </Surface>
     </Row>
 
     <!-- ================= COMPOSITION ================= -->
 
     <Text textStyle={TextStyle.TitleMedium}>
-        🧩 Composición
+        🧩 Ejemplo de componente mixto (Botón con Icono)
     </Text>
 
-    <Row modifier={Modifier.fillMaxWidth()}>
+    <Row
+            verticalAlignment = {Alignment.Bottom}
+            modifier={Modifier.fillMaxWidth()}
+    >
         <!-- Code -->
         <Surface modifier={Modifier.weight(1).padding(8)}>
             <CodeBlock language="svelte">
-                {`<Row
-    horizontalArrangement={Arrangement.spacedBy(12)}
-    verticalAlignment={Alignment.CenterVertically}
->
-    <Icon
-        painter={painterResource(Res.raw("icon.svg"))}
-        modifier={Modifier.size(48)}
-        tint={ColorScheme.OnBackground}
-    />
-    <Text>Label</Text>
-</Row>`}
+                {`
+                    <Button onClick={ ()=> alert("Boton de confirmar presionado") }>
+                        <Row
+                             horizontalArrangement={Arrangement.spacedBy(12)}
+                             verticalAlignment={Alignment.CenterVertically}
+                        >
+                             <Icon
+                                painter={painterResource(Res.raw("icon.svg"))}
+                                modifier={Modifier.size(28)}
+                                tint={ColorScheme.OnBackground}
+                            />
+                            <Text>Label</Text>
+                        </Row>
+                    </Button>
+            `}
             </CodeBlock>
         </Surface>
 
         <!-- Preview -->
         <Surface modifier={Modifier.weight(1).padding(16)}>
-            <Row
-                    horizontalArrangement={Arrangement.spacedBy(12)}
-                    verticalAlignment={Alignment.CenterVertically}
+            <PreviewBox
+                modifier={Modifier.fillMaxWidth().height(295)}
             >
-                <Icon
-                        painter={painterResource(Res.raw("icon.svg"))}
-                        modifier={Modifier.size(48)}
-                        tint={ColorScheme.OnBackground}
-                />
-                <Text>Label</Text>
-            </Row>
+                <Button onClick={ ()=> alert("Boton de compuesto presionado") }>
+                    <Row
+                            horizontalArrangement={Arrangement.spacedBy(12)}
+                            verticalAlignment={Alignment.CenterVertically}
+                    >
+                        <Icon
+                                painter={painterResource(Res.raw("icon.svg"))}
+                                modifier={Modifier.size(28)}
+                                tint={ColorScheme.OnBackground}
+                        />
+                        <Text>Label</Text>
+                    </Row>
+                </Button>
+            </PreviewBox>
         </Surface>
     </Row>
 
