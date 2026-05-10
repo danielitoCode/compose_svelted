@@ -22,5 +22,5 @@ export  const Res = {
 } as const;
 
 export function painterResource(resourceName: string): string {
-    return "/src/assets/"+resourceName;
+    return "/assets/"+resourceName;
 }
