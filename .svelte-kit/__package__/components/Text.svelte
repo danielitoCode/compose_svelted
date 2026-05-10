@@ -8,16 +8,30 @@
     export let textStyle: TextStyleToken = "bodyMedium";
 
     // Aceptamos token o string directo
-    export let color: ColorToken | string = "onSurface";  // string literal por defecto
+    export let color: ColorToken | string = "onSurface";
 
-    // Usamos la misma lógica que Surface (que ya funciona)
     $: resolvedColor = typeof color === "string" ? resolveColor(color as ColorToken) : color;
 </script>
 
-<p class="block m-0" style={`
-  ${resolveTextStyle(textStyle)};
-  color: ${resolvedColor};
-  ${modifier.toStyle()}
-`}>
+<!--
+    Text — Componente Material 3 independiente.
+    No depende de Tailwind.
+-->
+<p
+    class="cs-text"
+    style={`
+        ${resolveTextStyle(textStyle)};
+        color: ${resolvedColor};
+        ${modifier.toStyle()}
+    `}
+>
     <slot />
 </p>
+
+<style>
+    .cs-text {
+        display: block;
+        margin: 0;
+        padding: 0;
+    }
+</style>

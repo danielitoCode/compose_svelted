@@ -9,6 +9,8 @@ export var ColorScheme = {
     OnSurface: "onSurface",
     SurfaceVariant: "surfaceVariant",
     OnSurfaceVariant: "onSurfaceVariant",
+    Tertiary: "tertiary",
+    OnTertiary: "onTertiary",
     Outline: "outline",
     Error: "error",
     OnError: "onError",

@@ -19,6 +19,7 @@ var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
     return to.concat(ar || Array.prototype.slice.call(from));
 };
 import { resolveColor } from "../theme/resolve";
+import { resolveBoxPlaceSelf, resolveColumnAlignSelf, resolveRowAlignSelf } from "../../components/layouts/resolveAlignment";
 function toCssLength(value, unit) {
     if (unit === void 0) { unit = "px"; }
     return typeof value === "number" ? "".concat(value).concat(unit) : value;
@@ -32,13 +33,16 @@ var ModifierImpl = /** @class */ (function () {
         return new ModifierImpl(__spreadArray(__spreadArray([], this.entries, true), other.entries, true));
     };
     ModifierImpl.prototype.fillMaxWidth = function () {
-        return this.then(new ModifierImpl([{ style: "width:100%;" }]));
+        // En flexbox, width:100% y align-self:stretch aseguran ocupar el ancho
+        return this.then(new ModifierImpl([{ style: "width:100%;align-self:stretch;" }]));
     };
     ModifierImpl.prototype.fillMaxHeight = function () {
-        return this.then(new ModifierImpl([{ style: "height:100%;" }]));
+        // En flexbox (como Row), align-self:stretch es clave para llenar el alto transversal
+        // height:100% ayuda en contextos de bloque o flex-direction: column
+        return this.then(new ModifierImpl([{ style: "height:100%;align-self:stretch;" }]));
     };
     ModifierImpl.prototype.fillMaxSize = function () {
-        return this.then(new ModifierImpl([{ style: "width:100%;height:100%;" }]));
+        return this.then(new ModifierImpl([{ style: "width:100%;height:100%;align-self:stretch;" }]));
     };
     ModifierImpl.prototype.width = function (value, unit) {
         if (unit === void 0) { unit = "px"; }
@@ -119,6 +123,10 @@ var ModifierImpl = /** @class */ (function () {
             { style: "transform:translate(".concat(x, "px, ").concat(y, "px);") }
         ]));
     };
+    /**
+     * Sobreescribe la alineación de este hijo dentro de un contenedor (Box, Column, Row).
+     * Equivalente a Modifier.align() en Jetpack Compose.
+     */
     ModifierImpl.prototype.align = function (alignment) {
         return this.then(new ModifierImpl([{ meta: { align: alignment } }]));
     };
@@ -140,7 +148,21 @@ var ModifierImpl = /** @class */ (function () {
             : this;
     };
     ModifierImpl.prototype.toStyle = function () {
-        return this.entries.map(function (entry) { var _a; return (_a = entry.style) !== null && _a !== void 0 ? _a : ""; }).join("");
+        var meta = this.getMeta();
+        var alignStyle = "";
+        if (meta.align) {
+            var a = meta.align;
+            if (a._brand === 'BoxAlignment') {
+                alignStyle = resolveBoxPlaceSelf(a);
+            }
+            else if (a._brand === 'HorizontalAlignment') {
+                alignStyle = resolveColumnAlignSelf(a);
+            }
+            else if (a._brand === 'VerticalAlignment') {
+                alignStyle = resolveRowAlignSelf(a);
+            }
+        }
+        return this.entries.map(function (entry) { var _a; return (_a = entry.style) !== null && _a !== void 0 ? _a : ""; }).join("") + alignStyle;
     };
     ModifierImpl.prototype.toClass = function () {
         return this.entries.map(function (entry) { var _a; return (_a = entry.className) !== null && _a !== void 0 ? _a : ""; }).filter(Boolean).join(" ");

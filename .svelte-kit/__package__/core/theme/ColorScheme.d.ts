@@ -11,6 +11,8 @@ export declare const ColorScheme: {
     readonly OnSurface: "onSurface";
     readonly SurfaceVariant: "surfaceVariant";
     readonly OnSurfaceVariant: "onSurfaceVariant";
+    readonly Tertiary: "tertiary";
+    readonly OnTertiary: "onTertiary";
     readonly Outline: "outline";
     readonly Error: "error";
     readonly OnError: "onError";

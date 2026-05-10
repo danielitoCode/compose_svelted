@@ -1,49 +1,45 @@
-/* compose-svelted baseline.css */
+/**
+ * compose-svelted — baseline.css
+ *
+ * Este CSS establece la base mínima necesaria para que los layouts de
+ * compose-svelted funcionen con la filosofía de Jetpack Compose:
+ *
+ *  • El viewport es la unidad raíz — html/body/app ocupan exactamente 100%.
+ *  • NO hay scroll por defecto — el overflow está bloqueado en el root.
+ *    El scroll solo ocurre cuando el layout o Modifier lo habilitan
+ *    explícitamente (verticalScroll, LazyColumn, LazyRow).
+ *  • Los layouts controlan tamaños y alineaciones — el CSS global no impone
+ *    ninguna opinión sobre disposición de hijos.
+ *  • box-sizing: border-box universal — padding no suma al ancho declarado.
+ *  • min-width/min-height: 0 universal — los hijos flex/grid no desbordan
+ *    si su contenido es mayor que el espacio asignado.
+ */
 
-/* 1. Modelo de caja consistente */
-*, *::before, *::after {
+/* ── 1. Box model consistente ──────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
     box-sizing: border-box;
 }
 
-/* 2. Root layout estable */
-html, body {
+/* 2) Root sizing + bloqueo de overflow global */
+html,
+body,
+#app {
+    width: 100%;
+    height: 100%;
     margin: 0;
     padding: 0;
-    width: 100%;
-    height: 100%;
+    overflow: hidden;
 }
 
-/* 3. Host de la app */
-#app, body > div {
-    width: 100%;
-    height: 100%;
-}
-
-/* 4. Prevención de colapso en flex */
-* {
-    min-width: 0;
-    min-height: 0;
-}
-
-/* 5. Soporte para absolute alignment */
-.compose-relative {
-    position: relative;
-}
-
-/* 6. Clickable base */
-.compose-clickable {
+/* 3) Utilidades internas usadas por la librería */
+.cs-clickable {
     cursor: pointer;
     user-select: none;
+    -webkit-user-select: none;
 }
 
-/* 7. Evitar interferencia de estilos externos */
-img, svg, video, canvas {
-    display: block;
-    max-width: 100%;
-}
-
-.compose-lazy-row,
-.compose-lazy-column {
-    min-width: 0;
-    min-height: 0;
+.cs-relative {
+    position: relative;
 }

@@ -3,6 +3,8 @@ export var darkColors = {
     onPrimary: "#E6E6E6",
     secondary: "#3A3E49",
     onSecondary: "#E6E6E6",
+    tertiary: "#D0BCFF",
+    onTertiary: "#381E72",
     background: "#080808",
     onBackground: "#E6E6E6",
     surface: "#101010",

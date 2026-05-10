@@ -3,6 +3,8 @@ export var lightColors = {
     onPrimary: "#FFFBF2",
     secondary: "#3A3E49", // Teal vibrante
     onSecondary: "#FFFFFF",
+    tertiary: "#6750A4",
+    onTertiary: "#FFFFFF",
     background: "#FFFBF2",
     onBackground: "#1C1B1F",
     surface: "#FFFFFF",

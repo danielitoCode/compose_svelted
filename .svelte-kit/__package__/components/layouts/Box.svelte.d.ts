@@ -20,7 +20,14 @@ type $$__sveltets_2_PropsWithChildren<Props, Slots> = Props & (Slots extends {
 } : {});
 declare const Box: $$__sveltets_2_IsomorphicComponent<$$__sveltets_2_PropsWithChildren<{
     modifier?: Modifier;
-    contentAlignment?: BoxAlignment | undefined;
+    /**
+         * Alineación por defecto para TODOS los hijos del Box.
+         * Equivalente a contentAlignment en Jetpack Compose.
+         *
+         * Cada hijo puede sobreescribir con Modifier.align(Alignment.XXX).
+         *
+         * @default Alignment.TopStart
+         */ contentAlignment?: BoxAlignment;
 }, {
     default: {};
 }>, {

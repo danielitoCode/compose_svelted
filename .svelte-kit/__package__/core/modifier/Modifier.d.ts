@@ -1,5 +1,5 @@
 import { ModifierImpl } from "./ModifierImpl";
-import type { BoxAlignment } from "../../components/layouts/Alignment";
+import type { BoxAlignment, HorizontalAlignment, VerticalAlignment } from "../../components/layouts/Alignment";
 import type { Shape } from "../shapes/Shape";
 import type { ColorToken } from "../theme/ColorScheme";
 type PaddingValue = number | {
@@ -18,7 +18,7 @@ export declare const Modifier: {
     readonly offset: (x: number, y: number) => ModifierImpl;
     readonly verticalScroll: (enabled?: boolean) => ModifierImpl;
     readonly horizontalScroll: (enabled?: boolean) => ModifierImpl;
-    readonly align: (alignment: BoxAlignment) => ModifierImpl;
+    readonly align: (alignment: BoxAlignment | HorizontalAlignment | VerticalAlignment) => ModifierImpl;
     readonly fillMaxWidth: () => ModifierImpl;
     readonly fillMaxHeight: () => ModifierImpl;
     readonly fillMaxSize: () => ModifierImpl;

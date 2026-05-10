@@ -1,8 +1,9 @@
-import type { BoxAlignment } from "../../components/layouts/Alignment";
+import type { BoxAlignment, HorizontalAlignment, VerticalAlignment } from "../../components/layouts/Alignment";
 import type { Shape } from "../shapes/Shape";
 import type { ColorToken } from "../theme/ColorScheme";
 export type ModifierMeta = {
-    align?: BoxAlignment;
+    /** Alineación de este hijo dentro de su contenedor (place-self en grid, align-self en flex) */
+    align?: BoxAlignment | HorizontalAlignment | VerticalAlignment;
 };
 export type ModifierEntry = {
     className?: string;
@@ -34,7 +35,11 @@ export declare class ModifierImpl {
     border(width: number, color: string, shape?: Shape): ModifierImpl;
     clip(shape: Shape): ModifierImpl;
     offset(x: number, y: number): ModifierImpl;
-    align(alignment: BoxAlignment): ModifierImpl;
+    /**
+     * Sobreescribe la alineación de este hijo dentro de un contenedor (Box, Column, Row).
+     * Equivalente a Modifier.align() en Jetpack Compose.
+     */
+    align(alignment: BoxAlignment | HorizontalAlignment | VerticalAlignment): ModifierImpl;
     clickable(_onClick?: () => void): ModifierImpl;
     verticalScroll(enabled?: boolean): ModifierImpl;
     horizontalScroll(enabled?: boolean): ModifierImpl;

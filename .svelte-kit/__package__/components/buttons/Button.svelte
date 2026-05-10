@@ -18,17 +18,49 @@
     $: boxShadow = `var(--md-sys-elevation-${elevation})`;
 </script>
 
+<!--
+    Button — Componente Material 3 independiente.
+    No depende de Tailwind.
+-->
 <button
         on:click={onClick}
-        class="border-0 cursor-pointer inline-flex items-center justify-center gap-8 font-medium tracking-wider transition-all hover:opacity-90 active:scale-95"
+        class="cs-button"
         style={`
     background: ${backgroundColor};
     color: ${contentColor};
     border-radius: ${borderRadius};
     box-shadow: ${boxShadow};
-    padding: 10px 24px;  <!-- Padding moderado: vertical 10px, horizontal 24px (como Compose) -->
     ${modifier.toStyle()}
   `}
 >
     <slot />
 </button>
+
+<style>
+    .cs-button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border: none;
+        cursor: pointer;
+        padding: 10px 24px;
+        gap: 8px;
+        font-family: inherit;
+        font-weight: 500;
+        letter-spacing: 0.1px;
+        transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        user-select: none;
+        -webkit-tap-highlight-color: transparent;
+        outline: none;
+    }
+
+    .cs-button:hover {
+        opacity: 0.92;
+        box-shadow: var(--md-sys-elevation-level2);
+    }
+
+    .cs-button:active {
+        transform: scale(0.97);
+        opacity: 0.85;
+    }
+</style>

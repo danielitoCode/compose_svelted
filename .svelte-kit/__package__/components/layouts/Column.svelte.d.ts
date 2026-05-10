@@ -21,8 +21,16 @@ type $$__sveltets_2_PropsWithChildren<Props, Slots> = Props & (Slots extends {
 } : {});
 declare const Column: $$__sveltets_2_IsomorphicComponent<$$__sveltets_2_PropsWithChildren<{
     modifier?: Modifier;
-    horizontalAlignment?: HorizontalAlignment;
-    verticalArrangement?: ArrangementValue;
+    /**
+         * Alineación en el eje cross (horizontal) de todos los hijos.
+         * Equivalente a horizontalAlignment en Jetpack Compose Column.
+         * @default Alignment.Start
+         */ horizontalAlignment?: HorizontalAlignment;
+    /**
+         * Disposición en el eje main (vertical).
+         * Equivalente a verticalArrangement en Jetpack Compose Column.
+         * @default Arrangement.Top
+         */ verticalArrangement?: ArrangementValue;
 }, {
     default: {};
 }>, {
