@@ -15,7 +15,7 @@
   import RowPlayground from "./screens/RowPlayground.svelte";
   import ColumnPlayground from "./screens/ColumnPlayground.svelte";
 
-  const navController = rememberNavController('home');
+  const navController = rememberNavController('samples');
 
   const routes = [
     composable({ path: 'home' }, () => Home),

@@ -23,7 +23,7 @@
     "./baseline-safe.css": "./dist/core/styles/baseline-safe.css"
   },
   "publishConfig": {
-    "access": "public"
+    "registry": "https://npm.pkg.github.com"
   },
   "files": [
     "dist"
